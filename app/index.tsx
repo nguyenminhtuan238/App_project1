@@ -14,5 +14,5 @@ export default function startPage() {
     }
     checkLogin();
   }, []);
-  return <Redirect href="/login/" />;
+  return <Redirect href="/Home/" />;
 }
