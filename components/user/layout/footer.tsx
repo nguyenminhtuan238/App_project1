@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { router } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Foundation,FontAwesome5  } from '@expo/vector-icons';
+import { Foundation, FontAwesome5 } from '@expo/vector-icons';
 export default function Footer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const handle = (value: number) => {
@@ -15,7 +15,7 @@ export default function Footer() {
   };
   return (
     <>
-      <View className="flex flex-row bg-black p-4 border-t-2 ">
+      <View className="flex flex-row bg-black p-4 border-t-2  absolute left-0 bottom-0 right-0 h-[60]">
         <Pressable
           className="   h-8 w-1/4 "
           onPress={() => {
@@ -24,9 +24,15 @@ export default function Footer() {
           }}
         >
           <View className="flex justify-items-center items-center ">
-          <Foundation name="home" size={24} color={selectedIndex == 0 ? 'yellow' : 'white'} />
+            <Foundation
+              name="home"
+              size={24}
+              color={selectedIndex == 0 ? 'yellow' : 'white'}
+            />
             {selectedIndex == 0 ? (
-              <Text className="text-yellow-300  mt-1 text-[10px]">Trang Chu</Text>
+              <Text className="text-yellow-300  mt-1 text-[10px]">
+                Trang Chu
+              </Text>
             ) : (
               ''
             )}
@@ -36,7 +42,7 @@ export default function Footer() {
           className="  h-8 w-1/4 "
           onPress={() => {
             setSelectedIndex(1);
-            router.push('/Home/');
+            router.push('/login/');
           }}
         >
           <View className="flex justify-items-center items-center">
@@ -46,7 +52,9 @@ export default function Footer() {
               color={selectedIndex == 1 ? 'yellow' : 'white'}
             />
             {selectedIndex == 1 ? (
-              <Text className="text-yellow-300  mt-1 text-[10px]">Quan ly </Text>
+              <Text className="text-yellow-300  mt-1 text-[10px]">
+                Quan ly{' '}
+              </Text>
             ) : (
               ''
             )}
@@ -71,7 +79,6 @@ export default function Footer() {
               ''
             )}
           </View>
-          
         </Pressable>
         <Pressable
           className="  h-8 w-1/4 "
@@ -81,15 +88,18 @@ export default function Footer() {
           }}
         >
           <View className="flex justify-items-center items-center">
-          <FontAwesome5 name="user-alt" size={24} color={selectedIndex == 3 ? 'yellow' : 'white'} />
-         
+            <FontAwesome5
+              name="user-alt"
+              size={24}
+              color={selectedIndex == 3 ? 'yellow' : 'white'}
+            />
+
             {selectedIndex == 3 ? (
               <Text className="text-yellow-300 mt-1 text-[10px]">Trang </Text>
             ) : (
               ''
             )}
           </View>
-          
         </Pressable>
       </View>
     </>

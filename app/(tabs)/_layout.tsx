@@ -15,7 +15,7 @@ import { RootState, AppDispatch } from '../../commons/store';
 import * as ImagePicker from 'expo-image-picker';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { getStudent } from '../../commons/store/Student';
-import { Slot } from 'expo-router';
+import { Slot, Tabs } from 'expo-router';
 import { Provider } from 'react-redux';
 import store from '../../commons/store';
 export default function Layout() {
@@ -23,9 +23,6 @@ export default function Layout() {
   const Student = useSelector((state: RootState) => state.Student);
   const dispatch: AppDispatch = useDispatch();
   const [image, setImage] = useState(null);
-  
-  return (
-   
-    <Slot />
-  );
+
+  return <Slot />;
 }

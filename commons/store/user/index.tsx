@@ -1,12 +1,12 @@
 import AuthAPI from '../../services/auth.services';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {envTOKEN,envREFRESHTOKEN} from '../../themes/global';
+import { envTOKEN, envREFRESHTOKEN } from '../../themes/global';
 export const LoginUser = createAsyncThunk(
   'user/login',
   async (payload: object) => {
     try {
-      const res:any = await AuthAPI.Login(payload);
+      const res: any = await AuthAPI.Login(payload);
       await AsyncStorage.setItem(envTOKEN, res.settoken);
       await AsyncStorage.setItem(envREFRESHTOKEN, res.Refreshtoken);
       return res.success;
@@ -26,9 +26,7 @@ export const LoginUser = createAsyncThunk(
 );
 export async function Refreshtoken() {
   try {
-    const Token = await AsyncStorage.getItem(
-      envREFRESHTOKEN
-    );
+    const Token = await AsyncStorage.getItem(envREFRESHTOKEN);
     const res = await AuthAPI.Refreshtoken(Token);
     await AsyncStorage.setItem(envTOKEN, envTOKEN);
   } catch (error) {
@@ -47,13 +45,13 @@ export const Resetpass = createAsyncThunk(
   'user/Reset',
   async (payload: object) => {
     try {
-      const res:any = await AuthAPI.Reset(payload);
+      const res: any = await AuthAPI.Reset(payload);
       return res.success;
     } catch (error: any) {
       if (error.response.status === 410) {
         try {
           await Refreshtoken();
-          const res:any = await AuthAPI.Reset(payload);
+          const res: any = await AuthAPI.Reset(payload);
           return res.success;
         } catch (error: any) {
           console.log(error);
@@ -72,9 +70,9 @@ export const Resetpass = createAsyncThunk(
   }
 );
 interface StudentState {
-  user:  false | true,
-    isloading: false | true,
-    error: any,
+  user: false | true;
+  isloading: false | true;
+  error: any;
 }
 const initialState = {
   user: false,

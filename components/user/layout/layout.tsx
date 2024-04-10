@@ -6,9 +6,10 @@ import Headeruser from './header';
 export default function LayoutScreen({ children }: any) {
   return (
     <View className="flex-1 ">
-      <Headeruser/>
+      <Headeruser />
       <ScrollView>{children}</ScrollView>
-      <Footer/>
+
+      <Footer />
     </View>
   );
 }
