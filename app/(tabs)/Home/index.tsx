@@ -1,33 +1,22 @@
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  ActivityIndicator,
-  Pressable,
-  Keyboard,
-  TextInput,
-  StyleSheet,
   ImageBackground,
   Image,
   ScrollView,
+  Pressable,
 } from 'react-native';
-import LayoutScreen from '../../../components/user/layout/layout';
+import LayoutScreen from '../../../components/user/Homelayout/layout';
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-import { getbyidPoint, getSearchPoint } from '../../../commons/store/point';
-import { getStudent } from '../../../commons/store/Student';
-import { Feather, Entypo } from '@expo/vector-icons';
-
+import { AntDesign } from '@expo/vector-icons';
 export default function Home() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
-  const [Clicked, setClicked] = useState(false);
-  const [searchPhrase, setsearchPhrase] = useState('');
-  const [ID_HS, setID_HS] = useState(1);
-
   return (
     <LayoutScreen>
       <ImageBackground
@@ -37,11 +26,20 @@ export default function Home() {
       >
         <View className="flex flex-row justify-between mt-8 ">
           <View>
-            <Text className="mb-5 text-xl font-bold text-white">Đăng Nhập</Text>
-            <Text className="mb-5 text-xl text-white">Đăng Nhập</Text>
-
-            <Link className="mb-5 text-xl text-amber-400" href="/register/">
-              Đăng Nhập{'>'}
+            <Text className=" text-xl font-bold text-white">
+              나의 후원자를{' '}
+            </Text>
+            <Text className="mb-4 text-xl font-bold text-white">
+              {' '}
+              찾아보세요
+            </Text>
+            <Text className="text-[13px] text-[#dfdddd]">밴드를 선택하고 </Text>
+            <Text className="mb-4 text-[13px] text-[#dfdddd]">
+              {' '}
+              많은 사람들을 만나보세요
+            </Text>
+            <Link className="mb-4 text-xl text-amber-400" href="/ListProduct/">
+              스폰서 찾기{'>'}
             </Link>
           </View>
           <View>
@@ -60,10 +58,13 @@ export default function Home() {
           <Text className="border-b-2 border-gray-300 w-[75%]  "></Text>
         </View>
       </ImageBackground>
-      <View className="h-[30] bg-[#494949] flex flex-row justify-between 	">
-        <Text className="text-amber-200 text-[20px] ml-3">sadsadsadad</Text>
-        <Link href="/register/" className="text-white text-[20px] mr-3">
-          dasdsadsad{'>'}
+      <View className="h-[30] bg-[#494949] flex flex-row justify-between 	p-2">
+        <Text className="text-amber-200 text-[10px] ml-3">
+          차량정보를 등록해주세요차량정보를 등록해주세요
+        </Text>
+        <Link href="/register/" className="text-white text-[10px] mr-3">
+          등록하러 가다
+          <AntDesign name="right" size={13} color="white" />
         </Link>
       </View>
       <View className=" bg-black">
@@ -73,13 +74,17 @@ export default function Home() {
             className="w-[150] h-[5]"
             resizeMode="stretch"
           />
-          <Text className="text-white my-3 text-[25px]">dddddddddddđ</Text>
+          <Text className="text-white my-3 text-[25px]">
+            광고는 홍길동이 맡았다.
+          </Text>
           <View className="border border-white rounded-[10px] p-3 flex">
-            <Text className="text-white text-[25px]">dddddddddddđ</Text>
-            <Text className="text-gray-400  text-[20px]">dddddddddddđ</Text>
+            <Text className="text-white text-[20px]">서포터 한명 더!</Text>
+            <Text className="text-gray-400  text-[15px]">
+              서포터를 추가하고 다양한 혜택을 누려보세요
+            </Text>
             <View className="flex flex-row justify-between gap-2 items-center">
               <Link href="/login/" className="mb-5 text-xl text-amber-400  ">
-                đasadsa{'>'}
+                더 많은 지지자{'>'}
               </Link>
               <Image
                 source={require('../../../assets/images/file.png')}
@@ -96,25 +101,32 @@ export default function Home() {
             className="w-[150] h-[5]"
             resizeMode="stretch"
           />
-          <Text className="text-white my-3 text-[25px]">dddddddddddđ</Text>
+          <Text className="text-white my-3 text-[25px]">
+            광고는 홍길동이 맡았다.
+          </Text>
           <ScrollView horizontal>
             <View className="border border-white bg-white rounded-[10px]   mx-3 w-[230] h-[279]">
-              <View className=" flex justify-center items-center p-3">
+              <Pressable
+                className=" flex justify-center items-center p-3"
+                onPress={() => router.push('/(tabs)/DetailProduct/')}
+              >
                 <Image
                   source={require('../../../assets/images/Bear.png')}
                   className="h-[100] w-[100]"
                 />
-              </View>
+              </Pressable>
               <View className="flex justify-center items-center py-3  bg-black ">
-                <Text className="text-white">ádsadsadsad</Text>
+                <Text className="text-white">
+                  100명 중 26명이 지지하고 있습니다.
+                </Text>
               </View>
               <View className="flex flex-row justify-between  px-1  my-3 ">
-                <Text className="text-black ">ádsadsadsad</Text>
-                <Text className="text-black">ádsadsadsad</Text>
+                <Text className="text-black ">배드블루</Text>
+                <Text className="text-black">대구광역시</Text>
               </View>
               <View className="flex flex-row justify-between  px-1  my-3 ">
-                <Text className="text-black ">ádsadsadsad</Text>
-                <Text className="text-amber-300">ádsadsadsad</Text>
+                <Text className="text-black ">시간: 30일</Text>
+                <Text className="text-amber-300">25.000P</Text>
               </View>
             </View>
             <View className="border border-white bg-white rounded-[10px]  mx-3 w-[230] h-[279]">

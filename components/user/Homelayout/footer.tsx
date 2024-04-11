@@ -30,9 +30,7 @@ export default function Footer() {
               color={selectedIndex == 0 ? 'yellow' : 'white'}
             />
             {selectedIndex == 0 ? (
-              <Text className="text-yellow-300  mt-1 text-[10px]">
-                Trang Chu
-              </Text>
+              <Text className="text-yellow-300  mt-1 text-[10px]">집</Text>
             ) : (
               ''
             )}
@@ -52,9 +50,7 @@ export default function Footer() {
               color={selectedIndex == 1 ? 'yellow' : 'white'}
             />
             {selectedIndex == 1 ? (
-              <Text className="text-yellow-300  mt-1 text-[10px]">
-                Quan ly{' '}
-              </Text>
+              <Text className="text-yellow-300  mt-1 text-[10px]">이벤트</Text>
             ) : (
               ''
             )}
@@ -74,7 +70,9 @@ export default function Footer() {
               color={selectedIndex == 2 ? 'yellow' : 'white'}
             />
             {selectedIndex == 2 ? (
-              <Text className="text-yellow-300  mt-1 text-[10px]">Trang </Text>
+              <Text className="text-yellow-300  mt-1 text-[10px]">
+                가리키다{' '}
+              </Text>
             ) : (
               ''
             )}
@@ -95,7 +93,7 @@ export default function Footer() {
             />
 
             {selectedIndex == 3 ? (
-              <Text className="text-yellow-300 mt-1 text-[10px]">Trang </Text>
+              <Text className="text-yellow-300 mt-1 text-[10px]">내 거</Text>
             ) : (
               ''
             )}
