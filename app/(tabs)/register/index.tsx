@@ -1,7 +1,7 @@
 import { TouchableHighlight, TextInput, Text, View, Image } from 'react-native';
 import { Link, router } from 'expo-router';
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState, AppDispatch } from '../../commons/store';
+import type { RootState, AppDispatch } from '../../../commons/store';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { AntDesign } from '@expo/vector-icons';
 export default function Register() {
@@ -16,7 +16,7 @@ export default function Register() {
         </Link>
       </Text>
       <Image
-        source={require('../../assets/images/logo.jpg')}
+        source={require('../../../assets/images/logo.jpg')}
         className="w-[240px] h-[240px]"
       />
 
@@ -25,16 +25,19 @@ export default function Register() {
         <View className="text-white text-center  flex flex-row ">
           <Image
             className="w-[24px] h-[24px]"
-            source={require('../../assets/images/messagecircle.png')}
+            source={require('../../../assets/images/messagecircle.png')}
           />
           <Text className="  ml-[20px]">카카오톡 시작하기</Text>
         </View>
       </TouchableHighlight>
-      <TouchableHighlight className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-emerald-400 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <TouchableHighlight
+        onPress={() => router.push('/(tabs)/Confirm/')}
+        className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-emerald-400 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
         <View className="text-white text-center  flex flex-row ">
           <Image
             className="w-[24px] h-[24px]"
-            source={require('../../assets/images/naver.png')}
+            source={require('../../../assets/images/naver.png')}
           />
           <Text className="ml-[20px]">네이버로 시작해 보세요</Text>
         </View>
@@ -49,7 +52,7 @@ export default function Register() {
         <View className="text-white text-center  flex flex-row ">
           <Image
             className="w-[24px] h-[24px] "
-            source={require('../../assets/images/Google.png')}
+            source={require('../../../assets/images/Google.png')}
           />
           <Text className="ml-[20px]"> Google 시작하기</Text>
         </View>

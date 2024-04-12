@@ -8,15 +8,25 @@ import {
   ScrollView,
   Pressable,
 } from 'react-native';
+import { Dialog } from '@rneui/themed';
 import LayoutScreen from '../../../components/user/Homelayout/layout';
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
+import AccessConfirm from '../../../components/dialog/Accessconfirm';
+import AllowAccess from '../../../components/dialog/AllowAccess';
 export default function Home() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
+  const [visible1, setVisible1] = useState(false);
+  const [visible2, setVisible2] = useState(true);
+
+  const toggleDialog1 = () => {
+    setVisible1(!visible1);
+    setVisible2(false);
+  };
   return (
     <LayoutScreen>
       <ImageBackground
@@ -151,6 +161,8 @@ export default function Home() {
           </ScrollView>
         </View>
       </View>
+      <AccessConfirm />
+      <AllowAccess />
     </LayoutScreen>
   );
 }
