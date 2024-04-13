@@ -3,6 +3,7 @@ import { View, Text, Pressable } from 'react-native';
 import { router } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Foundation, FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function Footer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const handle = (value: number) => {
@@ -44,11 +45,12 @@ export default function Footer() {
           }}
         >
           <View className="flex justify-items-center items-center">
-            <Ionicons
-              name="home"
+            <MaterialCommunityIcons
+              name="calendar-star"
               size={24}
               color={selectedIndex == 1 ? 'yellow' : 'white'}
             />
+
             {selectedIndex == 1 ? (
               <Text className="text-yellow-300  mt-1 text-[10px]">이벤트</Text>
             ) : (
@@ -64,11 +66,12 @@ export default function Footer() {
           }}
         >
           <View className="flex justify-items-center items-center">
-            <Ionicons
-              name="home"
+            <MaterialCommunityIcons
+              name="file-powerpoint-box-outline"
               size={24}
               color={selectedIndex == 2 ? 'yellow' : 'white'}
             />
+
             {selectedIndex == 2 ? (
               <Text className="text-yellow-300  mt-1 text-[10px]">
                 가리키다{' '}

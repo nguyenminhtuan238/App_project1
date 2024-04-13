@@ -8,14 +8,13 @@ import {
   ScrollView,
   Pressable,
 } from 'react-native';
-import { Dialog } from '@rneui/themed';
 import LayoutScreen from '../../../components/user/Homelayout/layout';
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
-import AccessConfirm from '../../../components/dialog/Accessconfirm';
+import AccessConfirm from '../../../components/dialog/AccessConfirm';
 import AllowAccess from '../../../components/dialog/AllowAccess';
 export default function Home() {
   const Point = useSelector((state: RootState) => state.point);
@@ -93,7 +92,10 @@ export default function Home() {
               서포터를 추가하고 다양한 혜택을 누려보세요
             </Text>
             <View className="flex flex-row justify-between gap-2 items-center">
-              <Link href="/login/" className="mb-5 text-xl text-amber-400  ">
+              <Link
+                href="/Certification/"
+                className="mb-5 text-xl text-amber-400  "
+              >
                 더 많은 지지자{'>'}
               </Link>
               <Image
@@ -134,28 +136,33 @@ export default function Home() {
                 <Text className="text-black ">배드블루</Text>
                 <Text className="text-black">대구광역시</Text>
               </View>
-              <View className="flex flex-row justify-between  px-1  my-3 ">
+              <View className="flex flex-row justify-between  px-1  my-[20] ">
                 <Text className="text-black ">시간: 30일</Text>
                 <Text className="text-amber-300">25.000P</Text>
               </View>
             </View>
-            <View className="border border-white bg-white rounded-[10px]  mx-3 w-[230] h-[279]">
-              <View className=" flex justify-center items-center p-3">
+            <View className="border border-white bg-white rounded-[10px]   mx-3 w-[230] h-[279]">
+              <Pressable
+                className=" flex justify-center items-center p-3"
+                onPress={() => router.push('/(tabs)/DetailProduct/')}
+              >
                 <Image
                   source={require('../../../assets/images/Bear.png')}
                   className="h-[100] w-[100]"
                 />
-              </View>
+              </Pressable>
               <View className="flex justify-center items-center py-3  bg-black ">
-                <Text className="text-white">ádsadsadsad</Text>
+                <Text className="text-white">
+                  100명 중 26명이 지지하고 있습니다.
+                </Text>
               </View>
               <View className="flex flex-row justify-between  px-1  my-3 ">
-                <Text className="text-black ">ádsadsadsad</Text>
-                <Text className="text-black">ádsadsadsad</Text>
+                <Text className="text-black ">배드블루</Text>
+                <Text className="text-black">대구광역시</Text>
               </View>
-              <View className="flex flex-row justify-between  px-1  my-3 ">
-                <Text className="text-black ">ádsadsadsad</Text>
-                <Text className="text-amber-300">ádsadsadsad</Text>
+              <View className="flex flex-row justify-between  px-1  my-[20] ">
+                <Text className="text-black ">시간: 30일</Text>
+                <Text className="text-amber-300">25.000P</Text>
               </View>
             </View>
           </ScrollView>

@@ -123,6 +123,30 @@ export default function Layout() {
         }}
       />
       <Stack.Screen name="register/index" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="Certification/index"
+        options={{
+          headerTitle: '확인',
+          headerTitleStyle: { color: 'white' },
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text className="text-white text-[15px] ">
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
     </Stack>
   );
 }
