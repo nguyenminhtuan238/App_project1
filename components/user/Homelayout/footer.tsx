@@ -62,7 +62,7 @@ export default function Footer() {
           className="  h-8 w-1/4 "
           onPress={() => {
             setSelectedIndex(2);
-            router.push('/Home/');
+            router.push('/Point/');
           }}
         >
           <View className="flex justify-items-center items-center">

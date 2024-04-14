@@ -19,13 +19,7 @@ import AllowAccess from '../../../components/dialog/AllowAccess';
 export default function Home() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
-  const [visible1, setVisible1] = useState(false);
-  const [visible2, setVisible2] = useState(true);
 
-  const toggleDialog1 = () => {
-    setVisible1(!visible1);
-    setVisible2(false);
-  };
   return (
     <LayoutScreen>
       <ImageBackground

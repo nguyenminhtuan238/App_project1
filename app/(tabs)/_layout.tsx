@@ -3,6 +3,7 @@ import {
   createDrawerNavigator,
   DrawerItemList,
 } from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../commons/store';
@@ -14,11 +15,12 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { Avatar, Badge, Icon, withBadge } from '@rneui/themed';
-
+import Home from './Home';
 export default function Layout() {
   const Drawer = createDrawerNavigator();
   const Student = useSelector((state: RootState) => state.Student);
   const dispatch: AppDispatch = useDispatch();
+  const Tab = createBottomTabNavigator();
 
   return (
     <Stack>
@@ -33,12 +35,13 @@ export default function Layout() {
               resizeMode="stretch"
             />
           ),
+
           headerRight: () => (
             <View className="flex flex-row justify-around ">
               <MaterialCommunityIcons
                 name="bell-outline"
                 size={24}
-                color="black"
+                color="white"
               />
 
               <Badge
@@ -51,6 +54,34 @@ export default function Layout() {
           headerStyle: {
             backgroundColor: '#d1d5db',
           },
+        }}
+      />
+
+      <Stack.Screen
+        name="Point/index"
+        options={{
+          headerTitle: '확인',
+          headerTitleStyle: { color: 'white' },
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <View className="flex flex-row justify-around ">
+              <MaterialCommunityIcons
+                name="bell-outline"
+                size={24}
+                color="white"
+              />
+
+              <Badge
+                status="error"
+                value=""
+                containerStyle={{ position: 'absolute', top: 1, left: 18 }}
+              />
+            </View>
+          ),
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerBackVisible: false,
         }}
       />
       <Stack.Screen
