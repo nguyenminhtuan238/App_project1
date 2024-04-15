@@ -28,18 +28,18 @@ export default function DetailProduct() {
         </View>
       </View>
       <View className="h-[30] bg-[#494949] flex flex-row justify-between 	">
-        <Text className="text-amber-200 text-[20px] ml-3">sadsadsadad</Text>
+        <Text className="text-amber-200 text-[20px] ml-3">100명 중 26명이 지지하고 있습니다.</Text>
       </View>
 
       <View className=" bg-[#000] flex  justify-between p-5	">
-        <Text className="text-white text-[25px] ml-3">sadsadsadad</Text>
-        <Text className="text-white text-[15px] ml-3 mt-1">sadsadsadad</Text>
+        <Text className="text-white text-[25px] ml-3">Bad Blue</Text>
+        <Text className="text-white text-[15px] ml-3 mt-1">시간: 30일</Text>
         <Text className="text-[#a1a0a0] text-[15px] ml-3 mt-5">
-          sadsadsadad
+        배드블루 대구광역시
         </Text>
         <View className=" bg-[#000] flex flex-row justify-end mt-10	">
           <Text className="text-white text-[25px] ml-3 Text-right">
-            sadsadsadad
+          25,000P 적립 가능
           </Text>
         </View>
         <View className=" bg-[#000] flex justify-center items-center p-5	w-full">
@@ -47,7 +47,7 @@ export default function DetailProduct() {
             className=" bg-[#eeea14] p-5  rounded-full  w-full"
             onPress={() => router.push('/register/')}
           >
-            <Text className="text-black text-center text-[20px]">adsadsad</Text>
+            <Text className="text-black text-center text-[20px]">후원신청</Text>
           </Pressable>
         </View>
       </View>

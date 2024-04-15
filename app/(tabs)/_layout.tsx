@@ -60,7 +60,7 @@ export default function Layout() {
       <Stack.Screen
         name="Point/index"
         options={{
-          headerTitle: '확인',
+          headerTitle: '포인트',
           headerTitleStyle: { color: 'white' },
           headerTitleAlign: 'center',
           headerRight: () => (
@@ -109,7 +109,7 @@ export default function Layout() {
       <Stack.Screen
         name="DetailProduct/index"
         options={{
-          headerTitle: 'ListProduct',
+          headerTitle: '후원자 세부정보',
           headerTitleStyle: { color: 'white' },
           headerStyle: {
             backgroundColor: 'black',

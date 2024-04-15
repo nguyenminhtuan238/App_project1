@@ -31,13 +31,13 @@ export default function Point() {
       > */}
         <View className="h-[250] w-[375] flex justify-center items-center p-8  bg-[#000] ">
           <View className="	flex justify-center items-center mb-3">
-            <Text className="text-[13px] text-[#dfdddd]">밴드를 선택하고 </Text>
+            <Text className="text-[13px] text-[#dfdddd]">포인트 유지 </Text>
 
             <Text className=" text-xl font-bold text-amber-300">
-              나의 후원자를{' '}
+              8.000P
             </Text>
 
-            <Text className="text-[13px] text-[#41e966]">밴드를 선택하고 </Text>
+            <Text className="text-[13px] text-[#41e966]">+누적: 25,000P </Text>
 
             <View className="   mt-3	flex justify-center items-center ">
               <Pressable
@@ -45,7 +45,7 @@ export default function Point() {
                 onPress={() => router.push('/register/')}
               >
                 <Text className="text-black text-center text-[20px]">
-                  adsadsad
+                탈퇴 신청
                 </Text>
               </Pressable>
             </View>
@@ -59,14 +59,14 @@ export default function Point() {
             onPress={() => setSearch(1)}
             className="  bg-[#606163] p-3 rounded-tl-[10px] rounded-bl-[10px]"
           >
-            <Text className="text-[#fff] text-[10px]">신병 모집</Text>
+            <Text className="text-[#fff] text-[10px]">총 </Text>
           </Pressable>
           <Pressable
             onPress={() => setSearch(1)}
             className=" bg-[#44434377] p-3"
           >
             <Text className="text-[#a3a2a2] text-[10px]">
-              채용 일정이 나와있습니다
+            가게
             </Text>
           </Pressable>
           <Pressable
@@ -74,7 +74,7 @@ export default function Point() {
             className=" bg-[#44434377] p-3 rounded-tr-[10px] rounded-br-[10px]"
           >
             <Text className="text-[#a3a2a2] text-[10px]">
-              모집이 종료되었습니다
+             철회하다
             </Text>
           </Pressable>
         </View>
@@ -82,29 +82,29 @@ export default function Point() {
           <ScrollView>
             <View className="border-b border-[#494949] p-3 flex">
               <Text className="text-white my-3 text-[20px] ">
-                광고는 홍길동이 맡았다.
+                -8.000P
               </Text>
               <View className="flex flex-row ">
                 <Text className="text-[#f85353]  text-[10px]">
-                  광고는 홍길동이 맡았다.
+                인도한글 철회
                 </Text>
                 <Text className="mx-1 text-[#575757]   text-[10px]">|</Text>
                 <Text className="text-[#575757]  text-[10px] ">
-                  광고는 홍길동이 맡았다.
+                2023.03.12 15.30.02
                 </Text>
               </View>
             </View>
             <View className="border-b border-[#494949] p-3 flex">
               <Text className="text-white my-3 text-[20px] ">
-                광고는 홍길동이 맡았다.
+                +20.000P
               </Text>
               <View className="flex flex-row ">
-                <Text className="text-[#f85353]  text-[10px]">
-                  광고는 홍길동이 맡았다.
+                <Text className="text-[#41e966]  text-[10px]">
+                BAD BLUE 후원 완료
                 </Text>
                 <Text className="mx-1 text-[#575757]   text-[10px]">|</Text>
                 <Text className="text-[#575757]  text-[10px] ">
-                  광고는 홍길동이 맡았다.
+                2023.03.06 15.30.02
                 </Text>
               </View>
             </View>
