@@ -107,6 +107,28 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
+        name="RegisterCarInformation/index"
+        options={{
+          headerTitle: '차량정보 등록',
+          headerTitleStyle: { color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text className="text-white text-[15px] ">
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
         name="DetailProduct/index"
         options={{
           headerTitle: '후원자 세부정보',
