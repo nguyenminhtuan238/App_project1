@@ -41,7 +41,7 @@ export default function Home() {
               {' '}
               많은 사람들을 만나보세요
             </Text>
-            <Link className="mb-4 text-xl text-amber-400" href="/(tabs)/RegisterCarInformation/">
+            <Link className="mb-4 text-xl text-amber-400" href="/(tabs)/ListProduct/">
               스폰서 찾기{'>'}
             </Link>
           </View>
