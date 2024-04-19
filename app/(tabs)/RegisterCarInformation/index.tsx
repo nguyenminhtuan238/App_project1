@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  ImageBackground,
   Image,
   ScrollView,
   Pressable,
@@ -12,34 +11,82 @@ import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-export default function ListProduct() {
+export default function RegisterCarInformation() {
+
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionSelect = (option: string | null) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
   return (
     <ScrollView className=" bg-[#000]">
-      <View className=" flex-row justify-center  border rounded-[15px]  ">
-        <Pressable
-          onPress={() => setSearch(1)}
-          className="  bg-[#606163] p-2 rounded-tl-[10px] rounded-bl-[10px]"
-        >
-          <Text className="text-[#fff] text-[10px]">신병 모집</Text>
-        </Pressable>
-        <Pressable onPress={() => setSearch(1)} className=" bg-[#44434377] p-2">
-          <Text className="text-[#a3a2a2] text-[10px]">
-            채용 일정이 나와있습니다
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => setSearch(1)}
-          className=" bg-[#44434377] p-2 rounded-tr-[10px] rounded-br-[10px]"
-        >
-          <Text className="text-[#a3a2a2] text-[10px]">
-            모집이 종료되었습니다
-          </Text>
-        </Pressable>
+
+      <View className=" py-5 flex border rounded-[15px]">
+        <View className="flex flex-row ">
+            <Text className="px-5 pb-2 mr-auto text-[#fff] text-[20px] "> 
+                브랜드 캠페인을 진행하려면, 
+            </Text>
+        </View>
+
+        <View className="flex flex-row">
+            <Text className="px-5 pb-2 mr-auto text-[#fff] text-[20px] ">
+                차량정보 등록은 필수입니다
+            </Text>
+        </View>
+
       </View>
-      <View className="mt-5">
+
+      <View>
+            <Pressable
+            className="px-2 flex justify-center w-full h-[60px] border-b-2 border-[#a3a2a2] bg-[#1f232c]"
+            onPress={toggleDropdown}
+            >
+                <View className="flex justify-center">
+                    <Text className="px-2 text-[#fff] text-[20px]">
+                        공동 명의인 경우 차량 소유자의 예
+                    </Text>
+                </View>
+            </Pressable>
+
+            {isOpen && (
+                <View>
+                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('Option 1')}>
+                        <Text className="text-[#fff] text-[20px]">
+                            Option 1
+                        </Text>
+                    </Pressable>
+                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('Option 2')}>
+                        <Text className="text-[#fff] text-[20px]">
+                            Option 2
+                        </Text>
+                    </Pressable>
+                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('Option 3')}>
+                        <Text className="text-[#fff] text-[20px]">
+                            Option 3
+                        </Text>
+                    </Pressable>
+                </View>
+            )}
+
+            {selectedOption && (
+                <View  className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-1 border-[#a3a2a2]">
+                    <Text className="text-[#fff] text-[20px]">{selectedOption}</Text>
+                </View>
+            )}
+      </View>
+
+      <View className="mt-2">
         <Pressable
           className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
           onPress={() => router.push('/(tabs)/DetailProduct/')}
@@ -61,69 +108,7 @@ export default function ListProduct() {
             </View>
           </View>
         </Pressable>
-        <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
-          onPress={() => router.push('/(tabs)/DetailProduct/')}
-        >
-          <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100] "
-            />
-          </View>
-          <View className="basis-1/2 mr-3">
-            <Text className="text-[#fff] text-[20px]">배드블루</Text>
-            <Text className="text-[#a3a2a2] ">대구광역시 | 시간: 7일</Text>
-            <Text className="text-[#e1e44e] text-[15px]">시간: 7일</Text>
-            <View className="flex flex-row justify-end">
-              <Text className="text-[#a3a2a2] ">
-                100명 중 26명이 지지하고 있습니다.
-              </Text>
-            </View>
-          </View> 
-        </Pressable>
-        <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
-          onPress={() => router.push('/(tabs)/DetailProduct/')}
-        >
-          <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100] "
-            />
-          </View>
-          <View className="basis-1/2 mr-3">
-            <Text className="text-[#fff] text-[20px]">배드블루</Text>
-            <Text className="text-[#a3a2a2] ">대구광역시 | 시간: 7일</Text>
-            <Text className="text-[#e1e44e] text-[15px]">시간: 7일</Text>
-            <View className="flex flex-row justify-end">
-              <Text className="text-[#a3a2a2] ">
-                100명 중 26명이 지지하고 있습니다.
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-        <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
-          onPress={() => router.push('/(tabs)/DetailProduct/')}
-        >
-          <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100] "
-            />
-          </View>
-          <View className="basis-1/2 mr-3">
-            <Text className="text-[#fff] text-[20px]">배드블루</Text>
-            <Text className="text-[#a3a2a2] ">대구광역시 | 시간: 7일</Text>
-            <Text className="text-[#e1e44e] text-[15px]">시간: 7일</Text>
-            <View className="flex flex-row justify-end">
-              <Text className="text-[#a3a2a2] ">
-                100명 중 26명이 지지하고 있습니다.
-              </Text>
-            </View>
-          </View>
-        </Pressable>
+
       </View>
     </ScrollView>
   );
