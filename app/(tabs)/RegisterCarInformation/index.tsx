@@ -3,9 +3,12 @@ import { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  Image,
   ScrollView,
   Pressable,
+  TextInput,
+  Button, 
+  Alert,
+  TouchableOpacity
 } from 'react-native';
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -17,6 +20,7 @@ export default function RegisterCarInformation() {
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
 
+  // Ô xổ xuống
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -28,6 +32,30 @@ export default function RegisterCarInformation() {
     setSelectedOption(option);
     setIsOpen(false);
   };
+
+  // Ô nhập liệu
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
+
+  const handleInputChange1 = (inputText: string) => {
+    setText1(inputText);
+  };
+
+  const handleInputChange2 = (inputText: string) => {
+    setText2(inputText);
+  };
+
+  const handleButtonPress = () => {
+    Alert.alert('Input values', `Text 1: ${text1}, Text 2: ${text2}`);
+  };
+
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handleNextPage = () => {
+    if (currentPage < 3) {
+      setCurrentPage(currentPage + 1);
+    }
+  }; 
 
   return (
     <ScrollView className=" bg-[#000]">
@@ -111,30 +139,100 @@ export default function RegisterCarInformation() {
             )}
       </View>
 
-      <View className="mt-2">
-        <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
-          onPress={() => router.push('/(tabs)/DetailProduct/')}
-        >
-          <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100]"
+      <View className="mt-2 mb-10">
+        <Text className="my-5 ml-2 text-[#fff] text-[20px]">
+          차량 소유자
+        </Text>
+
+        <TextInput
+          className="mx-2 p-[10px] mb-[15px] h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+          onChangeText={handleInputChange1}
+          value={text1}
+          placeholder="차량 소유자를 입력하세요."
+          placeholderTextColor="#a3a2a2"
+        />
+
+        <Text className="my-5 ml-2 text-[#fff] text-[20px]">
+          차량 번호
+        </Text>
+
+        <TextInput
+          className="mx-2 p-[10px] mb-[15px] h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+          onChangeText={handleInputChange2}
+          value={text2}
+          placeholder="차량번호를 입력해주세요."
+          placeholderTextColor="#a3a2a2"
+        />
+
+        <View className="mt-5 flex justify-center items-center">
+          <View className="w-[200px] btn-white">
+            <Button 
+            title="Submit"
+            onPress={handleButtonPress} 
             />
           </View>
-          <View className="basis-1/2 mr-3">
-            <Text className="text-[#fff] text-[20px]">배드블루</Text>
-            <Text className="text-[#a3a2a2] ">대구광역시 | 시간: 7일</Text>
-            <Text className="text-[#e1e44e] text-[15px]">시간: 7일</Text>
-            <View className="flex flex-row justify-end">
-              <Text className="text-[#a3a2a2]">
-                100명 중 26명이 지지하고 있습니다.
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-
+        </View>
+        
       </View>
+
+      <View className="my-2 border-t-4 border-[#1f232c]">
+
+        <View className="my-5 w-full h-[750px] bg-[#1f232c]">
+          <Text className="mt-3 p-2 text-[#fff] text-[20px]">
+            '차량조회'를 완료하시면
+          </Text>
+
+          <Text className="px-2 text-[#fff] text-[20px]">
+            아래 수수료 입력란이 자동으로 채워집니다.
+          </Text>
+
+          <View className="mt-10 p-2 ">
+
+            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+              차량 번호
+            </Text>
+            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
+
+            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+              자동차 모델/모델 이름
+            </Text>
+            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
+
+            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+              모델 연도
+            </Text>
+            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
+
+            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+              색상
+            </Text>
+            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
+
+            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+             차량 등록 주소
+            </Text>
+            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
+
+          </View>
+        </View>
+
+        <View className="mt-2 flex justify-center items-center">
+          <View className="w-[200px] btn-white">
+            <Button 
+            title="Submit"
+            onPress={handleButtonPress} 
+            />
+          </View>
+        </View>
+
+        <View>
+      <Text className="mt-5 text-[#a3a2a2] text-[20px]">Trang {currentPage}/3</Text>
+      <TouchableOpacity onPress={handleNextPage}>
+        <Text className="mt-5 text-[#a3a2a2] text-[20px]">Chuyển đến trang tiếp theo</Text>
+      </TouchableOpacity>
+    </View>
+      </View>
+
     </ScrollView>
   );
 }
