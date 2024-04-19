@@ -61,27 +61,52 @@ export default function RegisterCarInformation() {
 
             {isOpen && (
                 <View>
-                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('Option 1')}>
-                        <Text className="text-[#fff] text-[20px]">
-                            Option 1
+                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('단독 소유권')}>
+                        <Text className="text-[#FFFF00] text-[20px]">
+                          . 단독 소유권
+                        </Text>
+                        <Text className="mt-2 text-[#fff] text-[20px]">
+                          등록증 소유자의 이름: 홍길동
+                        </Text>
+                        <Text className="ml-auto  text-[#fff] text-[20px]">
+                          입력값: 홍길동
                         </Text>
                     </Pressable>
-                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('Option 2')}>
-                        <Text className="text-[#fff] text-[20px]">
-                            Option 2
+
+                    <Pressable className="px-2 flex justify-center w-full h-[200px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('공유 소유권')}>
+                        <Text className="text-[#FFFF00] text-[20px]">
+                          . 공유 소유권
+                        </Text>
+                        <Text className="mt-2 text-[#fff] text-[20px]">
+                          등록증 소유자의 이름: 홍길동 (60%), 이순자 (40%)
+                        </Text>
+                        <Text  className="mt-2 text-[#fff] text-[20px]">
+                          홍길동 외 1명 (이순자)
+                        </Text>
+                        <Text className="mt-2 ml-auto  text-[#fff] text-[20px]">
+                          입력값: 홍길동
                         </Text>
                     </Pressable>
-                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('Option 3')}>
-                        <Text className="text-[#fff] text-[20px]">
-                            Option 3
+
+                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('자동차 임대')}>
+                        <Text className="text-[#FFFF00] text-[20px]">
+                          . 자동차 임대
+                        </Text>
+                        <Text className="mt-2 text-[#fff] text-[20px]">
+                          소유자 이름 증명서: 롯데렌탈㈜
+                        </Text>
+                        <Text className="mt-2 ml-auto  text-[#fff] text-[20px]">
+                          입력값: 롯데렌탈㈜
                         </Text>
                     </Pressable>
                 </View>
             )}
 
             {selectedOption && (
-                <View  className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-1 border-[#a3a2a2]">
-                    <Text className="text-[#fff] text-[20px]">{selectedOption}</Text>
+                <View  className="px-3 flex justify-center w-full h-[50px] bg-[#1f232c] border-1 border-[#a3a2a2]">
+                    <Text className="text-[#FFFF00] text-[20px]">
+                        선택된: {selectedOption}
+                    </Text>
                 </View>
             )}
       </View>
@@ -94,7 +119,7 @@ export default function RegisterCarInformation() {
           <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
             <Image
               source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100] "
+              className="h-[100] w-[100]"
             />
           </View>
           <View className="basis-1/2 mr-3">
@@ -102,7 +127,7 @@ export default function RegisterCarInformation() {
             <Text className="text-[#a3a2a2] ">대구광역시 | 시간: 7일</Text>
             <Text className="text-[#e1e44e] text-[15px]">시간: 7일</Text>
             <View className="flex flex-row justify-end">
-              <Text className="text-[#a3a2a2] ">
+              <Text className="text-[#a3a2a2]">
                 100명 중 26명이 지지하고 있습니다.
               </Text>
             </View>
