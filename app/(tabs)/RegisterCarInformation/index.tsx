@@ -48,7 +48,7 @@ export default function RegisterCarInformation() {
   };
 
   const handleButtonPress = () => {
-    Alert.alert('Input values', `Text 1: ${text1}, Text 2: ${text2}`);
+    Alert.alert('Input values', `차량 소유자: ${text1}, 차량 번호: ${text2}`);
   };
 
   // chuyyenr trang
@@ -238,7 +238,7 @@ export default function RegisterCarInformation() {
         />
 
         <Pressable 
-          className="mx-[100px] w-[200px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+          className="ml-auto mr-auto w-[200px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
           //title="Submit"
           onPress={handleButtonPress}
         >
@@ -339,7 +339,7 @@ export default function RegisterCarInformation() {
         </View>
 
         <Pressable 
-          className="mx-[15px] my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+          className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
           //title="Submit"
           onPress={handleButtonPress}
         >

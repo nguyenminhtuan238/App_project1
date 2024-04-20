@@ -43,6 +43,7 @@ export default function Layout() {
 
   return (
     <Stack>
+
       <Stack.Screen
         name="Home/index"
         options={{
@@ -80,7 +81,7 @@ export default function Layout() {
         name="Point/index"
         options={{
           headerTitle: '포인트',
-          headerTitleStyle: { color: 'white' },
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerTitleAlign: 'center',
           headerRight: () => (
             <View className="flex flex-row justify-around ">
@@ -103,11 +104,12 @@ export default function Layout() {
           headerBackVisible: false,
         }}
       />
+
       <Stack.Screen
         name="ListProduct/index"
         options={{
           headerTitle: '기부자',
-          headerTitleStyle: { color: 'white' },
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
           },
@@ -128,6 +130,7 @@ export default function Layout() {
           ),
         }}
       />
+
       <Stack.Screen
         name="RegisterCarInformation/index"
         options={{
@@ -153,11 +156,12 @@ export default function Layout() {
           ),
         }}
       />
+
       <Stack.Screen
         name="DetailProduct/index"
         options={{
           headerTitle: '후원자 세부정보',
-          headerTitleStyle: { color: 'white' },
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
           },
@@ -183,7 +187,7 @@ export default function Layout() {
         name="Confirm/index"
         options={{
           headerTitle: '이용 약관에 동의',
-          headerTitleStyle: { color: 'white' },
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerTitleAlign: 'center',
           headerStyle: {
             backgroundColor: 'black',
@@ -206,12 +210,14 @@ export default function Layout() {
           ),
         }}
       />
+
       <Stack.Screen name="register/index" options={{ headerShown: false }} />
+
       <Stack.Screen
         name="Certification/index"
         options={{
           headerTitle: '확인',
-          headerTitleStyle: { color: 'white' },
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerTitleAlign: 'center',
           headerStyle: {
             backgroundColor: 'black',
