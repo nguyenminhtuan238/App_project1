@@ -8,7 +8,6 @@ import {
   TextInput,
   Button, 
   Alert,
-  TouchableOpacity
 } from 'react-native';
 
 import {useFonts} from 'expo-font'
@@ -31,10 +30,10 @@ export default function RegisterCarInformation() {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionSelect = (option: string | null) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-  };
+  // const handleOptionSelect = (option: string | null) => {
+  //   setSelectedOption(option);
+  //   setIsOpen(false);
+  // };
 
   // Ô nhập liệu
   const [text1, setText1] = useState('');
@@ -53,13 +52,13 @@ export default function RegisterCarInformation() {
   };
 
   // chuyyenr trang
-  const [currentPage, setCurrentPage] = useState(0);
+  // const [currentPage, setCurrentPage] = useState(0);
 
-  const handleNextPage = () => {
-    if (currentPage < 3) {
-      setCurrentPage(currentPage + 1);
-    }
-  }; 
+  // const handleNextPage = () => {
+  //   if (currentPage < 3) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // }; 
 
   // đổi font chữ
   const [fontsLoaded] = useFonts({
@@ -119,7 +118,8 @@ export default function RegisterCarInformation() {
 
             {isOpen && (
                 <View>
-                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('단독 소유권')}>
+                    {/* <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('단독 소유권')}> */}
+                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]">
                         <Text 
                           className="text-[#FFFF00] text-[20px]"
                           style={{fontFamily: "Pretendard-Bold"}}
@@ -140,7 +140,8 @@ export default function RegisterCarInformation() {
                         </Text>
                     </Pressable>
 
-                    <Pressable className="px-2 flex justify-center w-full h-[200px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('공유 소유권')}>
+                    {/* <Pressable className="px-2 flex justify-center w-full h-[200px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('공유 소유권')}> */}
+                    <Pressable className="px-2 flex justify-center w-full h-[200px] bg-[#1f232c] border-b border-[#a3a2a2]">
                         <Text 
                           className="text-[#FFFF00] text-[20px]"
                           style={{fontFamily: "Pretendard-Bold"}}
@@ -167,7 +168,8 @@ export default function RegisterCarInformation() {
                         </Text>
                     </Pressable>
 
-                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('자동차 임대')}>
+                    {/* <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('자동차 임대')}> */}
+                    <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]">
                         <Text 
                           className="text-[#FFFF00] text-[20px]"
                           style={{fontFamily: "Pretendard-Bold"}}
@@ -190,7 +192,7 @@ export default function RegisterCarInformation() {
                 </View>
             )}
 
-            {selectedOption && (
+            {/* {selectedOption && (
                 <View  className="px-3 flex justify-center w-full h-[50px] bg-[#1f232c] border-1 border-[#a3a2a2]">
                     <Text 
                       className="text-[#FFFF00] text-[20px]"
@@ -199,10 +201,10 @@ export default function RegisterCarInformation() {
                         선택된: {selectedOption}
                     </Text>
                 </View>
-            )}
+            )} */}
       </View>
 
-      <View className="mt-2 mb-10">
+      <View className="mt-2 mb-5">
         <Text 
           className="my-5 ml-2 text-[#fff] text-[20px]"
           style={{fontFamily: "Pretendard-Bold"}}
@@ -227,7 +229,7 @@ export default function RegisterCarInformation() {
         </Text>
 
         <TextInput
-          className="mx-2 p-[10px] mb-[15px] h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+          className="mx-2 p-[10px] mb-[25px] h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
           style={{fontFamily: "Pretendard-Bold"}}
           onChangeText={handleInputChange2}
           value={text2}
@@ -235,14 +237,18 @@ export default function RegisterCarInformation() {
           placeholderTextColor="#a3a2a2"
         />
 
-        <View className="mt-5 flex justify-center items-center">
-          <View className="w-[200px] btn-white">
-            <Button 
-            title="Submit"
-            onPress={handleButtonPress} 
-            />
-          </View>
-        </View>
+        <Pressable 
+          className="mx-[100px] w-[200px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+          //title="Submit"
+          onPress={handleButtonPress}
+        >
+          <Text
+            className="text-[20px]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
+            차량 조회
+          </Text>
+        </Pressable>
         
       </View>
 
@@ -332,22 +338,36 @@ export default function RegisterCarInformation() {
           </View>
         </View>
 
-        <View className="mt-2 flex justify-center items-center">
+        <Pressable 
+          className="mx-[15px] my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+          //title="Submit"
+          onPress={handleButtonPress}
+        >
+          <Text
+            className="text-[20px]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
+            계속하다
+          </Text>
+        </Pressable>
+
+        {/* <View className="mt-2 flex justify-center items-center">
           <View className="w-[200px] btn-white">
             <Button 
             title="Submit"
             onPress={handleButtonPress} 
             />
           </View>
-        </View>
+        </View> */}
 
-        <View>
+        {/* <View>
       <Text className="mt-5 text-[#a3a2a2] text-[20px]">Trang {currentPage}/3</Text>
       <TouchableOpacity onPress={handleNextPage}>
         <Text className="mt-5 text-[#a3a2a2] text-[20px]">Chuyển đến trang tiếp theo</Text>
       </TouchableOpacity>
-    </View>
-      </View>
+          </View>*/}
+
+      </View> 
 
     </ScrollView>
   );
