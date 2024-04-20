@@ -1,4 +1,6 @@
 import { TouchableHighlight, TextInput, Text, View, Image } from 'react-native';
+import {useFonts} from 'expo-font'
+
 import { Link, router } from 'expo-router';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from '../../../commons/store';
@@ -9,6 +11,24 @@ export default function Confirm() {
   const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [selectedIndex, setIndex] = useState(10);
+
+  // đổi font chữ
+  const [fontsLoaded] = useFonts({
+    'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
+    'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
+    'Pretendard-ExtraBold': require('../../../assets/fonts/Pretendard-ExtraBold.otf'),
+    'Pretendard-ExtraLight': require('../../../assets/fonts/Pretendard-ExtraLight.otf'),
+    'Pretendard-Light': require('../../../assets/fonts/Pretendard-Light.otf'),
+    'Pretendard-Medium': require('../../../assets/fonts/Pretendard-Medium.otf'),
+    'Pretendard-Regular': require('../../../assets/fonts/Pretendard-Regular.otf'),
+    'Pretendard-SemiBold': require('../../../assets/fonts/Pretendard-SemiBold.otf'),
+    'Pretendard-Thin': require('../../../assets/fonts/Pretendard-Thin.otf'),
+  })
+
+  if(!fontsLoaded) {
+    return undefined;
+  }
+
   return (
     <View className="flex  h-screen	bg-[#000] z-20">
       <Image

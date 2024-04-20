@@ -8,6 +8,9 @@ import {
   ScrollView,
   Pressable,
 } from 'react-native';
+
+import {useFonts} from 'expo-font'
+
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +19,24 @@ export default function DetailProduct() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
+
+   // đổi font chữ
+   const [fontsLoaded] = useFonts({
+    'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
+    'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
+    'Pretendard-ExtraBold': require('../../../assets/fonts/Pretendard-ExtraBold.otf'),
+    'Pretendard-ExtraLight': require('../../../assets/fonts/Pretendard-ExtraLight.otf'),
+    'Pretendard-Light': require('../../../assets/fonts/Pretendard-Light.otf'),
+    'Pretendard-Medium': require('../../../assets/fonts/Pretendard-Medium.otf'),
+    'Pretendard-Regular': require('../../../assets/fonts/Pretendard-Regular.otf'),
+    'Pretendard-SemiBold': require('../../../assets/fonts/Pretendard-SemiBold.otf'),
+    'Pretendard-Thin': require('../../../assets/fonts/Pretendard-Thin.otf'),
+  })
+
+  if(!fontsLoaded) {
+    return undefined;
+  }
+  
   return (
     <View className=" bg-[#a8a7a7]">
       <View className=" mb-2 flex flex-row p-5  justify-center   ">

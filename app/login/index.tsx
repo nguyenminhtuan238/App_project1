@@ -1,4 +1,6 @@
 import { TouchableHighlight, TextInput, Text, View, Image } from 'react-native';
+import {useFonts} from 'expo-font'
+
 import { Formik } from 'formik';
 import { Link, router } from 'expo-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +11,24 @@ import { AntDesign } from '@expo/vector-icons';
 export default function Login() {
   const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
+
+  // đổi font chữ
+  const [fontsLoaded] = useFonts({
+    'Pretendard-Black': require('../../assets/fonts/Pretendard-Black.otf'),
+    'Pretendard-Bold': require('../../assets/fonts/Pretendard-Bold.otf'),
+    'Pretendard-ExtraBold': require('../../assets/fonts/Pretendard-ExtraBold.otf'),
+    'Pretendard-ExtraLight': require('../../assets/fonts/Pretendard-ExtraLight.otf'),
+    'Pretendard-Light': require('../../assets/fonts/Pretendard-Light.otf'),
+    'Pretendard-Medium': require('../../assets/fonts/Pretendard-Medium.otf'),
+    'Pretendard-Regular': require('../../assets/fonts/Pretendard-Regular.otf'),
+    'Pretendard-SemiBold': require('../../assets/fonts/Pretendard-SemiBold.otf'),
+    'Pretendard-Thin': require('../../assets/fonts/Pretendard-Thin.otf'),
+  })
+
+  if(!fontsLoaded) {
+    return undefined;
+  }
+
   return (
     <Formik
       initialValues={{ Email: '', password: '' }}

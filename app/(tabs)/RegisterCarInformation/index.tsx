@@ -10,6 +10,9 @@ import {
   Alert,
   TouchableOpacity
 } from 'react-native';
+
+import {useFonts} from 'expo-font'
+
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
@@ -49,6 +52,7 @@ export default function RegisterCarInformation() {
     Alert.alert('Input values', `Text 1: ${text1}, Text 2: ${text2}`);
   };
 
+  // chuyyenr trang
   const [currentPage, setCurrentPage] = useState(0);
 
   const handleNextPage = () => {
@@ -57,18 +61,41 @@ export default function RegisterCarInformation() {
     }
   }; 
 
+  // đổi font chữ
+  const [fontsLoaded] = useFonts({
+    'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
+    'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
+    'Pretendard-ExtraBold': require('../../../assets/fonts/Pretendard-ExtraBold.otf'),
+    'Pretendard-ExtraLight': require('../../../assets/fonts/Pretendard-ExtraLight.otf'),
+    'Pretendard-Light': require('../../../assets/fonts/Pretendard-Light.otf'),
+    'Pretendard-Medium': require('../../../assets/fonts/Pretendard-Medium.otf'),
+    'Pretendard-Regular': require('../../../assets/fonts/Pretendard-Regular.otf'),
+    'Pretendard-SemiBold': require('../../../assets/fonts/Pretendard-SemiBold.otf'),
+    'Pretendard-Thin': require('../../../assets/fonts/Pretendard-Thin.otf'),
+  })
+
+  if(!fontsLoaded) {
+    return undefined;
+  }
+
   return (
-    <ScrollView className=" bg-[#000]">
+    <ScrollView className=" bg-[#000]" >
 
       <View className=" py-5 flex border rounded-[15px]">
         <View className="flex flex-row ">
-            <Text className="px-5 pb-2 mr-auto text-[#fff] text-[20px] "> 
+            <Text 
+              className="px-5 pb-2 mr-auto text-[#fff] text-[20px]" 
+              style={{fontFamily: "Pretendard-Bold"}}
+            > 
                 브랜드 캠페인을 진행하려면, 
             </Text>
         </View>
 
         <View className="flex flex-row">
-            <Text className="px-5 pb-2 mr-auto text-[#fff] text-[20px] ">
+            <Text 
+              className="px-5 pb-2 mr-auto text-[#fff] text-[20px] "
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
                 차량정보 등록은 필수입니다
             </Text>
         </View>
@@ -81,7 +108,10 @@ export default function RegisterCarInformation() {
             onPress={toggleDropdown}
             >
                 <View className="flex justify-center">
-                    <Text className="px-2 text-[#fff] text-[20px]">
+                    <Text 
+                      className="px-2 text-[#fff] text-[20px]"
+                      style={{fontFamily: "Pretendard-Bold"}}
+                    >
                         공동 명의인 경우 차량 소유자의 예
                     </Text>
                 </View>
@@ -90,40 +120,70 @@ export default function RegisterCarInformation() {
             {isOpen && (
                 <View>
                     <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('단독 소유권')}>
-                        <Text className="text-[#FFFF00] text-[20px]">
+                        <Text 
+                          className="text-[#FFFF00] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           . 단독 소유권
                         </Text>
-                        <Text className="mt-2 text-[#fff] text-[20px]">
+                        <Text 
+                          className="mt-2 text-[#fff] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           등록증 소유자의 이름: 홍길동
                         </Text>
-                        <Text className="ml-auto  text-[#fff] text-[20px]">
+                        <Text 
+                          className="ml-auto  text-[#fff] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           입력값: 홍길동
                         </Text>
                     </Pressable>
 
                     <Pressable className="px-2 flex justify-center w-full h-[200px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('공유 소유권')}>
-                        <Text className="text-[#FFFF00] text-[20px]">
+                        <Text 
+                          className="text-[#FFFF00] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           . 공유 소유권
                         </Text>
-                        <Text className="mt-2 text-[#fff] text-[20px]">
+                        <Text 
+                          className="mt-2 text-[#fff] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           등록증 소유자의 이름: 홍길동 (60%), 이순자 (40%)
                         </Text>
-                        <Text  className="mt-2 text-[#fff] text-[20px]">
+                        <Text 
+                          className="mt-2 text-[#fff] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           홍길동 외 1명 (이순자)
                         </Text>
-                        <Text className="mt-2 ml-auto  text-[#fff] text-[20px]">
+                        <Text 
+                          className="mt-2 ml-auto  text-[#fff] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           입력값: 홍길동
                         </Text>
                     </Pressable>
 
                     <Pressable className="px-2 flex justify-center w-full h-[150px] bg-[#1f232c] border-b border-[#a3a2a2]" onPress={() => handleOptionSelect('자동차 임대')}>
-                        <Text className="text-[#FFFF00] text-[20px]">
+                        <Text 
+                          className="text-[#FFFF00] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           . 자동차 임대
                         </Text>
-                        <Text className="mt-2 text-[#fff] text-[20px]">
+                        <Text 
+                          className="mt-2 text-[#fff] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           소유자 이름 증명서: 롯데렌탈㈜
                         </Text>
-                        <Text className="mt-2 ml-auto  text-[#fff] text-[20px]">
+                        <Text 
+                          className="mt-2 ml-auto  text-[#fff] text-[20px]"
+                          style={{fontFamily: "Pretendard-Bold"}}
+                        >
                           입력값: 롯데렌탈㈜
                         </Text>
                     </Pressable>
@@ -132,7 +192,10 @@ export default function RegisterCarInformation() {
 
             {selectedOption && (
                 <View  className="px-3 flex justify-center w-full h-[50px] bg-[#1f232c] border-1 border-[#a3a2a2]">
-                    <Text className="text-[#FFFF00] text-[20px]">
+                    <Text 
+                      className="text-[#FFFF00] text-[20px]"
+                      style={{fontFamily: "Pretendard-Bold"}}
+                    >
                         선택된: {selectedOption}
                     </Text>
                 </View>
@@ -140,24 +203,32 @@ export default function RegisterCarInformation() {
       </View>
 
       <View className="mt-2 mb-10">
-        <Text className="my-5 ml-2 text-[#fff] text-[20px]">
+        <Text 
+          className="my-5 ml-2 text-[#fff] text-[20px]"
+          style={{fontFamily: "Pretendard-Bold"}}
+        >
           차량 소유자
         </Text>
 
         <TextInput
           className="mx-2 p-[10px] mb-[15px] h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+          style={{fontFamily: "Pretendard-Bold"}}
           onChangeText={handleInputChange1}
           value={text1}
           placeholder="차량 소유자를 입력하세요."
           placeholderTextColor="#a3a2a2"
         />
 
-        <Text className="my-5 ml-2 text-[#fff] text-[20px]">
+        <Text 
+          className="my-5 ml-2 text-[#fff] text-[20px]"
+          style={{fontFamily: "Pretendard-Bold"}}
+        >
           차량 번호
         </Text>
 
         <TextInput
           className="mx-2 p-[10px] mb-[15px] h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+          style={{fontFamily: "Pretendard-Bold"}}
           onChangeText={handleInputChange2}
           value={text2}
           placeholder="차량번호를 입력해주세요."
@@ -178,40 +249,85 @@ export default function RegisterCarInformation() {
       <View className="my-2 border-t-4 border-[#1f232c]">
 
         <View className="my-5 w-full h-[750px] bg-[#1f232c]">
-          <Text className="mt-3 p-2 text-[#fff] text-[20px]">
+          <Text 
+            className="mt-3 p-2 text-[#fff] text-[20px]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
             '차량조회'를 완료하시면
           </Text>
 
-          <Text className="px-2 text-[#fff] text-[20px]">
+          <Text 
+            className="px-2 text-[#fff] text-[20px]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
             아래 수수료 입력란이 자동으로 채워집니다.
           </Text>
 
           <View className="mt-10 p-2 ">
 
-            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+            <Text 
+              className="mt-5 text-[#a3a2a2] text-[20px]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               차량 번호
             </Text>
-            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
 
-            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+            <Text 
+              className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
+            </Text>
+
+            <Text 
+              className="mt-5 text-[#a3a2a2] text-[20px]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               자동차 모델/모델 이름
             </Text>
-            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
 
-            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+            <Text 
+              className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
+            </Text>
+
+            <Text 
+              className="mt-5 text-[#a3a2a2] text-[20px]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               모델 연도
             </Text>
-            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
 
-            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+            <Text 
+              className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
+            </Text>
+
+            <Text 
+              className="mt-5 text-[#a3a2a2] text-[20px]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               색상
             </Text>
-            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
 
-            <Text className="mt-5 text-[#a3a2a2] text-[20px]">
+            <Text 
+              className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'
+              style={{fontFamily: "Pretendard-Bold"}}
+            ></Text>
+
+            <Text 
+              className="mt-5 text-[#a3a2a2] text-[20px]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
              차량 등록 주소
             </Text>
-            <Text className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'></Text>
+
+            <Text 
+              className='mt-5 w-full h-[50px] border-b border-[#a3a2a2]'
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
+            </Text>
 
           </View>
         </View>

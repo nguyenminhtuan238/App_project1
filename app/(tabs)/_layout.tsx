@@ -5,6 +5,8 @@ import {
 } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, View, Text } from 'react-native';
+import {useFonts} from 'expo-font'
+
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../commons/store';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -21,6 +23,23 @@ export default function Layout() {
   const Student = useSelector((state: RootState) => state.Student);
   const dispatch: AppDispatch = useDispatch();
   const Tab = createBottomTabNavigator();
+
+   // đổi font chữ
+   const [fontsLoaded] = useFonts({
+    'Pretendard-Black': require('../../assets/fonts/Pretendard-Black.otf'),
+    'Pretendard-Bold': require('../../assets/fonts/Pretendard-Bold.otf'),
+    'Pretendard-ExtraBold': require('../../assets/fonts/Pretendard-ExtraBold.otf'),
+    'Pretendard-ExtraLight': require('../../assets/fonts/Pretendard-ExtraLight.otf'),
+    'Pretendard-Light': require('../../assets/fonts/Pretendard-Light.otf'),
+    'Pretendard-Medium': require('../../assets/fonts/Pretendard-Medium.otf'),
+    'Pretendard-Regular': require('../../assets/fonts/Pretendard-Regular.otf'),
+    'Pretendard-SemiBold': require('../../assets/fonts/Pretendard-SemiBold.otf'),
+    'Pretendard-Thin': require('../../assets/fonts/Pretendard-Thin.otf'),
+  })
+
+  if(!fontsLoaded) {
+    return undefined;
+  }
 
   return (
     <Stack>
@@ -110,7 +129,7 @@ export default function Layout() {
         name="RegisterCarInformation/index"
         options={{
           headerTitle: '차량정보 등록',
-          headerTitleStyle: { color: 'white' },
+          headerTitleStyle: {fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
           },
