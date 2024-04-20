@@ -30,7 +30,11 @@ const LogoutScreen = () => {
 
   return (
     <View>
-      <Text>Đăng Xuất..........</Text>
+      <Text
+        style={{fontFamily: "Pretendard-Bold"}}
+      >
+        Đăng Xuất..........
+      </Text>
     </View>
   );
 };

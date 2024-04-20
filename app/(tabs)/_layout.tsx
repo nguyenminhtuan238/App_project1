@@ -113,7 +113,10 @@ export default function Layout() {
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text className="text-white text-[15px] ">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+              >
                 <Ionicons
                   name="chevron-back"
                   size={24}
@@ -135,7 +138,10 @@ export default function Layout() {
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text className="text-white text-[15px] ">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
                 <Ionicons
                   name="chevron-back"
                   size={24}
@@ -157,7 +163,10 @@ export default function Layout() {
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text className="text-white text-[15px] ">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+              >
                 <Ionicons
                   name="chevron-back"
                   size={24}
@@ -182,7 +191,10 @@ export default function Layout() {
 
           headerLeft: () => (
             <View className="mr-1">
-              <Text className="text-white text-[15px] ">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
                 <Ionicons
                   name="chevron-back"
                   size={24}
@@ -207,7 +219,10 @@ export default function Layout() {
 
           headerLeft: () => (
             <View className="mr-1">
-              <Text className="text-white text-[15px] ">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
                 <Ionicons
                   name="chevron-back"
                   size={24}

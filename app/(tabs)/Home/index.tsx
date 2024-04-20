@@ -49,19 +49,36 @@ export default function Home() {
       >
         <View className="flex flex-row justify-between mt-8 ">
           <View>
-            <Text className=" text-xl font-bold text-white">
+            <Text 
+              className=" text-xl font-bold text-white"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               나의 후원자를{' '}
             </Text>
-            <Text className="mb-4 text-xl font-bold text-white">
+            <Text 
+              className="mb-4 text-xl font-bold text-white"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               {' '}
               찾아보세요
             </Text>
-            <Text className="text-[13px] text-[#dfdddd]">밴드를 선택하고 </Text>
-            <Text className="mb-4 text-[13px] text-[#dfdddd]">
+            <Text 
+              className="text-[13px] text-[#dfdddd]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
+              밴드를 선택하고 
+            </Text>
+            <Text 
+              className="mb-4 text-[13px] text-[#dfdddd]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               {' '}
               많은 사람들을 만나보세요
             </Text>
-            <Link className="mb-4 text-xl text-amber-400" href="/(tabs)/RegisterCarInformation/">
+            <Link 
+              className="mb-4 text-xl text-amber-400" href="/(tabs)/RegisterCarInformation/"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               스폰서 찾기{'>'}
             </Link>
           </View>
@@ -73,19 +90,45 @@ export default function Home() {
           </View>
         </View>
         <View className=" flex flex-row  justify-between ">
-          <Text className="text-white">01</Text>
-          <Text className="text-white opacity-[0.5]">05</Text>
+          <Text 
+            className="text-white"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
+            01
+          </Text>
+          <Text 
+            className="text-white opacity-[0.5]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
+            05
+          </Text>
         </View>
-        <View className=" flex flex-row  justify-between ">
-          <Text className="border-b-2 border-gray-500 w-[25%]"></Text>
-          <Text className="border-b-2 border-gray-300 w-[75%]  "></Text>
+        <View 
+        className=" flex flex-row  justify-between ">
+          <Text 
+            className="border-b-2 border-gray-500 w-[25%]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
+          </Text>
+          <Text 
+            className="border-b-2 border-gray-300 w-[75%]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
+          </Text>
         </View>
       </ImageBackground>
       <View className="h-[30] bg-[#494949] flex flex-row justify-between 	p-2">
-        <Text className="text-amber-200 text-[10px] ml-3">
+        <Text 
+          className="text-amber-200 text-[10px] ml-3"
+          style={{fontFamily: "Pretendard-Bold"}}
+        >
           차량정보를 등록해주세요차량정보를 등록해주세요
         </Text>
-        <Link href="/register/" className="text-white text-[10px] mr-3">
+        <Link 
+          href="/register/" 
+          className="text-white text-[10px] mr-3"
+          style={{fontFamily: "Pretendard-Bold"}}
+        >
           등록하러 가다
           <AntDesign name="right" size={13} color="white" />
         </Link>
@@ -97,18 +140,30 @@ export default function Home() {
             className="w-[150] h-[5]"
             resizeMode="stretch"
           />
-          <Text className="text-white my-3 text-[25px]">
+          <Text 
+            className="text-white my-3 text-[25px]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
             광고는 홍길동이 맡았다.
           </Text>
           <View className="border border-white rounded-[10px] p-3 flex">
-            <Text className="text-white text-[20px]">서포터 한명 더!</Text>
-            <Text className="text-gray-400  text-[15px]">
+            <Text 
+              className="text-white text-[20px]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
+              서포터 한명 더!
+            </Text>
+            <Text 
+              className="text-gray-400  text-[15px]"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
               서포터를 추가하고 다양한 혜택을 누려보세요
             </Text>
             <View className="flex flex-row justify-between gap-2 items-center">
               <Link
                 href="/Certification/"
-                className="mb-5 text-xl text-amber-400  "
+                className="mb-5 text-xl text-amber-400"
+                style={{fontFamily: "Pretendard-Bold"}}
               >
                 더 많은 지지자{'>'}
               </Link>
@@ -127,7 +182,10 @@ export default function Home() {
             className="w-[150] h-[5]"
             resizeMode="stretch"
           />
-          <Text className="text-white my-3 text-[25px]">
+          <Text 
+            className="text-white my-3 text-[25px]"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
             광고는 홍길동이 맡았다.
           </Text>
           <ScrollView horizontal>
@@ -142,17 +200,40 @@ export default function Home() {
                 />
               </Pressable>
               <View className="flex justify-center items-center py-3  bg-black ">
-                <Text className="text-white">
+                <Text 
+                  className="text-white"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
                   100명 중 26명이 지지하고 있습니다.
                 </Text>
               </View>
               <View className="flex flex-row justify-between  px-1  my-3 ">
-                <Text className="text-black ">배드블루</Text>
-                <Text className="text-black">대구광역시</Text>
+                <Text 
+                className="text-black"
+                style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  배드블루
+                </Text>
+                <Text 
+                className="text-black"
+                style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  대구광역시
+                </Text>
               </View>
               <View className="flex flex-row justify-between  px-1  my-[20] ">
-                <Text className="text-black ">시간: 30일</Text>
-                <Text className="text-amber-300">25.000P</Text>
+                <Text 
+                className="text-black "
+                style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  시간: 30일
+                </Text>
+                <Text 
+                className="text-amber-300"
+                style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  25.000P
+                </Text>
               </View>
             </View>
             <View className="border border-white bg-white rounded-[10px]   mx-3 w-[230] h-[279]">
@@ -166,17 +247,40 @@ export default function Home() {
                 />
               </Pressable>
               <View className="flex justify-center items-center py-3  bg-black ">
-                <Text className="text-white">
+                <Text 
+                  className="text-white"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
                   100명 중 26명이 지지하고 있습니다.
                 </Text>
               </View>
               <View className="flex flex-row justify-between  px-1  my-3 ">
-                <Text className="text-black ">배드블루</Text>
-                <Text className="text-black">대구광역시</Text>
+                <Text 
+                  className="text-black "
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  배드블루
+                </Text>
+                <Text 
+                  className="text-black"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  대구광역시
+                </Text>
               </View>
               <View className="flex flex-row justify-between  px-1  my-[20] ">
-                <Text className="text-black ">시간: 30일</Text>
-                <Text className="text-amber-300">25.000P</Text>
+                <Text 
+                  className="text-black "
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  시간: 30일
+                </Text>
+                <Text 
+                  className="text-amber-300"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  25.000P
+                </Text>
               </View>
             </View>
           </ScrollView>

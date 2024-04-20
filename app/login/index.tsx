@@ -56,6 +56,8 @@ export default function Login() {
             onBlur={handleBlur('Email')}
             value={values.Email}
             placeholder="이메일"
+
+            style={{fontFamily: "Pretendard-Bold"}}
             className="appearance-none block w-4/5 mb-3 px-3 py-2 border bg-[#fff] border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
           <TextInput
@@ -64,10 +66,17 @@ export default function Login() {
             secureTextEntry={true}
             value={values.password}
             placeholder="비밀번호"
+
+            style={{fontFamily: "Pretendard-Bold"}}
             className="appearance-none block w-4/5 mb-3 px-3 py-2 border bg-[#fff] border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
           <View className="  flex flex-row justify-start w-4/5	">
-            <Text className=" text-[#afaeae] ">이메일 생성/비밀번호 복구</Text>
+            <Text 
+              className=" text-[#afaeae] "
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
+              이메일 생성/비밀번호 복구
+            </Text>
           </View>
 
           <View className="mt-[80px] mb-[40px] flex  flex-row items-center  justify-center">
@@ -97,13 +106,22 @@ export default function Login() {
             onPress={() => handleSubmit()}
             className="w-4/5 flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-amber-300 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            <Text className="text-white text-center">로그인</Text>
+            <Text 
+              className="text-white text-center"
+              style={{fontFamily: "Pretendard-Bold"}}
+            >
+              로그인
+            </Text>
           </TouchableHighlight>
-          <Text className="text-[#fff] mt-2 pr-1">
+          <Text 
+            className="text-[#fff] mt-2 pr-1"
+            style={{fontFamily: "Pretendard-Bold"}}
+          >
             계정이 없나요?
             <Link
               href="/register/"
               className="text-amber-300 hover:bg-amber-100 ml-2"
+              style={{fontFamily: "Pretendard-Bold"}}
             >
               등록하다
             </Link>
