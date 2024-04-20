@@ -16,7 +16,7 @@ import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-export default function RegisterCarInformation() {
+export default function City() {
 
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
@@ -342,7 +342,7 @@ export default function RegisterCarInformation() {
           className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
         >
           <Link
-            className="text-[20px]" href="/(tabs)/RegisterCarInformation/city"
+            className="text-[20px]" href="/(tabs)/RegisterCarInformation/district"
             style={{fontFamily: "Pretendard-Bold"}}
           >
             계속하다

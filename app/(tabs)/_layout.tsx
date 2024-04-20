@@ -154,6 +154,88 @@ export default function Layout() {
               </Text>
             </View>
           ),
+          headerRight: () => (
+            <View className="mr-1">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
+                1/3
+              </Text>
+            </View>
+          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="RegisterCarInformation/city"
+        options={{
+          headerTitle: '차량정보 등록',
+          headerTitleStyle: {fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+          headerRight: () => (
+            <View className="mr-1">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
+                2/3
+              </Text>
+            </View>
+          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="RegisterCarInformation/district"
+        options={{
+          headerTitle: '차량정보 등록',
+          headerTitleStyle: {fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+          headerRight: () => (
+            <View className="mr-1">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
+                3/3
+              </Text>
+            </View>
+          ),
         }}
       />
 
