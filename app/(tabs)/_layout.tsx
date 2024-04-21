@@ -143,7 +143,7 @@ export default function Layout() {
             <View className="mr-1">
               <Text 
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
+                style={{fontFamily: "Pretendard-Bold",}}
             >
                 <Ionicons
                   name="chevron-back"
@@ -160,11 +160,19 @@ export default function Layout() {
                 className="text-white text-[15px] "
                 style={{fontFamily: "Pretendard-Bold"}}
             >
-                1/3
+                1 
+                <Text 
+                  className="text-[#a3a2a2] text-[15px]"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  /3
+                </Text>
               </Text>
             </View>
           ),
+          
         }}
+        
       />
 
       <Stack.Screen
@@ -196,7 +204,13 @@ export default function Layout() {
                 className="text-white text-[15px] "
                 style={{fontFamily: "Pretendard-Bold"}}
             >
-                2/3
+                2 
+                <Text 
+                  className="text-[#a3a2a2] text-[15px]"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  /3
+                </Text>
               </Text>
             </View>
           ),
@@ -231,8 +245,14 @@ export default function Layout() {
               <Text 
                 className="text-white text-[15px] "
                 style={{fontFamily: "Pretendard-Bold"}}
-            >
-                3/3
+              >
+                3 
+                <Text 
+                  className="text-[#a3a2a2] text-[15px]"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  /3
+                </Text>
               </Text>
             </View>
           ),
