@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
-import {useFonts} from 'expo-font'
+import { useFonts } from 'expo-font';
 
 import { Logout } from '../../commons/store/user';
 
@@ -22,19 +22,15 @@ const LogoutScreen = () => {
     'Pretendard-Regular': require('../../assets/fonts/Pretendard-Regular.otf'),
     'Pretendard-SemiBold': require('../../assets/fonts/Pretendard-SemiBold.otf'),
     'Pretendard-Thin': require('../../assets/fonts/Pretendard-Thin.otf'),
-  })
+  });
 
-  if(!fontsLoaded) {
+  if (!fontsLoaded) {
     return undefined;
   }
 
   return (
     <View>
-      <Text
-        style={{fontFamily: "Pretendard-Bold"}}
-      >
-        Đăng Xuất..........
-      </Text>
+      <Text style={{ fontFamily: 'Pretendard-Bold' }}>Đăng Xuất..........</Text>
     </View>
   );
 };

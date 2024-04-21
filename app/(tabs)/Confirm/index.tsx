@@ -1,5 +1,5 @@
 import { TouchableHighlight, TextInput, Text, View, Image } from 'react-native';
-import {useFonts} from 'expo-font'
+import { useFonts } from 'expo-font';
 
 import { Link, router } from 'expo-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,9 +23,9 @@ export default function Confirm() {
     'Pretendard-Regular': require('../../../assets/fonts/Pretendard-Regular.otf'),
     'Pretendard-SemiBold': require('../../../assets/fonts/Pretendard-SemiBold.otf'),
     'Pretendard-Thin': require('../../../assets/fonts/Pretendard-Thin.otf'),
-  })
+  });
 
-  if(!fontsLoaded) {
+  if (!fontsLoaded) {
     return undefined;
   }
 
@@ -36,9 +36,9 @@ export default function Confirm() {
         source={require('../../../assets/images/logo.jpg')}
         className="w-[100px] h-[100px] ml-2"
       />
-      <Text 
+      <Text
         className="text-[#fff]  text-[15px] w-1/2  h-1/6"
-        style={{fontFamily: "Pretendard-Bold"}}
+        style={{ fontFamily: 'Pretendard-Bold' }}
       >
         SSUlK에 오신 것을 환영합니다
       </Text>
@@ -84,7 +84,7 @@ export default function Confirm() {
           <Link
             href="/(tabs)/DetailProduct/"
             className="text-[#d8ad35] Text-[12] m-2 py-2"
-            style={{fontFamily: "Pretendard-Bold"}}
+            style={{ fontFamily: 'Pretendard-Bold' }}
           >
             더보기
           </Link>
@@ -104,7 +104,7 @@ export default function Confirm() {
           <Link
             href="/(tabs)/DetailProduct/"
             className="text-[#d8ad35] Text-[12] m-2 py-2 mr-3"
-            style={{fontFamily: "Pretendard-Bold"}}
+            style={{ fontFamily: 'Pretendard-Bold' }}
           >
             더보기
           </Link>
@@ -124,7 +124,7 @@ export default function Confirm() {
           <Link
             href="/(tabs)/DetailProduct/"
             className="text-[#d8ad35] Text-[12] m-2 py-2"
-            style={{fontFamily: "Pretendard-Bold"}}
+            style={{ fontFamily: 'Pretendard-Bold' }}
           >
             더보기
           </Link>
@@ -144,7 +144,7 @@ export default function Confirm() {
           <Link
             href="/(tabs)/DetailProduct/"
             className="text-[#d8ad35] Text-[12] m-2 py-2"
-            style={{fontFamily: "Pretendard-Bold"}}
+            style={{ fontFamily: 'Pretendard-Bold' }}
           >
             더보기
           </Link>
@@ -152,9 +152,9 @@ export default function Confirm() {
         <View className="flex justify-center items-center px-2">
           <TouchableHighlight className=" mt-3 flex justify-center items-center py-3 w-full  border border-transparent rounded-md shadow-sm text-sm font-medium  bg-[#dadadacc] hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             <View className="text-white text-center  flex flex-row ">
-              <Text 
+              <Text
                 className="ml-[20px]"
-                style={{fontFamily: "Pretendard-Bold"}}
+                style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 계속하다
               </Text>

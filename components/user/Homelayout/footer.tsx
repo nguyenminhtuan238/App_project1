@@ -4,23 +4,21 @@ import { router } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Foundation, FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../commons/store';
+import { toggleNavigationbar } from '../../../commons/store/Navigationbar';
 export default function Footer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const handle = (value: number) => {
-    setSelectedIndex(value);
-    if (value == 0) {
-      router.push('/Home/');
-    } else {
-      router.push('/');
-    }
-  };
+  const Navigationbar = useSelector((state: RootState) => state.Navigationbar);
+  const dispatch: AppDispatch = useDispatch();
+
   return (
     <>
       <View className="flex flex-row bg-black p-4 border-t-2  absolute left-0 bottom-0 right-0 h-[60]">
         <Pressable
           className="   h-8 w-1/4 "
           onPress={() => {
-            setSelectedIndex(0);
+            dispatch(toggleNavigationbar(0));
             router.push('/Home/');
           }}
         >
@@ -28,9 +26,9 @@ export default function Footer() {
             <Foundation
               name="home"
               size={24}
-              color={selectedIndex == 0 ? 'yellow' : 'white'}
+              color={Navigationbar.setSelectedbar == 0 ? 'yellow' : 'white'}
             />
-            {selectedIndex == 0 ? (
+            {Navigationbar.setSelectedbar == 0 ? (
               <Text className="text-yellow-300  mt-1 text-[10px]">집</Text>
             ) : (
               ''
@@ -40,7 +38,7 @@ export default function Footer() {
         <Pressable
           className="  h-8 w-1/4 "
           onPress={() => {
-            setSelectedIndex(1);
+            dispatch(toggleNavigationbar(1));
             router.push('/login/');
           }}
         >
@@ -48,10 +46,10 @@ export default function Footer() {
             <MaterialCommunityIcons
               name="calendar-star"
               size={24}
-              color={selectedIndex == 1 ? 'yellow' : 'white'}
+              color={Navigationbar.setSelectedbar == 1 ? 'yellow' : 'white'}
             />
 
-            {selectedIndex == 1 ? (
+            {Navigationbar.setSelectedbar == 1 ? (
               <Text className="text-yellow-300  mt-1 text-[10px]">이벤트</Text>
             ) : (
               ''
@@ -61,7 +59,7 @@ export default function Footer() {
         <Pressable
           className="  h-8 w-1/4 "
           onPress={() => {
-            setSelectedIndex(2);
+            dispatch(toggleNavigationbar(2));
             router.push('/Point/');
           }}
         >
@@ -69,10 +67,10 @@ export default function Footer() {
             <MaterialCommunityIcons
               name="file-powerpoint-box-outline"
               size={24}
-              color={selectedIndex == 2 ? 'yellow' : 'white'}
+              color={Navigationbar.setSelectedbar == 2 ? 'yellow' : 'white'}
             />
 
-            {selectedIndex == 2 ? (
+            {Navigationbar.setSelectedbar == 2 ? (
               <Text className="text-yellow-300  mt-1 text-[10px]">
                 가리키다{' '}
               </Text>
@@ -84,18 +82,18 @@ export default function Footer() {
         <Pressable
           className="  h-8 w-1/4 "
           onPress={() => {
-            setSelectedIndex(3);
-            router.push('/Home/');
+            dispatch(toggleNavigationbar(3));
+            router.push('/User/');
           }}
         >
           <View className="flex justify-items-center items-center">
             <FontAwesome5
               name="user-alt"
               size={24}
-              color={selectedIndex == 3 ? 'yellow' : 'white'}
+              color={Navigationbar.setSelectedbar == 3 ? 'yellow' : 'white'}
             />
 
-            {selectedIndex == 3 ? (
+            {Navigationbar.setSelectedbar == 3 ? (
               <Text className="text-yellow-300 mt-1 text-[10px]">내 거</Text>
             ) : (
               ''

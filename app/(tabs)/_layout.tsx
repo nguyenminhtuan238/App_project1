@@ -5,8 +5,7 @@ import {
 } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, View, Text } from 'react-native';
-import {useFonts} from 'expo-font'
-
+import { useFonts } from 'expo-font';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../commons/store';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -24,8 +23,8 @@ export default function Layout() {
   const dispatch: AppDispatch = useDispatch();
   const Tab = createBottomTabNavigator();
 
-   // đổi font chữ
-   const [fontsLoaded] = useFonts({
+  // đổi font chữ
+  const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../assets/fonts/Pretendard-Black.otf'),
     'Pretendard-Bold': require('../../assets/fonts/Pretendard-Bold.otf'),
     'Pretendard-ExtraBold': require('../../assets/fonts/Pretendard-ExtraBold.otf'),
@@ -35,15 +34,14 @@ export default function Layout() {
     'Pretendard-Regular': require('../../assets/fonts/Pretendard-Regular.otf'),
     'Pretendard-SemiBold': require('../../assets/fonts/Pretendard-SemiBold.otf'),
     'Pretendard-Thin': require('../../assets/fonts/Pretendard-Thin.otf'),
-  })
+  });
 
-  if(!fontsLoaded) {
+  if (!fontsLoaded) {
     return undefined;
   }
 
   return (
     <Stack>
-
       <Stack.Screen
         name="Home/index"
         options={{
@@ -115,9 +113,9 @@ export default function Layout() {
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
+                style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 <Ionicons
                   name="chevron-back"
@@ -130,20 +128,97 @@ export default function Layout() {
           ),
         }}
       />
-
       <Stack.Screen
-        name="DetailProduct/index"
+        name="WithDrawal/index"
         options={{
-          headerTitle: '후원자 세부정보',
+          headerTitle: '출금 요청',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.push('/Point/')}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="User/index"
+        options={{
+          headerTitle: 'MY',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <View className="flex flex-row justify-around ">
+              <MaterialCommunityIcons
+                name="bell-outline"
+                size={24}
+                color="white"
+              />
+
+              <Badge
+                status="error"
+                value=""
+                containerStyle={{ position: 'absolute', top: 1, left: 18 }}
+              />
+            </View>
+          ),
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerBackVisible: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Application/index"
+        options={{
+          headerTitle: '신청 내용',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.push('/Point/')}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="RegisterCarInformation/index"
+        options={{
+          headerTitle: '차량정보 등록',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 <Ionicons
                   name="chevron-back"
@@ -154,67 +229,39 @@ export default function Layout() {
               </Text>
             </View>
           ),
-        }}
-      />
-
-      <Stack.Screen
-        name="RegisterCarInformation/index"
-        options={{
-          headerTitle: '차량정보 등록',
-          headerTitleStyle: {fontFamily: 'Pretendard-Black', color: 'white' },
-          headerStyle: {
-            backgroundColor: 'black',
-          },
-          headerLeft: () => (
-            <View className="mr-1">
-              <Text 
-                className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold",}}
-            >
-                <Ionicons
-                  name="chevron-back"
-                  size={24}
-                  color="white"
-                  onPress={router.back}
-                />
-              </Text>
-            </View>
-          ),
           headerRight: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
-            >
-                1 
-                <Text 
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                1
+                <Text
                   className="text-[#a3a2a2] text-[15px]"
-                  style={{fontFamily: "Pretendard-Bold"}}
+                  style={{ fontFamily: 'Pretendard-Bold' }}
                 >
                   /3
                 </Text>
               </Text>
             </View>
           ),
-          
         }}
-        
       />
 
       <Stack.Screen
         name="RegisterCarInformation/city"
         options={{
           headerTitle: '차량정보 등록',
-          headerTitleStyle: {fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
-            >
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
                 <Ionicons
                   name="chevron-back"
                   size={24}
@@ -226,14 +273,14 @@ export default function Layout() {
           ),
           headerRight: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
-            >
-                2 
-                <Text 
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                2
+                <Text
                   className="text-[#a3a2a2] text-[15px]"
-                  style={{fontFamily: "Pretendard-Bold"}}
+                  style={{ fontFamily: 'Pretendard-Bold' }}
                 >
                   /3
                 </Text>
@@ -247,16 +294,16 @@ export default function Layout() {
         name="RegisterCarInformation/district"
         options={{
           headerTitle: '차량정보 등록',
-          headerTitleStyle: {fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
-            >
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
                 <Ionicons
                   name="chevron-back"
                   size={24}
@@ -268,14 +315,14 @@ export default function Layout() {
           ),
           headerRight: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
+                style={{ fontFamily: 'Pretendard-Bold' }}
               >
-                3 
-                <Text 
+                3
+                <Text
                   className="text-[#a3a2a2] text-[15px]"
-                  style={{fontFamily: "Pretendard-Bold"}}
+                  style={{ fontFamily: 'Pretendard-Bold' }}
                 >
                   /3
                 </Text>
@@ -321,9 +368,9 @@ export default function Layout() {
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
+                style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 <Ionicons
                   name="chevron-back"
@@ -349,10 +396,10 @@ export default function Layout() {
 
           headerLeft: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
-            >
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
                 <Ionicons
                   name="chevron-back"
                   size={24}
@@ -379,10 +426,10 @@ export default function Layout() {
 
           headerLeft: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
-            >
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
                 <Ionicons
                   name="chevron-back"
                   size={24}

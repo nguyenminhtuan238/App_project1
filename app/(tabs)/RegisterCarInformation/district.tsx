@@ -9,14 +9,13 @@ import {
   FlatList,
 } from 'react-native';
 
-import { useFonts } from 'expo-font'
+import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-
 export default function District() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
@@ -48,7 +47,7 @@ export default function District() {
     return null; // or other temporary content
   }
 
-  // chọn city 
+  // chọn city
   const handleDistrictSelection = (district: string) => {
     setSelectedDistrict(district);
   };
@@ -87,16 +86,20 @@ export default function District() {
     { id: '31', name: '연천군' },
     // Add more city options as needed
   ];
-  
+
   const renderItem = ({ item }: { item: any }) => (
     <View>
       <TouchableOpacity
-        onPress={() => handleDistrictSelection(selectedDistrict === item.name ? '' : item.name)}
+        onPress={() =>
+          handleDistrictSelection(
+            selectedDistrict === item.name ? '' : item.name
+          )
+        }
         style={{
           flexDirection: 'row',
           alignItems: 'center',
           marginRight: 10,
-          marginBottom: 30,  // Add marginBottom to create space between items
+          marginBottom: 30, // Add marginBottom to create space between items
           width: 120,
         }}
       >
@@ -105,49 +108,59 @@ export default function District() {
             width: 30,
             height: 30,
             borderRadius: 40,
-            backgroundColor: selectedDistrict === item.name ? 'black' : 'transparent',
+            backgroundColor:
+              selectedDistrict === item.name ? 'black' : 'transparent',
             marginRight: 5,
             borderWidth: 2,
             borderColor: selectedDistrict === item.name ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
           }}
         >
           {selectedDistrict === item.name && (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Pressable className="border-yellow-500 rounded-full w-[15px] h-[15px] bg-yellow-500"/>
+            <View
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Pressable className="border-yellow-500 rounded-full w-[15px] h-[15px] bg-yellow-500" />
             </View>
           )}
         </View>
-        <Text 
-        className='text-[20px] ml-1 mr-5'
-          style={{ fontFamily: "Pretendard-Bold", fontWeight: selectedDistrict === item.name ? 'bold' : 'normal', color: selectedDistrict === item.name ? 'white' : '#a3a2a2' }}
+        <Text
+          className="text-[20px] ml-1 mr-5"
+          style={{
+            fontFamily: 'Pretendard-Bold',
+            fontWeight: selectedDistrict === item.name ? 'bold' : 'normal',
+            color: selectedDistrict === item.name ? 'white' : '#a3a2a2',
+          }}
         >
           {item.name}
         </Text>
       </TouchableOpacity>
-
     </View>
   );
 
   return (
     <View className="bg-[#000] h-full">
-      <View className="top-0 left-0 z-10 border-yellow-500 border-t-4 w-3/3"/>
+      <View className="top-0 left-0 z-10 border-yellow-500 border-t-4 w-3/3" />
       <View className=" py-5 flex border rounded-[15px]">
         <View className="flex flex-row ">
-            <Text 
-              className="px-5 pb-2 mr-auto text-[#fff] text-[20px]" 
-              style={{fontFamily: "Pretendard-Bold"}}
-            > 
-              주로 운전하는 시/군을
-            </Text>
+          <Text
+            className="px-5 pb-2 mr-auto text-[#fff] text-[20px]"
+            style={{ fontFamily: 'Pretendard-Bold' }}
+          >
+            주로 운전하는 시/군을
+          </Text>
         </View>
 
         <View className="flex flex-row">
-            <Text 
-              className="px-5 pb-2 mr-auto text-[#fff] text-[20px] "
-              style={{fontFamily: "Pretendard-Bold"}}
-            >
-              선택하세요.
-            </Text>
+          <Text
+            className="px-5 pb-2 mr-auto text-[#fff] text-[20px] "
+            style={{ fontFamily: 'Pretendard-Bold' }}
+          >
+            선택하세요.
+          </Text>
         </View>
       </View>
 
@@ -155,26 +168,22 @@ export default function District() {
         data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        numColumns={3}  // Display three items per row
-        contentContainerStyle={{ paddingVertical: 10 }}  // Add vertical padding
-        className='ml-auto'
+        numColumns={3} // Display three items per row
+        contentContainerStyle={{ paddingVertical: 10 }} // Add vertical padding
+        className="ml-auto"
       />
 
       <View className="my-2 border-t-4 border-[#1f232c]">
-
-        <Pressable 
-          className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-        >
+        <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full">
           <Link
-            className="text-[20px]" href="/(tabs)/RegisterCarInformation/district"
-            style={{fontFamily: "Pretendard-Bold"}}
+            className="text-[20px]"
+            href="/(tabs)/RegisterCarInformation/district"
+            style={{ fontFamily: 'Pretendard-Bold' }}
           >
             계속하다
           </Link>
         </Pressable>
-
-      </View> 
-
+      </View>
     </View>
   );
 }
