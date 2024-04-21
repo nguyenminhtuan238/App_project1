@@ -15,7 +15,7 @@ import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-export default function ApplyForSponsorship() {
+export default function DetailApplyForSponsorship() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
@@ -39,10 +39,10 @@ export default function ApplyForSponsorship() {
 
   return (
     <View className=" bg-[#a8a7a7]">
-      <View className=" mb-2 flex flex-row p-5  justify-center">
+      <View className=" mb-2 flex flex-row p-5  justify-center   ">
         <View className="  rounded-[10px] mx-5  flex flex-row justify-center">
           <Image
-            source={require('.../../../assets/images/Bear.png')}
+            source={require('../../../assets/images/Bear.png')}
             className="h-[250] w-[250] "
             resizeMode="stretch"
           />

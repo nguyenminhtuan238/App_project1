@@ -132,6 +132,32 @@ export default function Layout() {
       />
 
       <Stack.Screen
+        name="DetailProduct/index"
+        options={{
+          headerTitle: '후원자 세부정보',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+
+      <Stack.Screen
         name="RegisterCarInformation/index"
         options={{
           headerTitle: '차량정보 등록',
@@ -260,9 +286,35 @@ export default function Layout() {
       />
 
       <Stack.Screen
-        name="DetailProduct/index"
+        name="ApplyForSponsorship/index"
         options={{
-          headerTitle: '후원자 세부정보',
+          headerTitle: '양식을 작성하세요',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="ApplyForSponsorship/detail"
+        options={{
+          headerTitle: '양식을 작성하세요',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
