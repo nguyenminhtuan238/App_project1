@@ -140,6 +140,7 @@ export default function Layout() {
             <View className="mr-1">
               <Text
                 className="text-white text-[15px] "
+<<<<<<< HEAD
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 <Ionicons
@@ -220,6 +221,10 @@ export default function Layout() {
                 className="text-white text-[15px] "
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
+=======
+                style={{fontFamily: "Pretendard-Bold",}}
+            >
+>>>>>>> ed9d2099a76b9a2c159cb0df616d7071bbd177c9
                 <Ionicons
                   name="chevron-back"
                   size={24}
@@ -233,13 +238,27 @@ export default function Layout() {
             <View className="mr-1">
               <Text
                 className="text-white text-[15px] "
+<<<<<<< HEAD
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 1/3
+=======
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
+                1 
+                <Text 
+                  className="text-[#a3a2a2] text-[15px]"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  /3
+                </Text>
+>>>>>>> ed9d2099a76b9a2c159cb0df616d7071bbd177c9
               </Text>
             </View>
           ),
+          
         }}
+        
       />
 
       <Stack.Screen
@@ -269,9 +288,21 @@ export default function Layout() {
             <View className="mr-1">
               <Text
                 className="text-white text-[15px] "
+<<<<<<< HEAD
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 2/3
+=======
+                style={{fontFamily: "Pretendard-Bold"}}
+            >
+                2 
+                <Text 
+                  className="text-[#a3a2a2] text-[15px]"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  /3
+                </Text>
+>>>>>>> ed9d2099a76b9a2c159cb0df616d7071bbd177c9
               </Text>
             </View>
           ),
@@ -305,9 +336,21 @@ export default function Layout() {
             <View className="mr-1">
               <Text
                 className="text-white text-[15px] "
+<<<<<<< HEAD
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 3/3
+=======
+                style={{fontFamily: "Pretendard-Bold"}}
+              >
+                3 
+                <Text 
+                  className="text-[#a3a2a2] text-[15px]"
+                  style={{fontFamily: "Pretendard-Bold"}}
+                >
+                  /3
+                </Text>
+>>>>>>> ed9d2099a76b9a2c159cb0df616d7071bbd177c9
               </Text>
             </View>
           ),
