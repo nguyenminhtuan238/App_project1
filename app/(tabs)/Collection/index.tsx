@@ -39,7 +39,6 @@ export default function Collection() {
 
   return (
     <ScrollView className=" bg-[#000]">
-   
       <View className="mt-5">
         <Pressable
           className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
@@ -80,9 +79,6 @@ export default function Collection() {
             </View>
           </View>
         </Pressable>
-     
-   
-      
       </View>
     </ScrollView>
   );

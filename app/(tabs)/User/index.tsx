@@ -96,7 +96,10 @@ export default function User() {
         <View className="h-[2] bg-[#494949] flex flex-row justify-between "></View>
         <View className="p-5">
           <ScrollView>
-            <Pressable className="border-b border-[#494949] p-3 flex" onPress={()=>router.push('/Collection/')}>
+            <Pressable
+              className="border-b border-[#494949] p-3 flex"
+              onPress={() => router.push('/Collection/')}
+            >
               <View className="flex flex-row justify-between">
                 <Text
                   className="text-[#fff]  text-[18px]"
@@ -118,7 +121,10 @@ export default function User() {
                 </Text>
               </View>
             </Pressable>
-            <Pressable className="border-b border-[#494949] p-3 flex"  onPress={()=>router.push('/Information/')}>
+            <Pressable
+              className="border-b border-[#494949] p-3 flex"
+              onPress={() => router.push('/Information/')}
+            >
               <View className="flex flex-row justify-between">
                 <Text
                   className="text-[#fff]  text-[18px]"
@@ -135,7 +141,7 @@ export default function User() {
                     name="chevron-forward"
                     size={24}
                     color="white"
-                    onPress={()=>router.push('/Information/')}
+                    onPress={() => router.push('/Information/')}
                   />
                 </Text>
               </View>
@@ -162,7 +168,10 @@ export default function User() {
                 </Text>
               </View>
             </Pressable>
-            <Pressable className="border-b border-[#494949] p-3 flex">
+            <Pressable
+              className="border-b border-[#494949] p-3 flex"
+              onPress={() => router.push('/Establish/')}
+            >
               <View className="flex flex-row justify-between">
                 <Text
                   className="text-[#fff]  text-[18px]"
@@ -179,7 +188,7 @@ export default function User() {
                     name="chevron-forward"
                     size={24}
                     color="white"
-                    onPress={() => router.push('/Point/')}
+                    onPress={() => router.push('/Establish/')}
                   />
                 </Text>
               </View>

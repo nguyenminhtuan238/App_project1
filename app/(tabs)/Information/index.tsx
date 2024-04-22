@@ -45,7 +45,6 @@ export default function Information() {
   return (
     <LayoutScreen>
       <View className="bg-[#000] h-screen">
-     
         <View className="h-[2] bg-[#494949] flex flex-row justify-between "></View>
         <View className="p-5">
           <ScrollView>
@@ -62,7 +61,7 @@ export default function Information() {
                   className="text-[#575757]   "
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                홍길동
+                  홍길동
                 </Text>
               </View>
             </View>
@@ -72,14 +71,14 @@ export default function Information() {
                   className="text-[#fff]  text-[18px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                 이메일
+                  이메일
                 </Text>
 
                 <Text
                   className="text-[#575757]   "
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                povi@navar.com
+                  povi@navar.com
                 </Text>
               </View>
             </View>
@@ -96,7 +95,7 @@ export default function Information() {
                   className="text-[#575757]   "
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                010-1324-5192
+                  010-1324-5192
                 </Text>
               </View>
             </View>
@@ -113,34 +112,33 @@ export default function Information() {
                   className="text-[#575757]   "
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                880215
+                  880215
                 </Text>
               </View>
             </View>
             <View className="border-b border-[#494949] p-2 flex">
-            <Text
-                  className="text-[#fff]  text-[18px] mb-3"
-                  style={{ fontFamily: 'Pretendard-Bold' }}
-                >
-                  섹스
-                </Text>
+              <Text
+                className="text-[#fff]  text-[18px] mb-3"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                섹스
+              </Text>
               <View className="flex flex-row ">
-           
                 <Pressable className="bg-[#e0c31d] rounded-[5px] mx-1 p-1">
-                <Text
-                  className="text-[#000]  text-[18px]"
-                  style={{ fontFamily: 'Pretendard-Bold' }}
-                >
-                  남성
-                </Text>
+                  <Text
+                    className="text-[#000]  text-[18px]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    남성
+                  </Text>
                 </Pressable>
                 <Pressable className="rounded-[5px] border border-[#9e9d9d] p-1">
-                <Text
-                  className="text-[#575757]  "
-                  style={{ fontFamily: 'Pretendard-Bold' }}
-                >
-                 여성
-                </Text>
+                  <Text
+                    className="text-[#575757]  "
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    여성
+                  </Text>
                 </Pressable>
               </View>
             </View>
@@ -157,7 +155,7 @@ export default function Information() {
                   className="text-[#575757]   "
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                대구광역시 달서구 호산동 381-3 행복한바이 101호
+                  대구광역시 달서구 호산동 381-3 행복한바이 101호
                 </Text>
               </View>
             </View>
@@ -174,18 +172,17 @@ export default function Information() {
                   className="text-[#575757]   "
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                대구광역시 달서구
+                  대구광역시 달서구
                 </Text>
               </View>
             </View>
             <Pressable className="bg-[#f0da5e] rounded-[30px]  p-4 flex justify-center items-center">
-                
-                <Text
-                  className="text-[#575757]  text-center "
-                  style={{ fontFamily: 'Pretendard-Bold' }}
-                >
-                 구조하다
-                </Text>
+              <Text
+                className="text-[#575757]  text-center "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                구조하다
+              </Text>
             </Pressable>
           </ScrollView>
         </View>
