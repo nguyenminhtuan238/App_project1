@@ -468,6 +468,82 @@ export default function Layout() {
           ),
         }}
       />
+      <Stack.Screen
+        name="Information/index"
+        options={{
+          headerTitle: '내 정보',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.back()}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Collection/index"
+        options={{
+          headerTitle: '내 광고 컬렉션',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.back()}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Establish/index"
+        options={{
+          headerTitle: '알림 설정',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.back()}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
     </Stack>
   );
 }
