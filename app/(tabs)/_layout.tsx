@@ -128,6 +128,33 @@ export default function Layout() {
           ),
         }}
       />
+
+      <Stack.Screen
+        name="DetailProduct/index"
+        options={{
+          headerTitle: '기부자',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+
       <Stack.Screen
         name="WithDrawal/index"
         options={{
