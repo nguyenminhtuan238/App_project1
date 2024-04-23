@@ -4,7 +4,7 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Image, View, Text } from 'react-native';
+import { Image, View, Text, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../commons/store';
@@ -17,11 +17,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { Avatar, Badge, Icon, withBadge } from '@rneui/themed';
 import Home from './Home';
+import { HiddenRegisteredCar } from '../../commons/store/hidden';
+
 export default function Layout() {
-  const Drawer = createDrawerNavigator();
-  const Student = useSelector((state: RootState) => state.Student);
+  const hidden = useSelector((state: RootState) => state.hidden);
   const dispatch: AppDispatch = useDispatch();
-  const Tab = createBottomTabNavigator();
 
   // đổi font chữ
   const [fontsLoaded] = useFonts({
@@ -541,6 +541,153 @@ export default function Layout() {
                 />
               </Text>
             </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="PolicyTerms/index"
+        options={{
+          headerTitle: '이용약관 및 정책',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.back()}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="FAQ/index"
+        options={{
+          headerTitle: 'FAQ/1:1필수',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.back()}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="FAQ/FAQ2"
+        options={{
+          headerTitle: 'FAQ/1:1필수',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.back()}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="RegisteredCar/index"
+        options={{
+          headerTitle: hidden.setRegisteredCar ? '내 차 정보' : '',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <>
+              {hidden.setRegisteredCar && (
+                <View className="mr-1">
+                  <Text
+                    className="text-white text-[15px] "
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    <Ionicons
+                      name="chevron-back"
+                      size={24}
+                      color="white"
+                      onPress={() => router.back()}
+                    />
+                  </Text>
+                </View>
+              )}
+            </>
+          ),
+          headerRight: () => (
+            <>
+              {hidden.setRegisteredCar ? (
+                <Pressable
+                  className="bg-[#555555] rounded-[30px]  p-2 flex flex-row justify-center items-center my-8"
+                  onPress={() => dispatch(HiddenRegisteredCar())}
+                >
+                  <Text
+                    className="text-[#fff]  text-center "
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    편집자
+                  </Text>
+                </Pressable>
+              ) : (
+                <View className="flex flex-row ">
+                  <Pressable
+                    className="bg-[#555555] rounded-[30px]  p-2  "
+                    onPress={() => dispatch(HiddenRegisteredCar())}
+                  >
+                    <Text
+                      className="text-[#fff]  text-center "
+                      style={{ fontFamily: 'Pretendard-Bold' }}
+                    >
+                      조정
+                    </Text>
+                  </Pressable>
+                  <Pressable
+                    className="bg-[#555555] rounded-[30px]  p-2 flex flex-row ml-2 "
+                    onPress={() => router.push('/FAQ/FAQ2')}
+                  >
+                    <Text
+                      className="text-[#f84a4a]  text-center "
+                      style={{ fontFamily: 'Pretendard-Bold' }}
+                    >
+                      삭제
+                    </Text>
+                  </Pressable>
+                </View>
+              )}
+            </>
           ),
         }}
       />
