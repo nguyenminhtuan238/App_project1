@@ -58,13 +58,14 @@ export default function User() {
                 <Text
                   className=" text-xl font-bold text-amber-300"
                   style={{ fontFamily: 'Pretendard-Bold' }}
+                  onPress={() => router.push('/Information/')}
                 >
                   탑 서포터{' '}
                   <Ionicons
                     name="chevron-forward"
                     size={24}
                     color="white"
-                    onPress={() => router.push('/Point/')}
+                    onPress={() => router.push('/Information/')}
                   />
                 </Text>
               </Pressable>
@@ -123,7 +124,7 @@ export default function User() {
             </Pressable>
             <Pressable
               className="border-b border-[#494949] p-3 flex"
-              onPress={() => router.push('/Information/')}
+              onPress={() => router.push('/RegisteredCar/')}
             >
               <View className="flex flex-row justify-between">
                 <Text
@@ -141,7 +142,7 @@ export default function User() {
                     name="chevron-forward"
                     size={24}
                     color="white"
-                    onPress={() => router.push('/Information/')}
+                    onPress={() => router.push('/RegisteredCar/')}
                   />
                 </Text>
               </View>
