@@ -638,6 +638,42 @@ export default function Layout() {
           ),
         }}
       />
+      <Stack.Screen
+        name="Notification/index"
+        options={{
+          headerTitle: '알림',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={() => router.back()}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="PolicyTerms/Rules"
+        options={{
+          headerTitle: '이용 약관',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'black' },
+          headerStyle: {
+            backgroundColor: 'white',
+          },
+        }}
+      />
     </Stack>
   );
 }

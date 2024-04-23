@@ -50,14 +50,14 @@ export default function PolicyTerms() {
           <ScrollView>
             <Pressable
               className="border-b border-[#494949] p-3 flex"
-              onPress={() => router.push('/Collection/')}
+              onPress={() => router.push('/PolicyTerms/Rules')}
             >
               <View className="flex flex-row justify-between">
                 <Text
                   className="text-[#fff]  text-[18px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  이용 약관
+                  이용약관
                 </Text>
 
                 <Text
