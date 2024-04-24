@@ -38,9 +38,9 @@ export default function ApplyForSponsorship() {
   }
 
   return (
-    <View className=" bg-black h-full">
+    <View className=" bg-black h-full border-t-2 border-[#2c2c2c]">
 
-      <View className="my-5">
+      <View className="my-5 ">
         <View className="mx-5 mb-5 flex flex-row items-center justify-center">
           <Text 
             className="text-[#fff] text-[20px]"
