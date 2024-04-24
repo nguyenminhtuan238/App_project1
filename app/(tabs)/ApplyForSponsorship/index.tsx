@@ -51,7 +51,7 @@ export default function ApplyForSponsorship() {
 
           <Pressable 
             className="ml-auto bg-yellow-500 w-[120px] h-[50px] rounded-full items-center justify-center"
-            onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
+            onPress={() => router.push('/(tabs)/DeliveryAddress/')}
           >
             <Text 
               className="text-black text-[20px]"
@@ -130,7 +130,7 @@ export default function ApplyForSponsorship() {
             className="text-[20px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
-            계속하다
+            주문하기
           </Text>
         </Pressable>
       </View>

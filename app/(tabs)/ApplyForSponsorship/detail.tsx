@@ -221,7 +221,7 @@ export default function DetailApplyForSponsorship() {
             className="text-[20px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
-            계속하다
+            주문하기
           </Text>
         </Pressable>
       </View>
