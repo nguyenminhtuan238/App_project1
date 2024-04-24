@@ -174,14 +174,15 @@ export default function District() {
       />
 
       <View className="my-2 border-t-4 border-[#1f232c]">
-        <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full">
-          <Link
+        <Pressable 
+          className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+          >
+          <Text
             className="text-[20px]"
-            href="/(tabs)/RegisterCarInformation/district"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             계속하다
-          </Link>
+          </Text>
         </Pressable>
       </View>
     </View>

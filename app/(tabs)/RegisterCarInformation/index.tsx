@@ -50,15 +50,6 @@ export default function RegisterCarInformation() {
     Alert.alert('Input values', `차량 소유자: ${text1}, 차량 번호: ${text2}`);
   };
 
-  // chuyyenr trang
-  // const [currentPage, setCurrentPage] = useState(0);
-
-  // const handleNextPage = () => {
-  //   if (currentPage < 3) {
-  //     setCurrentPage(currentPage + 1);
-  //   }
-  // };
-
   // đổi font chữ
   const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
@@ -191,16 +182,6 @@ export default function RegisterCarInformation() {
             </View>
           )}
 
-          {/* {selectedOption && (
-                  <View  className="px-3 flex justify-center w-full h-[50px] bg-[#1f232c] border-1 border-[#a3a2a2]">
-                      <Text 
-                        className="text-[#FFFF00] text-[20px]"
-                        style={{fontFamily: "Pretendard-Bold"}}
-                      >
-                          선택된: {selectedOption}
-                      </Text>
-                  </View>
-              )} */}
         </View>
 
         <View className="mt-2 mb-5">
@@ -329,31 +310,18 @@ export default function RegisterCarInformation() {
             </View>
           </View>
 
-          <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full">
-            <Link
+          <Pressable 
+            className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+            onPress={() => router.push('/(tabs)/RegisterCarInformation/city')}
+          >
+            <Text
               className="text-[20px]"
-              href="/(tabs)/RegisterCarInformation/city"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               계속하다
-            </Link>
+            </Text>
           </Pressable>
 
-          {/* <View className="mt-2 flex justify-center items-center">
-            <View className="w-[200px] btn-white">
-              <Button 
-              title="Submit"
-              onPress={handleButtonPress} 
-              />
-            </View>
-          </View> */}
-
-          {/* <View>
-        <Text className="mt-5 text-[#a3a2a2] text-[20px]">Trang {currentPage}/3</Text>
-        <TouchableOpacity onPress={handleNextPage}>
-          <Text className="mt-5 text-[#a3a2a2] text-[20px]">Chuyển đến trang tiếp theo</Text>
-        </TouchableOpacity>
-            </View>*/}
         </View>
       </ScrollView>
     </View>
