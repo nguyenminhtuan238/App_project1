@@ -74,7 +74,7 @@ export default function DeliveryAddress() {
   }
 
   return (
-    <ScrollView className="bg-[#000]">
+    <ScrollView className="bg-[#000] border-t-2 border-[#2c2c2c]">
 
         <View className="m-5">
             <Text 
@@ -211,7 +211,7 @@ export default function DeliveryAddress() {
 
             <Pressable 
                 className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-                onPress={() => router.push('/(tabs)/RegisterCarInformation/city')}
+                onPress={() => router.push('/ApplyForSponsorship/detail')}
             >
                 <Text
                 className="text-[20px]"
