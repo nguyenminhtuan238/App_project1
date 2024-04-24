@@ -15,7 +15,7 @@ import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-export default function DetailApplyForSponsorship() {
+export default function AddAddressDeliveryAddress() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
