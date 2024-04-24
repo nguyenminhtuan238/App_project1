@@ -68,8 +68,7 @@ export default function RegisterCarInformation() {
   }
 
   return (
-    <View className="bg-[#000]">
-      <View className="top-0 left-0 z-10 border-yellow-500 border-t-4 w-1/3" />
+    <View className="bg-[#000] border-yellow-500 border-t-4 w-1/3">
       <ScrollView className="bg-[#000]">
         <View className=" py-5 flex border rounded-[15px] z-10">
           <View className="flex flex-row ">

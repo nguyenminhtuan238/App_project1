@@ -142,8 +142,7 @@ export default function District() {
   );
 
   return (
-    <View className="bg-[#000] h-full">
-      <View className="top-0 left-0 z-10 border-yellow-500 border-t-4 w-3/3" />
+    <View className="bg-[#000] h-full border-yellow-500 border-t-4 w-3/3">
       <View className=" py-5 flex border rounded-[15px]">
         <View className="flex flex-row ">
           <Text
