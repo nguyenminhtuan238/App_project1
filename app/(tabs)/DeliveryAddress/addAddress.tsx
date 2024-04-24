@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  ImageBackground,
-  Image,
-  ScrollView,
   Pressable,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 
 import {useFonts} from 'expo-font'
@@ -37,108 +37,125 @@ export default function AddAddressDeliveryAddress() {
     return undefined;
   }
 
+  const data = [
+    {
+      key: '1',
+      title: '본가',
+      name: '송길동',
+      phone: '010-1231-1592',
+      address: '대구 달서구 호산동로 34길 21-4, 행복일 203 [42708]',
+    },
+    {
+      key: '2',
+      title: '회사',
+      name: '박서준',
+      phone: '010-1231-1592',
+      address: '대구 달서구 호산동로 34길 21-4, 행복일 203 [42708]',
+    },
+  ];
+
+  // Chọn địa chỉ
+  // const [selectedTitle, setSelectedTitle] = useState('');
+  // const [selectedName, setSelectedName] = useState('');
+  // const [selectedPhone, setSelectedPhone] = useState('');
+  // const [selectedAddress, setSelectedAddress] = useState('');
+
+  // const handleAddressSelection = (title: string, name: string, phone: string, address: string) => {
+  //   setSelectedTitle(title);
+  //   setSelectedName(name);
+  //   setSelectedPhone(phone);
+  //   setSelectedAddress(address);
+  // };
+
   return (
-    <View className="bg-black h-screen border-t-2 border-[#2c2c2c]">
-      <ScrollView>
-        <View className="flex flex-col">
+    <SafeAreaView className="bg-black h-screen border-t-2 border-[#2c2c2c]">
+      <View className="flex flex-col">
 
-          <View className="mt-5 min-h-[450px]">
-            <Pressable
-              className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 border-yellow-500 rounded-2xl"
-            >
-              <View 
-                className="basis-1/5"
+        <View className="mt-5 min-h-[450px]">
+          <FlatList
+            data={data}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 border-yellow-500 rounded-2xl"
+                // onPress={() =>
+                //   handleAddressSelection(
+                //     selectedTitle === item.title ? '' : item.title,
+                //     selectedName === item.name ? '' : item.name,
+                //     selectedPhone === item.phone ? '' : item.phone,
+                //     selectedAddress === item.address ? '' : item.address,
+                //   )
+                // }
               >
-                <Pressable>
+                <View className="basis-1/5">
+                  {/* <View 
+                    className="w-30 h-30 border-2"
+                    style={{
+                      backgroundColor:
+                      selectedAddress === item.address ? 'black' : 'transparent',
+                      marginRight: 5,
+                      borderWidth: 2,
+                      borderColor: selectedAddress === item.address ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
+                    }}
+                  >
+                    {selectedAddress === item.address && (
+                      <Pressable className="border-yellow-500 rounded-full w-[15px] h-[15px] bg-yellow-500" />
+                    )}
+                  </View> */}
+                </View>
+                <View className="basis-4/5">
+                  <Text
+                    className="my-1 text-[20px] text-[#fff]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    {item.title}
+                  </Text>
+                  <Text
+                    className="my-1 text-[15px] text-[#a3a2a2]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    {item.name} | {item.phone}
+                  </Text>
+                  <Text
+                    className="my-1 text-[15px] text-[#fff]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    {item.address}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            )}
+            keyExtractor={item => item.key}
+          />
 
-                </Pressable>
-              </View>
-
-              <View 
-                className="basis-4/5"
-              >
-                <Text
-                  className="my-1 text-[20px] text-[#fff]"
-                >
-                  본가
-                </Text>
-                <Text
-                  className="my-1 text-[15px] text-[#fff]"
-                >
-                  송길동 | 010-1231-1592
-                </Text>
-                <Text
-                  className="my-1 text-[15px] text-[#fff]"
-                >
-                  대구 달서구 호산동로 34길 21-4, 행복일 203 [42708]
-                </Text>
-              </View>
-        
-            </Pressable>
-
-            <Pressable
-              className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 border-yellow-500 rounded-2xl"
-            >
-              <View 
-                className="basis-1/5"
-              >
-                <Pressable>
-
-                </Pressable>
-              </View>
-
-              <View 
-                className="basis-4/5"
-              >
-                <Text
-                  className="my-1 text-[20px] text-[#fff]"
-                >
-                  회사
-                </Text>
-                <Text
-                  className="my-1 text-[15px] text-[#fff]"
-                >
-                  박서준 | 010-1231-1592
-                </Text>
-                <Text
-                  className="my-1 text-[15px] text-[#fff]"
-                >
-                  대구 달서구 호산동로 34길 21-4, 행복일 203 [42708]
-                </Text>
-              </View>
-        
-            </Pressable>
-          
-          </View>
-
-          <View className="mt-auto">
-            <Pressable 
-              className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center border-2 border-yellow-500 rounded-full"
-              //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
-            >
-              <Text
-                className="text-[20px] text-yellow-500"
-                style={{ fontFamily: 'Pretendard-Bold' }}
-              >
-                + 새 주소 추가하기
-              </Text>
-            </Pressable>
-
-            <Pressable 
-              className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-              //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
-            >
-              <Text
-                className="text-[20px]"
-                style={{ fontFamily: 'Pretendard-Bold' }}
-              >
-                저장하기
-              </Text>
-            </Pressable>
-          </View>
-          
         </View>
-      </ScrollView>
-    </View>
+
+        <View className="mt-auto">
+          <Pressable 
+            className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center border-2 border-yellow-500 rounded-full"
+            onPress={() => router.push('/(tabs)/DeliveryAddress/')}
+          >
+            <Text
+              className="text-[20px] text-yellow-500"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              + 새 주소 추가하기
+            </Text>
+          </Pressable>
+
+          <Pressable 
+            className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+            //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
+          >
+            <Text
+              className="text-[20px]"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              저장하기
+            </Text>
+          </Pressable>
+        </View>
+
+      </View>
+    </SafeAreaView>
   );
 }

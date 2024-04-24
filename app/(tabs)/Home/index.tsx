@@ -85,7 +85,8 @@ export default function Home() {
             <Link
               className="mb-4 text-xl text-amber-400"
               //href="/(tabs)/RegisterCarInformation/"
-              href="/(tabs)/ApplyForSponsorship/"
+              //href="/(tabs)/ApplyForSponsorship/"
+              href="/(tabs)/DeliveryAddress/addAddress"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               차량정보 등록{'>'}

@@ -22,8 +22,6 @@ export default function District() {
   const [Search, setSearch] = useState(1);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
-  const [selectedDistrict, setSelectedDistrict] = useState('');
-
   useEffect(() => {
     async function loadFonts() {
       await Font.loadAsync({
@@ -47,6 +45,7 @@ export default function District() {
     return null; // or other temporary content
   }
 
+  const [selectedDistrict, setSelectedDistrict] = useState('');
   // chọn city
   const handleDistrictSelection = (district: string) => {
     setSelectedDistrict(district);
@@ -109,7 +108,7 @@ export default function District() {
             height: 30,
             borderRadius: 40,
             backgroundColor:
-              selectedDistrict === item.name ? 'black' : 'transparent',
+            selectedDistrict === item.name ? 'black' : 'transparent',
             marginRight: 5,
             borderWidth: 2,
             borderColor: selectedDistrict === item.name ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
