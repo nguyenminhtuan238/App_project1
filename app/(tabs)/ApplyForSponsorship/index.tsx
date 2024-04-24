@@ -38,66 +38,100 @@ export default function ApplyForSponsorship() {
   }
 
   return (
-    <View className=" bg-[#a8a7a7]">
-      <View className=" mb-2 flex flex-row p-5  justify-center">
-        <View className="  rounded-[10px] mx-5  flex flex-row justify-center">
-          <Image
-            source={require('.../../../assets/images/Bear.png')}
-            className="h-[250] w-[250] "
-            resizeMode="stretch"
-          />
+    <View className=" bg-black h-full">
+
+      <View className="my-5">
+        <View className="mx-5 mb-5 flex flex-row items-center justify-center">
+          <Text 
+            className="text-[#fff] text-[20px]"
+            style={{fontFamily: 'Pretendard-Bold' }}
+          >
+            배송지를 추가해주세요.
+          </Text>
+
+          <Pressable 
+            className="ml-auto bg-yellow-500 w-[120px] h-[50px] rounded-full items-center justify-center"
+          >
+            <Text 
+              className="text-black text-[20px]"
+              style={{fontFamily: 'Pretendard-Bold' }}
+            >
+              배송지 추가
+            </Text>
+          </Pressable>
+
         </View>
-      </View>
-      <View className="h-[30] bg-[#494949] flex flex-row justify-between 	">
+        
         <Text 
-          className="text-amber-200 text-[20px] ml-3"
-          style={{fontFamily: "Pretendard-Bold"}}
+          className="mx-3 mb-5 text-[#a3a2a2] text-[15px]"
+          style={{ fontFamily: 'Pretendard-Bold' }}
         >
-          100명 중 26명이 지지하고 있습니다.
+          배송지를 한 번만 추가해놓으면 이후에 편리하게 선택할 수 있어 요.
         </Text>
       </View>
 
-      <View className=" bg-[#000] flex  justify-between p-5	">
-        <Text 
-          className="text-white text-[25px] ml-3"
-          style={{fontFamily: "Pretendard-Bold"}}
+      <View className="border-t-[5px] border-[#2c2c2c]">
+        <Text
+          className="mt-5 mx-5 text-[#fff] text-[20px]"
+          style={{fontFamily: 'Pretendard-Bold' }}
         >
-          Bad Blue
+          광고 상품 정보
         </Text>
-        <Text 
-          className="text-white text-[15px] ml-3 mt-1"
-          style={{fontFamily: "Pretendard-Bold"}}
+
+        <Pressable
+          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
+          onPress={() => router.push('/(tabs)/DetailProduct/')}
         >
-          시간: 30일
-        </Text>
-        <Text 
-          className="text-[#a1a0a0] text-[15px] ml-3 mt-5"
-          style={{fontFamily: "Pretendard-Bold"}}
-        >
-          배드블루 대구광역시
-        </Text>
-        <View className=" bg-[#000] flex flex-row justify-end mt-10	">
-          <Text 
-            className="text-white text-[25px] ml-3 Text-right"
-            style={{fontFamily: "Pretendard-Bold"}}
-          >
-          25,000P 적립 가능
-          </Text>
-        </View>
-        <View className=" bg-[#000] flex justify-center items-center p-5	w-full">
-          <Pressable
-            className=" bg-[#eeea14] p-5  rounded-full  w-full"
-            onPress={() => router.push('/register/')}
-          >
-            <Text 
-              className="text-black text-center text-[20px]"
-              style={{fontFamily: "Pretendard-Bold"}}
+          <View className="basis-[40%] object-contain bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
+            <Image
+              source={require('../../../assets/images/Bucks.png')} 
+              className="h-[120] w-[100] "
+            />
+          </View>
+          <View className="basis-[60%] mr-3">
+            <Text
+              className="text-[#fff] text-[20px]"
+              style={{ fontFamily: 'Pretendard-Bold' }}
             >
-              후원신청
+              MILWAUKEE BUCKS
             </Text>
-          </Pressable>
-        </View>
+            <Text
+              className="text-[#a3a2a2] mt-2"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              대구광역시 | 기간 : 120일
+            </Text>
+            <Text
+              className="text-[#e1e44e] text-[20px] my-5"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              12,000P
+            </Text>
+            <View className="flex flex-row justify-end mt-3">
+              <Text
+                className="text-[#a3a2a2]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                100명중 <Text className="text-yellow-500">26명</Text>이 서포트 중 입니다.
+              </Text>
+            </View>
+          </View>
+        </Pressable>
+
       </View>
+
+      <View className="my-2 mt-auto">
+        <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full">
+          <Link
+            className="text-[20px]"
+            href="/(tabs)/RegisterCarInformation/district"
+            style={{ fontFamily: 'Pretendard-Bold' }}
+          >
+            계속하다
+          </Link>
+        </Pressable>
+      </View>
+
     </View>
   );
 }

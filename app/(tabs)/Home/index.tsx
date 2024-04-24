@@ -77,10 +77,18 @@ export default function Home() {
             </Text>
             <Link
               className="mb-4 text-xl text-amber-400"
-              href="/(tabs)/RegisterCarInformation/"
+              href="/(tabs)/ListProduct/"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               스폰서 찾기{'>'}
+            </Link>
+            <Link
+              className="mb-4 text-xl text-amber-400"
+              //href="/(tabs)/RegisterCarInformation/"
+              href="/(tabs)/ApplyForSponsorship/"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              차량정보 등록{'>'}
             </Link>
           </View>
           <View>

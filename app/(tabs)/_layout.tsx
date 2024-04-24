@@ -362,7 +362,7 @@ export default function Layout() {
       <Stack.Screen
         name="ApplyForSponsorship/index"
         options={{
-          headerTitle: '양식을 작성하세요',
+          headerTitle: '신청서 작성',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
@@ -388,7 +388,7 @@ export default function Layout() {
       <Stack.Screen
         name="ApplyForSponsorship/detail"
         options={{
-          headerTitle: '양식을 작성하세요',
+          headerTitle: '신청서 작성',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
