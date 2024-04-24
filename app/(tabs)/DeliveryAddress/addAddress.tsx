@@ -38,194 +38,107 @@ export default function AddAddressDeliveryAddress() {
   }
 
   return (
-    <ScrollView className=" bg-black h-full border-t-2 border-[#2c2c2c]">
+    <View className="bg-black h-screen border-t-2 border-[#2c2c2c]">
+      <ScrollView>
+        <View className="flex flex-col">
 
-      <View className="mt-5 ">
-        <View className="mx-5 mb-5 flex flex-row items-center justify-center">
-          <Text 
-            className="text-[#fff] text-[20px]"
-            style={{fontFamily: 'Pretendard-Bold' }}
-          >
-            배송지
-          </Text>
-
-          <Pressable 
-            className="ml-auto border-2 border-yellow-500 w-[120px] h-[50px] rounded-full items-center justify-center"
-            //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
-          >
-            <Text 
-              className="text-yellow-500 text-[20px]"
-              style={{fontFamily: 'Pretendard-Bold' }}
+          <View className="mt-5 min-h-[450px]">
+            <Pressable
+              className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 border-yellow-500 rounded-2xl"
             >
-              배송지 추가
-            </Text>
-          </Pressable>
+              <View 
+                className="basis-1/5"
+              >
+                <Pressable>
 
-        </View>
-      
-      </View>
+                </Pressable>
+              </View>
 
-      <View 
-        className="mb-5 w-full h-[70px] bg-[#2c2c2c] flex flex-row items-center justify-center rounded-xl" 
-      >
-
-        <Pressable
-          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
-        >
-          <Text
-            className="text-[20px]"
-            style={{fontFamily: 'Pretendard-Bold' }}
-          >
-            본가
-          </Text> 
-        </Pressable>
+              <View 
+                className="basis-4/5"
+              >
+                <Text
+                  className="my-1 text-[20px] text-[#fff]"
+                >
+                  본가
+                </Text>
+                <Text
+                  className="my-1 text-[15px] text-[#fff]"
+                >
+                  송길동 | 010-1231-1592
+                </Text>
+                <Text
+                  className="my-1 text-[15px] text-[#fff]"
+                >
+                  대구 달서구 호산동로 34길 21-4, 행복일 203 [42708]
+                </Text>
+              </View>
         
-        <Pressable
-          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
-        >
-          <Text
-            className="text-[20px]"
-            style={{fontFamily: 'Pretendard-Bold' }}
-          >
-            회사
-          </Text>
-        </Pressable>
+            </Pressable>
+
+            <Pressable
+              className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 border-yellow-500 rounded-2xl"
+            >
+              <View 
+                className="basis-1/5"
+              >
+                <Pressable>
+
+                </Pressable>
+              </View>
+
+              <View 
+                className="basis-4/5"
+              >
+                <Text
+                  className="my-1 text-[20px] text-[#fff]"
+                >
+                  회사
+                </Text>
+                <Text
+                  className="my-1 text-[15px] text-[#fff]"
+                >
+                  박서준 | 010-1231-1592
+                </Text>
+                <Text
+                  className="my-1 text-[15px] text-[#fff]"
+                >
+                  대구 달서구 호산동로 34길 21-4, 행복일 203 [42708]
+                </Text>
+              </View>
         
-        <Pressable
-          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
-        >
-          <Text
-            className="text-[20px]"
-            style={{fontFamily: 'Pretendard-Bold' }}
-          >
-            외가
-          </Text>
-        </Pressable>
-        
-        <Pressable
-          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
-        >
-          <Text
-            className="text-[20px]"
-            style={{fontFamily: 'Pretendard-Bold' }}
-          >
-            친구집
-          </Text>
-        </Pressable>
-        
-        <Pressable
-          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
-        >
-          <Text
-            className="text-[20px]"
-            style={{fontFamily: 'Pretendard-Bold' }}
-          >
-            마늘
-          </Text>
-        </Pressable>
-
-      </View>
-
-      <View className="mx-5">
-        <Text
-          className="text-[15px] text-[#fff]"
-          style={{fontFamily: 'Pretendard-Bold' }}
-        >
-          대구 달서구 호산동로 34길 21-4, 행복빌 203 [42708]
-        </Text>
-
-        <Text
-          className="mt-2 text-[12px] text-[#fff]"
-          style={{fontFamily: 'Pretendard-Bold' }}
-        >
-          홍길동 | 010-1231-1592
-        </Text>
-      </View>
-
-      <View className="mx-5">
-        <Text
-          className="mt-5 mb-5 text-[20px] text-[#fff]"
-          style={{fontFamily: 'Pretendard-Bold' }}
-        >
-          배송 요청사항
-        </Text>
-
-        <Pressable
-          className="ml-auto mr-auto w-[350px] h-[50px] border-2 border-yellow-500 rounded-xl flex items-center justify-center"
-        >
-          <Text
-            className="text-[20px] text-[#fff]"
-            style={{fontFamily: 'Pretendard-Bold' }}
-          >
-            배송 시 요청사항을 선택해주세요.
-          </Text>
-        </Pressable>
-      </View>
-
-      <View className="mt-5 border-t-[5px] border-[#2c2c2c]">
-        <Text
-          className="mt-5 mx-5 text-[#fff] text-[20px]"
-          style={{fontFamily: 'Pretendard-Bold' }}
-        >
-          광고 상품 정보
-        </Text>
-
-        <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
-          onPress={() => router.push('/(tabs)/DetailProduct/')}
-        >
-          <View className="basis-[40%] object-contain bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bucks.png')} 
-              className="h-[120] w-[100] "
-            />
+            </Pressable>
+          
           </View>
-          <View className="basis-[60%] mr-3">
-            <Text
-              className="text-[#fff] text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
+
+          <View className="mt-auto">
+            <Pressable 
+              className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center border-2 border-yellow-500 rounded-full"
+              //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
             >
-              MILWAUKEE BUCKS
-            </Text>
-            <Text
-              className="text-[#a3a2a2] mt-2"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              대구광역시 | 기간 : 120일
-            </Text>
-            <Text
-              className="text-[#e1e44e] text-[20px] my-5"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              12,000P
-            </Text>
-            <View className="flex flex-row justify-end mt-3">
               <Text
-                className="text-[#a3a2a2]"
+                className="text-[20px] text-yellow-500"
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
-                100명중 <Text className="text-yellow-500">26명</Text>이 서포트 중 입니다.
+                + 새 주소 추가하기
               </Text>
-            </View>
+            </Pressable>
+
+            <Pressable 
+              className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+              //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
+            >
+              <Text
+                className="text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                저장하기
+              </Text>
+            </Pressable>
           </View>
-        </Pressable>
-
-      </View>
-
-      <View className="my-2 mt-auto">
-        <Pressable 
-          className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-          onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
-        >
-          <Text
-            className="text-[20px]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
-          >
-            저장하기
-          </Text>
-        </Pressable>
-      </View>
-
-    </ScrollView>
+          
+        </View>
+      </ScrollView>
+    </View>
   );
 }

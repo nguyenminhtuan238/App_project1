@@ -189,8 +189,9 @@ export default function ListProduct() {
             </View>
           </View>
         </Pressable>
+
         <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
+          className="border-b border-gray-700 mb-2 flex flex-row p-5 justify-center "
           onPress={() => router.push('/(tabs)/DetailProduct/')}
         >
           <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">

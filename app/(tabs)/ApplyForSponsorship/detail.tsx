@@ -51,7 +51,7 @@ export default function DetailApplyForSponsorship() {
 
           <Pressable 
             className="ml-auto border-2 border-yellow-500 w-[120px] h-[50px] rounded-full items-center justify-center"
-            //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
+            onPress={() => router.push('/(tabs)/DeliveryAddress/addAddress')}
           >
             <Text 
               className="text-yellow-500 text-[20px]"
@@ -215,7 +215,7 @@ export default function DetailApplyForSponsorship() {
       <View className="my-2 mt-auto">
         <Pressable 
           className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-          onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
+          //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
         >
           <Text
             className="text-[20px]"

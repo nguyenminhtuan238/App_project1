@@ -460,6 +460,26 @@ export default function Layout() {
               </Text>
             </View>
           ),
+          headerRight: () => (
+            <View className="my-5 flex flex-row items-center justify-center ">
+              <Pressable className="mx-2 w-[60px] h-[50px] bg-[#2c2c2c] rounded-xl flex items-center justify-center">
+                <Text
+                  className=" text-[#7e8186] text-[20px]"
+                  style={{ fontFamily: 'Pretendard-Bold'}}
+                >
+                  수정
+                </Text>
+              </Pressable>
+              <Pressable className="mx-2 w-[60px] h-[50px] bg-[#2c2c2c] rounded-xl flex items-center justify-center">
+                <Text
+                  className=" text-red-500 text-[20px]"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  삭제
+                </Text>
+              </Pressable>
+            </View>
+          ),
         }}
       />
 
