@@ -667,11 +667,36 @@ export default function Layout() {
       <Stack.Screen
         name="PolicyTerms/Rules"
         options={{
-          headerTitle: '이용 약관',
+          headerTitle: '알림',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'black' },
           headerStyle: {
             backgroundColor: 'white',
           },
+        }}
+      />
+      <Stack.Screen
+        name="Notification/NotificationExample"
+        options={{
+          headerTitle: '알림',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'black' },
+          headerStyle: {
+            backgroundColor: 'white',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-black text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="black"
+                  onPress={() => router.back()}
+                />
+              </Text>
+            </View>
+          )
         }}
       />
     </Stack>
