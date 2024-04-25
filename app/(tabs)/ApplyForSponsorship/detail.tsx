@@ -15,13 +15,13 @@ import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-export default function ApplyForSponsorship() {
+export default function DetailApplyForSponsorship() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
 
-   // đổi font chữ
-   const [fontsLoaded] = useFonts({
+  // đổi font chữ
+  const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
     'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
     'Pretendard-ExtraBold': require('../../../assets/fonts/Pretendard-ExtraBold.otf'),
@@ -38,23 +38,23 @@ export default function ApplyForSponsorship() {
   }
 
   return (
-    <View className=" bg-black h-full border-t-2 border-[#2c2c2c]">
+    <ScrollView className=" bg-black h-full border-t-2 border-[#2c2c2c]">
 
-      <View className="my-5 ">
+      <View className="mt-5 ">
         <View className="mx-5 mb-5 flex flex-row items-center justify-center">
           <Text 
             className="text-[#fff] text-[20px]"
             style={{fontFamily: 'Pretendard-Bold' }}
           >
-            배송지를 추가해주세요.
+            배송지
           </Text>
 
           <Pressable 
-            className="ml-auto bg-yellow-500 w-[120px] h-[50px] rounded-full items-center justify-center"
-            onPress={() => router.push('/(tabs)/DeliveryAddress/')}
+            className="ml-auto border-2 border-yellow-500 w-[120px] h-[50px] rounded-full items-center justify-center"
+            onPress={() => router.push('/(tabs)/DeliveryAddress/addAddress')}
           >
             <Text 
-              className="text-black text-[20px]"
+              className="text-yellow-500 text-[20px]"
               style={{fontFamily: 'Pretendard-Bold' }}
             >
               배송지 추가
@@ -62,16 +62,107 @@ export default function ApplyForSponsorship() {
           </Pressable>
 
         </View>
-        
-        <Text 
-          className="mx-3 mb-5 text-[#a3a2a2] text-[15px]"
-          style={{ fontFamily: 'Pretendard-Bold' }}
+      
+      </View>
+
+      <View 
+        className="mb-5 w-full h-[70px] bg-[#2c2c2c] flex flex-row items-center justify-center rounded-xl" 
+      >
+
+        <Pressable
+          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
         >
-          배송지를 한 번만 추가해놓으면 이후에 편리하게 선택할 수 있어 요.
+          <Text
+            className="text-[20px]"
+            style={{fontFamily: 'Pretendard-Bold' }}
+          >
+            본가
+          </Text> 
+        </Pressable>
+        
+        <Pressable
+          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
+        >
+          <Text
+            className="text-[20px]"
+            style={{fontFamily: 'Pretendard-Bold' }}
+          >
+            회사
+          </Text>
+        </Pressable>
+        
+        <Pressable
+          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
+        >
+          <Text
+            className="text-[20px]"
+            style={{fontFamily: 'Pretendard-Bold' }}
+          >
+            외가
+          </Text>
+        </Pressable>
+        
+        <Pressable
+          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
+        >
+          <Text
+            className="text-[20px]"
+            style={{fontFamily: 'Pretendard-Bold' }}
+          >
+            친구집
+          </Text>
+        </Pressable>
+        
+        <Pressable
+          className="ml-1 w-[70px] h-[50px] bg-yellow-500 rounded-2xl flex items-center justify-center"
+        >
+          <Text
+            className="text-[20px]"
+            style={{fontFamily: 'Pretendard-Bold' }}
+          >
+            마늘
+          </Text>
+        </Pressable>
+
+      </View>
+
+      <View className="mx-5">
+        <Text
+          className="text-[15px] text-[#fff]"
+          style={{fontFamily: 'Pretendard-Bold' }}
+        >
+          대구 달서구 호산동로 34길 21-4, 행복빌 203 [42708]
+        </Text>
+
+        <Text
+          className="mt-2 text-[12px] text-[#fff]"
+          style={{fontFamily: 'Pretendard-Bold' }}
+        >
+          홍길동 | 010-1231-1592
         </Text>
       </View>
 
-      <View className="border-t-[5px] border-[#2c2c2c]">
+      <View className="mx-5">
+        <Text
+          className="mt-5 mb-5 text-[20px] text-[#fff]"
+          style={{fontFamily: 'Pretendard-Bold' }}
+        >
+          배송 요청사항
+        </Text>
+
+        <Pressable
+          className="ml-auto mr-auto w-[350px] h-[50px] border-2 border-yellow-500 rounded-xl flex items-center justify-center"
+        >
+          <Text
+            className="text-[20px] text-[#fff]"
+            style={{fontFamily: 'Pretendard-Bold' }}
+          >
+            배송 시 요청사항을 선택해주세요.
+          </Text>
+        </Pressable>
+      </View>
+
+      <View className="mt-5 border-t-[5px] border-[#2c2c2c]">
         <Text
           className="mt-5 mx-5 text-[#fff] text-[20px]"
           style={{fontFamily: 'Pretendard-Bold' }}
@@ -124,7 +215,7 @@ export default function ApplyForSponsorship() {
       <View className="my-2 mt-auto">
         <Pressable 
           className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-          onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
+          //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
         >
           <Text
             className="text-[20px]"
@@ -135,6 +226,6 @@ export default function ApplyForSponsorship() {
         </Pressable>
       </View>
 
-    </View>
+    </ScrollView>
   );
 }

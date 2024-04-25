@@ -22,8 +22,6 @@ export default function District() {
   const [Search, setSearch] = useState(1);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
-  const [selectedDistrict, setSelectedDistrict] = useState('');
-
   useEffect(() => {
     async function loadFonts() {
       await Font.loadAsync({
@@ -47,6 +45,7 @@ export default function District() {
     return null; // or other temporary content
   }
 
+  const [selectedDistrict, setSelectedDistrict] = useState('');
   // chọn city
   const handleDistrictSelection = (district: string) => {
     setSelectedDistrict(district);
@@ -109,7 +108,7 @@ export default function District() {
             height: 30,
             borderRadius: 40,
             backgroundColor:
-              selectedDistrict === item.name ? 'black' : 'transparent',
+            selectedDistrict === item.name ? 'black' : 'transparent',
             marginRight: 5,
             borderWidth: 2,
             borderColor: selectedDistrict === item.name ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
@@ -143,7 +142,8 @@ export default function District() {
 
   return (
     <View className="bg-[#000] h-full">
-      <View className="top-0 left-0 z-10 border-yellow-500 border-t-4 w-3/3" />
+      <View className="border-yellow-500 border-t-4 w-3/3" />
+
       <View className=" py-5 flex border rounded-[15px]">
         <View className="flex flex-row ">
           <Text
@@ -174,14 +174,15 @@ export default function District() {
       />
 
       <View className="my-2 border-t-4 border-[#1f232c]">
-        <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full">
-          <Link
+        <Pressable 
+          className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+          >
+          <Text
             className="text-[20px]"
-            href="/(tabs)/RegisterCarInformation/district"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             계속하다
-          </Link>
+          </Text>
         </Pressable>
       </View>
     </View>

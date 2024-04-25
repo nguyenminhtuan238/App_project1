@@ -128,6 +128,33 @@ export default function Layout() {
           ),
         }}
       />
+
+      <Stack.Screen
+        name="DetailProduct/index"
+        options={{
+          headerTitle: '기부자',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+
       <Stack.Screen
         name="WithDrawal/index"
         options={{
@@ -333,9 +360,35 @@ export default function Layout() {
       />
 
       <Stack.Screen
-        name="DetailProduct/index"
+        name="ApplyForSponsorship/index"
         options={{
-          headerTitle: '후원자 세부정보',
+          headerTitle: '신청서 작성',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text 
+                className="text-white text-[15px] "
+                style={{fontFamily: "Pretendard-Bold"}}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="ApplyForSponsorship/detail"
+        options={{
+          headerTitle: '신청서 작성',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
@@ -353,6 +406,78 @@ export default function Layout() {
                   onPress={router.back}
                 />
               </Text>
+            </View>
+          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="DeliveryAddress/index"
+        options={{
+          headerTitle: '배송지 목록',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="DeliveryAddress/addAddress"
+        options={{
+          headerTitle: '배송지 목록',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+          headerRight: () => (
+            <View className="my-5 flex flex-row items-center justify-center ">
+              <Pressable className="mx-2 w-[60px] h-[50px] bg-[#2c2c2c] rounded-xl flex items-center justify-center">
+                <Text
+                  className=" text-[#7e8186] text-[20px]"
+                  style={{ fontFamily: 'Pretendard-Bold'}}
+                >
+                  수정
+                </Text>
+              </Pressable>
+              <Pressable className="mx-2 w-[60px] h-[50px] bg-[#2c2c2c] rounded-xl flex items-center justify-center">
+                <Text
+                  className=" text-red-500 text-[20px]"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  삭제
+                </Text>
+              </Pressable>
             </View>
           ),
         }}

@@ -127,7 +127,8 @@ export default function City() {
 
   return (
     <View className="bg-[#000] h-full">
-      <View className="top-0 left-0 z-10 border-yellow-500 border-t-4 w-2/3" />
+      <View className="border-yellow-500 border-t-4 w-2/3" />
+
       <View className="py-5 flex border rounded-[15px]">
         <View className="flex flex-row">
           <Text
@@ -157,14 +158,16 @@ export default function City() {
       />
 
       <View className="my-2 border-t-4 border-[#1f232c]">
-        <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full">
-          <Link
+        <Pressable 
+          className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+          onPress={() => router.push('/(tabs)/RegisterCarInformation/district')}
+        >
+          <Text
             className="text-[20px]"
-            href="/(tabs)/RegisterCarInformation/district"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             계속하다
-          </Link>
+          </Text>
         </Pressable>
       </View>
     </View>
