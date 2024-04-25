@@ -38,21 +38,8 @@
           "//": "Disables the microphone permission",
           "microphonePermission": false
         }
-      ],
-      [
-        "react-native-background-geolocation",
-        {
-          "license": "e580e0e024daf161dc86875f663fcf5535b6d13e9a0769ba5f69a023de5d605d"
-        }
-      ],
-      [
-        "expo-gradle-ext-vars",
-        {
-          "googlePlayServicesLocationVersion": "21.1.0",
-          "appCompatVersion": "1.4.2"
-        }
-      ],
-      "react-native-background-fetch"
+      ]
+     
     ],
     "experiments": {
       "typedRoutes": true
