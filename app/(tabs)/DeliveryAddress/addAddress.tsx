@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {useFonts} from 'expo-font'
+import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 
 import { Logout } from '../../../commons/store/user';
@@ -27,7 +27,12 @@ export default function AddAddressDeliveryAddress() {
   const [selectedPhone, setSelectedPhone] = useState('');
   const [selectedAddress, setSelectedAddress] = useState('');
 
-  const handleAddressSelection = (title: string, name: string, phone: string, address: string) => {
+  const handleAddressSelection = (
+    title: string,
+    name: string,
+    phone: string,
+    address: string
+  ) => {
     setSelectedTitle(title);
     setSelectedName(name);
     setSelectedPhone(phone);
@@ -80,7 +85,6 @@ export default function AddAddressDeliveryAddress() {
   return (
     <SafeAreaView className="bg-black h-screen border-t-2 border-[#2c2c2c]">
       <View className="flex flex-col">
-
         <View className="mt-5 min-h-[450px]">
           <FlatList
             data={data}
@@ -92,22 +96,27 @@ export default function AddAddressDeliveryAddress() {
                     selectedTitle === item.title ? '' : item.title,
                     selectedName === item.name ? '' : item.name,
                     selectedPhone === item.phone ? '' : item.phone,
-                    selectedAddress === item.address ? '' : item.address,
+                    selectedAddress === item.address ? '' : item.address
                   )
                 }
               >
-                <View 
+                <View
                   className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 rounded-2xl"
                   style={{
-                    borderColor: selectedTitle === item.title ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
+                    borderColor:
+                      selectedTitle === item.title ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
                   }}
                 >
                   <View className="basis-1/5 flex items-center justify-center">
-                    <View 
+                    <View
                       className="w-[30px] h-[30px] border-2 rounded-full flex items-center justify-center"
                       style={{
-                        backgroundColor: selectedTitle === item.title ? 'black' : 'transparent',
-                        borderColor: selectedTitle === item.title ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
+                        backgroundColor:
+                          selectedTitle === item.title
+                            ? 'black'
+                            : 'transparent',
+                        borderColor:
+                          selectedTitle === item.title ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
                       }}
                     >
                       {selectedTitle === item.title && (
@@ -123,23 +132,24 @@ export default function AddAddressDeliveryAddress() {
                       >
                         {item.title}
                       </Text>
-                      <View 
+                      <View
                         className="ml-auto mr-5 w-[100px] h-[35px] border-2 border-white flex items-center justify-center rounded-lg"
-                        style={{ 
-                          borderColor: selectedTitle === item.title ? 'yellow' : 'black', 
-                         }}
+                        style={{
+                          borderColor:
+                            selectedTitle === item.title ? 'yellow' : 'black',
+                        }}
                       >
                         <Text
                           className="text-[15px] text-white"
-                          style={{ 
-                            fontFamily: 'Pretendard-Bold', 
-                            color: selectedTitle === item.title ? 'yellow' : 'black',
+                          style={{
+                            fontFamily: 'Pretendard-Bold',
+                            color:
+                              selectedTitle === item.title ? 'yellow' : 'black',
                           }}
                         >
                           기본배송지
                         </Text>
                       </View>
-
                     </View>
                     <Text
                       className="my-1 text-[15px] text-[#a3a2a2]"
@@ -157,13 +167,12 @@ export default function AddAddressDeliveryAddress() {
                 </View>
               </TouchableOpacity>
             )}
-            keyExtractor={item => item.key}
+            keyExtractor={(item) => item.key}
           />
-
         </View>
 
         <View className="mt-auto">
-          <Pressable 
+          <Pressable
             className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center border-2 border-yellow-500 rounded-full"
             onPress={() => router.push('/(tabs)/DeliveryAddress/')}
           >
@@ -175,7 +184,7 @@ export default function AddAddressDeliveryAddress() {
             </Text>
           </Pressable>
 
-          <Pressable 
+          <Pressable
             className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
             //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
           >
@@ -187,7 +196,6 @@ export default function AddAddressDeliveryAddress() {
             </Text>
           </Pressable>
         </View>
-
       </View>
     </SafeAreaView>
   );

@@ -9,7 +9,7 @@ import {
   Pressable,
 } from 'react-native';
 
-import {useFonts} from 'expo-font'
+import { useFonts } from 'expo-font';
 
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -20,8 +20,8 @@ export default function ApplyForSponsorship() {
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
 
-   // đổi font chữ
-   const [fontsLoaded] = useFonts({
+  // đổi font chữ
+  const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
     'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
     'Pretendard-ExtraBold': require('../../../assets/fonts/Pretendard-ExtraBold.otf'),
@@ -31,39 +31,37 @@ export default function ApplyForSponsorship() {
     'Pretendard-Regular': require('../../../assets/fonts/Pretendard-Regular.otf'),
     'Pretendard-SemiBold': require('../../../assets/fonts/Pretendard-SemiBold.otf'),
     'Pretendard-Thin': require('../../../assets/fonts/Pretendard-Thin.otf'),
-  })
+  });
 
-  if(!fontsLoaded) {
+  if (!fontsLoaded) {
     return undefined;
   }
 
   return (
     <View className=" bg-black h-full border-t-2 border-[#2c2c2c]">
-
       <View className="my-5 ">
         <View className="mx-5 mb-5 flex flex-row items-center justify-center">
-          <Text 
+          <Text
             className="text-[#fff] text-[20px]"
-            style={{fontFamily: 'Pretendard-Bold' }}
+            style={{ fontFamily: 'Pretendard-Bold' }}
           >
             배송지를 추가해주세요.
           </Text>
 
-          <Pressable 
+          <Pressable
             className="ml-auto bg-yellow-500 w-[120px] h-[50px] rounded-full items-center justify-center"
             onPress={() => router.push('/(tabs)/DeliveryAddress/')}
           >
-            <Text 
+            <Text
               className="text-black text-[20px]"
-              style={{fontFamily: 'Pretendard-Bold' }}
+              style={{ fontFamily: 'Pretendard-Bold' }}
             >
               배송지 추가
             </Text>
           </Pressable>
-
         </View>
-        
-        <Text 
+
+        <Text
           className="mx-3 mb-5 text-[#a3a2a2] text-[15px]"
           style={{ fontFamily: 'Pretendard-Bold' }}
         >
@@ -74,7 +72,7 @@ export default function ApplyForSponsorship() {
       <View className="border-t-[5px] border-[#2c2c2c]">
         <Text
           className="mt-5 mx-5 text-[#fff] text-[20px]"
-          style={{fontFamily: 'Pretendard-Bold' }}
+          style={{ fontFamily: 'Pretendard-Bold' }}
         >
           광고 상품 정보
         </Text>
@@ -85,7 +83,7 @@ export default function ApplyForSponsorship() {
         >
           <View className="basis-[40%] object-contain bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
             <Image
-              source={require('../../../assets/images/Bucks.png')} 
+              source={require('../../../assets/images/Bucks.png')}
               className="h-[120] w-[100] "
             />
           </View>
@@ -113,16 +111,16 @@ export default function ApplyForSponsorship() {
                 className="text-[#a3a2a2]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
-                100명중 <Text className="text-yellow-500">26명</Text>이 서포트 중 입니다.
+                100명중 <Text className="text-yellow-500">26명</Text>이 서포트
+                중 입니다.
               </Text>
             </View>
           </View>
         </Pressable>
-
       </View>
 
       <View className="my-2 mt-auto">
-        <Pressable 
+        <Pressable
           className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
           onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
         >
@@ -134,7 +132,6 @@ export default function ApplyForSponsorship() {
           </Text>
         </Pressable>
       </View>
-
     </View>
   );
 }

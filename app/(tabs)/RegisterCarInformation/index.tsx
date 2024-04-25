@@ -181,7 +181,6 @@ export default function RegisterCarInformation() {
               </Pressable>
             </View>
           )}
-
         </View>
 
         <View className="mt-2 mb-5">
@@ -310,7 +309,7 @@ export default function RegisterCarInformation() {
             </View>
           </View>
 
-          <Pressable 
+          <Pressable
             className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
             onPress={() => router.push('/(tabs)/RegisterCarInformation/city')}
           >
@@ -321,7 +320,6 @@ export default function RegisterCarInformation() {
               계속하다
             </Text>
           </Pressable>
-
         </View>
       </ScrollView>
     </View>

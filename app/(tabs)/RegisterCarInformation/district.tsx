@@ -108,7 +108,7 @@ export default function District() {
             height: 30,
             borderRadius: 40,
             backgroundColor:
-            selectedDistrict === item.name ? 'black' : 'transparent',
+              selectedDistrict === item.name ? 'black' : 'transparent',
             marginRight: 5,
             borderWidth: 2,
             borderColor: selectedDistrict === item.name ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
@@ -174,9 +174,7 @@ export default function District() {
       />
 
       <View className="my-2 border-t-4 border-[#1f232c]">
-        <Pressable 
-          className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-          >
+        <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full">
           <Text
             className="text-[20px]"
             style={{ fontFamily: 'Pretendard-Bold' }}

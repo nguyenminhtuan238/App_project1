@@ -147,7 +147,10 @@ export default function User() {
                 </Text>
               </View>
             </Pressable>
-            <Pressable className="border-b border-[#494949] p-3 flex">
+            <Pressable
+              className="border-b border-[#494949] p-3 flex"
+              onPress={() => router.push('/(tabs)/DeliveryAddress/addAddress')}
+            >
               <View className="flex flex-row justify-between">
                 <Text
                   className="text-[#fff]  text-[18px]"
@@ -164,7 +167,9 @@ export default function User() {
                     name="chevron-forward"
                     size={24}
                     color="white"
-                    onPress={() => router.push('/Point/')}
+                    onPress={() =>
+                      router.push('/(tabs)/DeliveryAddress/addAddress')
+                    }
                   />
                 </Text>
               </View>

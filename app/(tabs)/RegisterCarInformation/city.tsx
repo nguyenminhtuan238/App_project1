@@ -158,7 +158,7 @@ export default function City() {
       />
 
       <View className="my-2 border-t-4 border-[#1f232c]">
-        <Pressable 
+        <Pressable
           className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
           onPress={() => router.push('/(tabs)/RegisterCarInformation/district')}
         >

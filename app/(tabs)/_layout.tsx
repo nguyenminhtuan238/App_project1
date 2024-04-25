@@ -369,9 +369,9 @@ export default function Layout() {
           },
           headerLeft: () => (
             <View className="mr-1">
-              <Text 
+              <Text
                 className="text-white text-[15px] "
-                style={{fontFamily: "Pretendard-Bold"}}
+                style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 <Ionicons
                   name="chevron-back"
@@ -465,7 +465,7 @@ export default function Layout() {
               <Pressable className="mx-2 w-[60px] h-[50px] bg-[#2c2c2c] rounded-xl flex items-center justify-center">
                 <Text
                   className=" text-[#7e8186] text-[20px]"
-                  style={{ fontFamily: 'Pretendard-Bold'}}
+                  style={{ fontFamily: 'Pretendard-Bold' }}
                 >
                   수정
                 </Text>
@@ -821,7 +821,7 @@ export default function Layout() {
                 />
               </Text>
             </View>
-          )
+          ),
         }}
       />
     </Stack>
