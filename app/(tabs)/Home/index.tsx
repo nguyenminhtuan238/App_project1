@@ -84,12 +84,21 @@ export default function Home() {
             </Link>
             <Link
               className="mb-4 text-xl text-amber-400"
-              //href="/(tabs)/RegisterCarInformation/"
+              href="/(tabs)/RegisterCarInformation/"
               //href="/(tabs)/ApplyForSponsorship/"
-              href="/(tabs)/DeliveryAddress/addAddress"
+              //href="/(tabs)/DeliveryAddress/addAddress"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               차량정보 등록{'>'}
+            </Link>
+            <Link
+              className="mb-4 text-xl text-amber-400"
+              //href="/(tabs)/RegisterCarInformation/"
+              href="/(tabs)/ApplyForSponsorship/"
+              //href="/(tabs)/DeliveryAddress/addAddress"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              배송지 목록{'>'}
             </Link>
           </View>
           <View>
