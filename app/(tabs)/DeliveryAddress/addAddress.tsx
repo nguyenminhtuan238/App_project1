@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import {useFonts} from 'expo-font'
+import * as Font from 'expo-font';
 
 import { Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -20,21 +21,43 @@ export default function AddAddressDeliveryAddress() {
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
 
-  // đổi font chữ
-  const [fontsLoaded] = useFonts({
-    'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
-    'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
-    'Pretendard-ExtraBold': require('../../../assets/fonts/Pretendard-ExtraBold.otf'),
-    'Pretendard-ExtraLight': require('../../../assets/fonts/Pretendard-ExtraLight.otf'),
-    'Pretendard-Light': require('../../../assets/fonts/Pretendard-Light.otf'),
-    'Pretendard-Medium': require('../../../assets/fonts/Pretendard-Medium.otf'),
-    'Pretendard-Regular': require('../../../assets/fonts/Pretendard-Regular.otf'),
-    'Pretendard-SemiBold': require('../../../assets/fonts/Pretendard-SemiBold.otf'),
-    'Pretendard-Thin': require('../../../assets/fonts/Pretendard-Thin.otf'),
-  })
+  // Chọn địa chỉ
+  const [selectedTitle, setSelectedTitle] = useState('');
+  const [selectedName, setSelectedName] = useState('');
+  const [selectedPhone, setSelectedPhone] = useState('');
+  const [selectedAddress, setSelectedAddress] = useState('');
 
-  if(!fontsLoaded) {
-    return undefined;
+  const handleAddressSelection = (title: string, name: string, phone: string, address: string) => {
+    setSelectedTitle(title);
+    setSelectedName(name);
+    setSelectedPhone(phone);
+    setSelectedAddress(address);
+  };
+
+  // đổi font chữ
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
+        'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
+        'Pretendard-ExtraBold': require('../../../assets/fonts/Pretendard-ExtraBold.otf'),
+        'Pretendard-ExtraLight': require('../../../assets/fonts/Pretendard-ExtraLight.otf'),
+        'Pretendard-Light': require('../../../assets/fonts/Pretendard-Light.otf'),
+        'Pretendard-Medium': require('../../../assets/fonts/Pretendard-Medium.otf'),
+        'Pretendard-Regular': require('../../../assets/fonts/Pretendard-Regular.otf'),
+        'Pretendard-SemiBold': require('../../../assets/fonts/Pretendard-SemiBold.otf'),
+        'Pretendard-Thin': require('../../../assets/fonts/Pretendard-Thin.otf'),
+      });
+      setFontsLoaded(true);
+    }
+
+    loadFonts();
+  }, []);
+
+  if (!fontsLoaded) {
+    return null; // or other temporary content
   }
 
   const data = [
@@ -54,19 +77,6 @@ export default function AddAddressDeliveryAddress() {
     },
   ];
 
-  // Chọn địa chỉ
-  // const [selectedTitle, setSelectedTitle] = useState('');
-  // const [selectedName, setSelectedName] = useState('');
-  // const [selectedPhone, setSelectedPhone] = useState('');
-  // const [selectedAddress, setSelectedAddress] = useState('');
-
-  // const handleAddressSelection = (title: string, name: string, phone: string, address: string) => {
-  //   setSelectedTitle(title);
-  //   setSelectedName(name);
-  //   setSelectedPhone(phone);
-  //   setSelectedAddress(address);
-  // };
-
   return (
     <SafeAreaView className="bg-black h-screen border-t-2 border-[#2c2c2c]">
       <View className="flex flex-col">
@@ -76,51 +86,74 @@ export default function AddAddressDeliveryAddress() {
             data={data}
             renderItem={({ item }) => (
               <TouchableOpacity
-                className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 border-yellow-500 rounded-2xl"
-                // onPress={() =>
-                //   handleAddressSelection(
-                //     selectedTitle === item.title ? '' : item.title,
-                //     selectedName === item.name ? '' : item.name,
-                //     selectedPhone === item.phone ? '' : item.phone,
-                //     selectedAddress === item.address ? '' : item.address,
-                //   )
-                // }
+                //className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 border-white rounded-2xl"
+                onPress={() =>
+                  handleAddressSelection(
+                    selectedTitle === item.title ? '' : item.title,
+                    selectedName === item.name ? '' : item.name,
+                    selectedPhone === item.phone ? '' : item.phone,
+                    selectedAddress === item.address ? '' : item.address,
+                  )
+                }
               >
-                <View className="basis-1/5">
-                  {/* <View 
-                    className="w-30 h-30 border-2"
-                    style={{
-                      backgroundColor:
-                      selectedAddress === item.address ? 'black' : 'transparent',
-                      marginRight: 5,
-                      borderWidth: 2,
-                      borderColor: selectedAddress === item.address ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
-                    }}
-                  >
-                    {selectedAddress === item.address && (
-                      <Pressable className="border-yellow-500 rounded-full w-[15px] h-[15px] bg-yellow-500" />
-                    )}
-                  </View> */}
-                </View>
-                <View className="basis-4/5">
-                  <Text
-                    className="my-1 text-[20px] text-[#fff]"
-                    style={{ fontFamily: 'Pretendard-Bold' }}
-                  >
-                    {item.title}
-                  </Text>
-                  <Text
-                    className="my-1 text-[15px] text-[#a3a2a2]"
-                    style={{ fontFamily: 'Pretendard-Bold' }}
-                  >
-                    {item.name} | {item.phone}
-                  </Text>
-                  <Text
-                    className="my-1 text-[15px] text-[#fff]"
-                    style={{ fontFamily: 'Pretendard-Bold' }}
-                  >
-                    {item.address}
-                  </Text>
+                <View 
+                  className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 rounded-2xl"
+                  style={{
+                    borderColor: selectedTitle === item.title ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
+                  }}
+                >
+                  <View className="basis-1/5 flex items-center justify-center">
+                    <View 
+                      className="w-[30px] h-[30px] border-2 rounded-full flex items-center justify-center"
+                      style={{
+                        backgroundColor: selectedTitle === item.title ? 'black' : 'transparent',
+                        borderColor: selectedTitle === item.title ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
+                      }}
+                    >
+                      {selectedTitle === item.title && (
+                        <Pressable className="border-white rounded-full w-[15px] h-[15px] bg-yellow-500" />
+                      )}
+                    </View>
+                  </View>
+                  <View className="basis-4/5">
+                    <View className="flex flex-row">
+                      <Text
+                        className="my-1 text-[20px] text-[#fff]"
+                        style={{ fontFamily: 'Pretendard-Bold' }}
+                      >
+                        {item.title}
+                      </Text>
+                      <View 
+                        className="ml-auto mr-5 w-[100px] h-[35px] border-2 border-white flex items-center justify-center rounded-lg"
+                        style={{ 
+                          borderColor: selectedTitle === item.title ? 'yellow' : 'black', 
+                         }}
+                      >
+                        <Text
+                          className="text-[15px] text-white"
+                          style={{ 
+                            fontFamily: 'Pretendard-Bold', 
+                            color: selectedTitle === item.title ? 'yellow' : 'black',
+                          }}
+                        >
+                          기본배송지
+                        </Text>
+                      </View>
+
+                    </View>
+                    <Text
+                      className="my-1 text-[15px] text-[#a3a2a2]"
+                      style={{ fontFamily: 'Pretendard-Bold' }}
+                    >
+                      {item.name} | {item.phone}
+                    </Text>
+                    <Text
+                      className="my-1 text-[15px] text-[#fff]"
+                      style={{ fontFamily: 'Pretendard-Bold' }}
+                    >
+                      {item.address}
+                    </Text>
+                  </View>
                 </View>
               </TouchableOpacity>
             )}
