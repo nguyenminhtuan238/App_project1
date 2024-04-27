@@ -13,6 +13,17 @@ export default function DeliveryAddress() {
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
 
+   // chọn district
+   const [selectedAddress, setSelectedAddress] = useState('false');
+   const handleAddressSelection = (address: string) => {
+    if(selectedAddress === 'false'){
+      setSelectedAddress(address);
+    } else {
+      setSelectedAddress(address);
+    }
+    
+  };
+
   // đổi font chữ
   const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
@@ -193,12 +204,47 @@ export default function DeliveryAddress() {
       </View>
 
       <View className="m-5">
-        <Text
-          className="ml-auto text-[20px] text-[#fff]"
-          style={{ fontFamily: 'Pretendard-Bold' }}
+        <Pressable
+          onPress={() =>
+            handleAddressSelection(
+              selectedAddress === 'false' ? 'true' : 'false',
+            )
+          }
         >
-          기본 배송지로 설정
-        </Text>
+          <View className="ml-auto flex flex-row">
+            <View
+              style={{
+                width: 30,
+                height: 30,
+                borderRadius: 40,
+                backgroundColor:
+                selectedAddress === 'false' ? 'black' : 'transparent',
+                borderWidth: 2,
+                borderColor: selectedAddress === 'true' ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
+              }}
+            >
+              {selectedAddress === 'true' && (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Pressable className="border-yellow-500 rounded-full w-[15px] h-[15px] bg-yellow-500" />
+                </View>
+              )}
+              
+            </View>
+            <Text
+              className="mx-2 text-[20px] text-[#fff]"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              기본 배송지로 설정
+            </Text>
+          </View>
+        </Pressable>
+        
 
         <Pressable
           className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"

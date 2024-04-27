@@ -22,7 +22,8 @@ export default function District() {
   const [Search, setSearch] = useState(1);
 
   const [selectedDistrict, setSelectedDistrict] = useState('');
-  // chọn city
+  
+  // chọn district
   const handleDistrictSelection = (district: string) => {
     setSelectedDistrict(district);
   };
