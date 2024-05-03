@@ -82,19 +82,19 @@ export default function DeliveryAddress() {
     <ScrollView className="bg-[#000] border-t-2 border-[#2c2c2c]">
       <View className="m-5">
         <Text
-          className="text-[20px] text-[#fff]"
+          className="text-[16px] text-[#fff]"
           style={{ fontFamily: 'Pretendard-Bold' }}
         >
           우편번호
         </Text>
 
         <TextInput
-          className="p-2 h-[50px] text-[#a3a2a2] text-[20px] border-b border-[#a3a2a2]"
-          style={{ fontFamily: 'Pretendard-Bold' }}
+          className="p-2 h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+          style={{ fontFamily: 'Pretendard-Medium' }}
           onChangeText={handleInputChange1}
           value={text1}
           placeholder="10239"
-          placeholderTextColor="#a3a2a2"
+          placeholderTextColor="#AAAAAA"
         />
 
         <Pressable
@@ -103,7 +103,7 @@ export default function DeliveryAddress() {
           //onPress={handleButtonPress}
         >
           <Text
-            className="text-[20px]"
+            className="text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             우편번호 찾기
@@ -114,25 +114,25 @@ export default function DeliveryAddress() {
       <View className="mx-5">
         <View className="my-5">
           <Text
-            className="text-[20px] text-[#fff]"
+            className="text-[16px] text-[#fff]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             주소지
           </Text>
 
           <TextInput
-            className="p-2 h-[50px] text-[#a3a2a2] text-[20px] border-b border-[#a3a2a2]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
+            className="p-2 h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+            style={{ fontFamily: 'Pretendard-Medium' }}
             onChangeText={handleInputChange2}
             value={text2}
             placeholder="경기도 고양시 일산동구 마두1동"
-            placeholderTextColor="#a3a2a2"
+            placeholderTextColor="#AAAAAA"
           />
         </View>
 
         <View className="my-5">
           <Text
-            className="text-[20px] text-[#fff]"
+            className="text-[16px] text-[#fff]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             상세주소
@@ -140,65 +140,65 @@ export default function DeliveryAddress() {
 
           <TextInput
             className="p-2 h-[50px] text-[#a3a2a2] text-[20px] border-b border-[#a3a2a2]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
+            style={{ fontFamily: 'Pretendard-Medium' }}
             onChangeText={handleInputChange3}
             value={text3}
             placeholder="동아아파트 601동 1401호우편번호"
-            placeholderTextColor="#a3a2a2"
+            placeholderTextColor="#AAAAAA"
           />
         </View>
 
         <View className="my-5">
           <Text
-            className="text-[20px] text-[#fff]"
+            className="text-[16px] text-[#fff]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             배송지명
           </Text>
 
           <TextInput
-            className="p-2 h-[50px] text-[#a3a2a2] text-[20px] border-b border-[#a3a2a2]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
+            className="p-2 h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+            style={{ fontFamily: 'Pretendard-Medium' }}
             onChangeText={handleInputChange4}
             value={text4}
             placeholder="집"
-            placeholderTextColor="#a3a2a2"
+            placeholderTextColor="#AAAAAA"
           />
         </View>
 
         <View className="my-5">
           <Text
-            className="text-[20px] text-[#fff]"
+            className="text-[16px] text-[#fff]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             수령인
           </Text>
 
           <TextInput
-            className="p-2 h-[50px] text-[#a3a2a2] text-[20px] border-b border-[#a3a2a2]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
+            className="p-2 h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+            style={{ fontFamily: 'Pretendard-Medium' }}
             onChangeText={handleInputChange5}
             value={text5}
             placeholder="김포비"
-            placeholderTextColor="#a3a2a2"
+            placeholderTextColor="#AAAAAA"
           />
         </View>
 
         <View className="my-5">
           <Text
-            className="mb-2 text-[20px] text-[#fff]"
+            className="mb-2 text-[16px] text-[#fff]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             휴대폰
           </Text>
 
           <TextInput
-            className="p-2 h-[50px] text-[#a3a2a2] text-[20px] border-b border-[#a3a2a2]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
+            className="p-2 h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
+            style={{ fontFamily: 'Pretendard-Medium' }}
             onChangeText={handleInputChange6}
             value={text6}
             placeholder="010-1523-1699"
-            placeholderTextColor="#a3a2a2"
+            placeholderTextColor="#AAAAAA"
           />
         </View>
       </View>
@@ -237,7 +237,7 @@ export default function DeliveryAddress() {
               
             </View>
             <Text
-              className="mx-2 text-[20px] text-[#fff]"
+              className="mx-2 text-[16px] text-[#fff]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               기본 배송지로 설정

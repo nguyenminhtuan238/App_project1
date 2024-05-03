@@ -30,8 +30,8 @@ export default function Register() {
   return (
     <View className="flex  h-screen items-center  justify-center	bg-[#000]">
       <Text
-        className="text-[#fff]  bg-black rounded-full p-3 border border-[#7e7e7e4b] "
-        style={{ fontFamily: 'Pretendard-Bold' }}
+        className="text-[#fff] text-[16px]  bg-black rounded-full p-3 border border-[#7e7e7e4b] "
+        style={{ fontFamily: 'Pretendard-Medium' }}
       >
         내 브랜드는 일상과{' '}
         <Link
@@ -47,7 +47,7 @@ export default function Register() {
         className="w-[240px] h-[240px]"
       />
 
-      <Text className="text-[#fff] " style={{ fontFamily: 'Pretendard-Bold' }}>
+      <Text className="text-[#fff] text-[14px]" style={{ fontFamily: 'Pretendard-Bold' }}>
         -SNS 계정으로 쉽게 시작해보세요-
       </Text>
       <TouchableHighlight className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-amber-300 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -57,8 +57,8 @@ export default function Register() {
             source={require('../../../assets/images/messagecircle.png')}
           />
           <Text
-            className="  ml-[20px]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
+            className="ml-[20px] text-[16px]"
+            style={{ fontFamily: 'Pretendard-SemiBold' }}
           >
             카카오톡 시작하기
           </Text>
@@ -73,7 +73,10 @@ export default function Register() {
             className="w-[24px] h-[24px]"
             source={require('../../../assets/images/naver.png')}
           />
-          <Text className="ml-[20px]" style={{ fontFamily: 'Pretendard-Bold' }}>
+          <Text
+            className="ml-[20px] text-[16px]"
+            style={{ fontFamily: 'Pretendard-SemiBold' }}
+          >
             네이버로 시작해 보세요
           </Text>
         </View>
@@ -81,7 +84,10 @@ export default function Register() {
       <TouchableHighlight className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-amber-300 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         <View className="text-white text-center  flex flex-row ">
           <AntDesign name="apple1" size={24} color="black" />
-          <Text className="ml-[20px]" style={{ fontFamily: 'Pretendard-Bold' }}>
+          <Text
+            className="ml-[20px] text-[16px]"
+            style={{ fontFamily: 'Pretendard-SemiBold' }}
+          >
             사과부터 시작해 보세요
           </Text>
         </View>
@@ -92,7 +98,10 @@ export default function Register() {
             className="w-[24px] h-[24px] "
             source={require('../../../assets/images/Google.png')}
           />
-          <Text className="ml-[20px]" style={{ fontFamily: 'Pretendard-Bold' }}>
+          <Text
+            className="ml-[20px] text-[16px]"
+            style={{ fontFamily: 'Pretendard-SemiBold' }}
+          >
             Google 시작하기
           </Text>
         </View>

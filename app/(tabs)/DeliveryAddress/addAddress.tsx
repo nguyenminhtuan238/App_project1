@@ -140,7 +140,7 @@ export default function AddAddressDeliveryAddress() {
                         }}
                       >
                         <Text
-                          className="text-[15px] text-white"
+                          className="text-[12px] text-white"
                           style={{
                             fontFamily: 'Pretendard-Bold',
                             color:
@@ -152,13 +152,13 @@ export default function AddAddressDeliveryAddress() {
                       </View>
                     </View>
                     <Text
-                      className="my-1 text-[15px] text-[#a3a2a2]"
-                      style={{ fontFamily: 'Pretendard-Bold' }}
+                      className="my-1 text-[12px] text-[#AAAAAA]"
+                      style={{ fontFamily: 'Pretendard-Medium' }}
                     >
                       {item.name} | {item.phone}
                     </Text>
                     <Text
-                      className="my-1 text-[15px] text-[#fff]"
+                      className="my-1 text-[14px] text-[#fff]"
                       style={{ fontFamily: 'Pretendard-Bold' }}
                     >
                       {item.address}
@@ -177,7 +177,7 @@ export default function AddAddressDeliveryAddress() {
             onPress={() => router.push('/(tabs)/DeliveryAddress/')}
           >
             <Text
-              className="text-[20px] text-yellow-500"
+              className="text-[16px] text-yellow-500"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               + 새 주소 추가하기
@@ -189,7 +189,7 @@ export default function AddAddressDeliveryAddress() {
             //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
           >
             <Text
-              className="text-[20px]"
+              className="text-[16px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               저장하기

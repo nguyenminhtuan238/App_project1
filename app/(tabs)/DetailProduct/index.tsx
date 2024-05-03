@@ -43,15 +43,15 @@ export default function DetailProduct() {
         <View className="  rounded-[10px] mx-5  flex flex-row justify-center">
           <Image
             source={require('../../../assets/images/Bear.png')}
-            className="h-[250] w-[250] "
+            className="h-[290] w-[290] "
             resizeMode="stretch"
           />
         </View>
       </View>
-      <View className="h-[30] bg-[#494949] flex flex-row justify-between 	">
+      <View className="h-[38] bg-[#494949] flex flex-row items-center	">
         <Text
-          className="text-amber-200 text-[20px] ml-3"
-          style={{ fontFamily: 'Pretendard-Bold' }}
+          className="text-amber-200 text-[12px] ml-3"
+          style={{ fontFamily: 'Pretendard-Medium' }}
         >
           100명 중 26명이 지지하고 있습니다.
         </Text>
@@ -59,26 +59,26 @@ export default function DetailProduct() {
 
       <View className=" bg-[#000] flex  justify-between p-5	">
         <Text
-          className="text-white text-[25px] ml-3"
+          className="text-white text-[24px] ml-3"
           style={{ fontFamily: 'Pretendard-Bold' }}
         >
           Bad Blue
         </Text>
         <Text
-          className="text-white text-[15px] ml-3 mt-1"
+          className="text-white text-[14px] ml-3 mt-1"
           style={{ fontFamily: 'Pretendard-Bold' }}
         >
           시간: 30일
         </Text>
         <Text
-          className="text-[#a1a0a0] text-[15px] ml-3 mt-5"
-          style={{ fontFamily: 'Pretendard-Bold' }}
+          className="text-[#a1a0a0] text-[14px] ml-3 mt-5"
+          style={{ fontFamily: 'Pretendard-Medium' }}
         >
           배드블루 대구광역시
         </Text>
         <View className=" bg-[#000] flex flex-row justify-end mt-10	">
           <Text
-            className="text-white text-[25px] ml-3 Text-right"
+            className="text-white text-[24px] ml-3 Text-right"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             25,000P 적립 가능
@@ -90,10 +90,10 @@ export default function DetailProduct() {
             onPress={() => router.push('/register/')}
           >
             <Text
-              className="text-black text-center text-[20px]"
+              className="text-center text-[20px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
-              후원신청
+              스폰서 신청
             </Text>
           </Pressable>
         </View>
