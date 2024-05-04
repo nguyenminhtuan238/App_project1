@@ -47,7 +47,10 @@ export default function Register() {
         className="w-[240px] h-[240px]"
       />
 
-      <Text className="text-[#fff] text-[14px]" style={{ fontFamily: 'Pretendard-Bold' }}>
+      <Text
+        className="text-[#fff] text-[14px]"
+        style={{ fontFamily: 'Pretendard-Bold' }}
+      >
         -SNS 계정으로 쉽게 시작해보세요-
       </Text>
       <TouchableHighlight className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-amber-300 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

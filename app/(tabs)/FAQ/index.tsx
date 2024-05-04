@@ -110,7 +110,7 @@ export default function FAQ() {
             </Pressable>
             {Accordion && (
               <View className="bg-[#4d4c4c] p-3">
-                <Text 
+                <Text
                   className="text-[#e7d745]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >

@@ -47,7 +47,6 @@ export default function Map() {
       logLevel: BackgroundGeolocation.LOG_LEVEL_VERBOSE,
       stopOnTerminate: false, // <-- Allow the background-service to continue tracking when user closes the app.
       startOnBoot: true, // <-- Auto start tracking when device is powered-up.
-     
     })
       .then((state) => {
         setEnabled(state.enabled);

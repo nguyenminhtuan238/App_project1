@@ -78,7 +78,7 @@ export default function Home() {
             <Link
               className="mb-2 text-[18px] text-yellow-500"
               href="/(tabs)/ListProduct/"
-              style={{ fontFamily: 'Pretendard-Bold', }}
+              style={{ fontFamily: 'Pretendard-Bold' }}
             >
               스폰서 찾기{'>'}
             </Link>

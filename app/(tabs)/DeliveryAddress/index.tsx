@@ -13,15 +13,14 @@ export default function DeliveryAddress() {
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
 
-   // chọn district
-   const [selectedAddress, setSelectedAddress] = useState('false');
-   const handleAddressSelection = (address: string) => {
-    if(selectedAddress === 'false'){
+  // chọn district
+  const [selectedAddress, setSelectedAddress] = useState('false');
+  const handleAddressSelection = (address: string) => {
+    if (selectedAddress === 'false') {
       setSelectedAddress(address);
     } else {
       setSelectedAddress(address);
     }
-    
   };
 
   // đổi font chữ
@@ -207,7 +206,7 @@ export default function DeliveryAddress() {
         <Pressable
           onPress={() =>
             handleAddressSelection(
-              selectedAddress === 'false' ? 'true' : 'false',
+              selectedAddress === 'false' ? 'true' : 'false'
             )
           }
         >
@@ -218,7 +217,7 @@ export default function DeliveryAddress() {
                 height: 30,
                 borderRadius: 40,
                 backgroundColor:
-                selectedAddress === 'false' ? 'black' : 'transparent',
+                  selectedAddress === 'false' ? 'black' : 'transparent',
                 borderWidth: 2,
                 borderColor: selectedAddress === 'true' ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
               }}
@@ -234,7 +233,6 @@ export default function DeliveryAddress() {
                   <Pressable className="border-yellow-500 rounded-full w-[15px] h-[15px] bg-yellow-500" />
                 </View>
               )}
-              
             </View>
             <Text
               className="mx-2 text-[16px] text-[#fff]"
@@ -244,7 +242,6 @@ export default function DeliveryAddress() {
             </Text>
           </View>
         </Pressable>
-        
 
         <Pressable
           className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"

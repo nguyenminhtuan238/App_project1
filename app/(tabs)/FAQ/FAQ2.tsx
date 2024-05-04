@@ -54,7 +54,7 @@ export default function FAQ2() {
           <View className="p-1">
             <View className=" flex flex-row">
               <Entypo name="dot-single" size={24} color={'#929191'} />
-              <Text 
+              <Text
                 className="text-[#929191] text-[12px]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
@@ -63,7 +63,7 @@ export default function FAQ2() {
             </View>
             <View className=" flex flex-row">
               <Entypo name="dot-single" size={24} color={'#929191'} />
-              <Text 
+              <Text
                 className="text-[#929191] text-[12px]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
@@ -72,7 +72,7 @@ export default function FAQ2() {
             </View>
             <View className=" flex flex-row">
               <Entypo name="dot-single" size={24} color={'#929191'} />
-              <Text 
+              <Text
                 className="text-[#929191] text-[12px]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
