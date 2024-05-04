@@ -5,25 +5,26 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "com.ssuik.android",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ssuik.android"
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "Expo.expotest"
+      "googleServicesFile": "./google-services.json",
+      "package": "com.ssuik.android"
     },
     "web": {
       "bundler": "metro",
@@ -31,22 +32,71 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      "@react-native-firebase/app",
+
+      "@react-native-google-signin/google-signin",
+      [
+        "@react-native-seoul/kakao-login",
+        {
+          "kakaoAppKey": "{{889e6de4c14e3245c5debb63b1d2e190}}",
+          "overrideKakaoSDKVersion": "2.11.2",
+          "kotlinVersion": "1.9.0"
+        }
+      ],
+
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 33,
+            "extraMavenRepos": [
+              "https://devrepo.kakao.com/nexus/content/groups/public/"
+            ]
+          }
+        }
+      ],
+
       "expo-router",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ],
       [
         "expo-image-picker",
         {
-          "photosPermission": "custom photos permission",
-          "cameraPermission": "Allow $(PRODUCT_NAME) to open the camera",
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
           "//": "Disables the microphone permission",
           "microphonePermission": false
         }
       ],
-      "react-native-background-geolocation",
-      "expo-gradle-ext-vars",
+      [
+        "react-native-background-geolocation",
+        {
+          "license": "e580e0e024daf161dc86875f663fcf5535b6d13e9a0769ba5f69a023de5d605d"
+        }
+      ],
+      [
+        "expo-gradle-ext-vars",
+        {
+          "googlePlayServicesLocationVersion": "21.1.0",
+          "appCompatVersion": "1.4.2"
+        }
+      ],
       "react-native-background-fetch"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "33da8dae-417b-42b1-84ed-ed13764515ef"
+      }
     }
   }
 }

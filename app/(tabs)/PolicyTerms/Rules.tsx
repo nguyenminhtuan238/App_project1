@@ -1,22 +1,10 @@
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
-
+import { useState } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import { useFonts } from 'expo-font';
-
 import LayoutScreen from '../../../components/user/Homelayout/layout';
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-import { AntDesign, Ionicons, Entypo } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 export default function Rules() {
   const Point = useSelector((state: RootState) => state.point);
   const dispatch: AppDispatch = useDispatch();

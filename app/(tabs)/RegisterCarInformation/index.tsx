@@ -1,23 +1,19 @@
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { router } from 'expo-router';
+import { useState } from 'react';
 import {
   View,
   Text,
   ScrollView,
   Pressable,
   TextInput,
-  Button,
   Alert,
 } from 'react-native';
 
 import { useFonts } from 'expo-font';
-
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
 export default function RegisterCarInformation() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
 

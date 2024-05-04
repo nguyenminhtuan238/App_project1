@@ -35,7 +35,6 @@ export default function Map() {
         console.log('[onProviderChange]', event);
       });
 
-    /// 2. ready the plugin.
     BackgroundGeolocation.ready({
       // Geolocation Config
       desiredAccuracy: BackgroundGeolocation.DESIRED_ACCURACY_HIGH,
@@ -47,7 +46,14 @@ export default function Map() {
       logLevel: BackgroundGeolocation.LOG_LEVEL_VERBOSE,
       stopOnTerminate: false, // <-- Allow the background-service to continue tracking when user closes the app.
       startOnBoot: true, // <-- Auto start tracking when device is powered-up.
-     
+      // HTTP / SQLite config
+      url: 'http://192.168.2.72:8081/locations',
+      batchSync: false, // <-- [Default: false] Set true to sync locations to server in a single HTTP request.
+      autoSync: true, // <-- [Default: true] Set true to sync each location to server as it arrives.
+      headers: {
+        // <-- Optional HTTP headers
+        'X-FOO': 'bar',
+      },
     })
       .then((state) => {
         setEnabled(state.enabled);

@@ -1,48 +1,156 @@
-import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  ScrollView,
-  Button,
-  Pressable,
-} from 'react-native';
-
+import { View, Text, Image, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
-
 import { Dialog } from '@rneui/themed';
 import * as ImagePicker from 'expo-image-picker';
-import { AntDesign } from '@expo/vector-icons';
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
+import { AntDesign, Foundation } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
 import { toggleDialog1 } from '../../../commons/store/dialog';
+import certificationFireBase from '../../../commons/services/Certification.services';
+import ImageCerification from '../../../components/ImageBackgound/imageCerification';
+import CertificationConfirm from '../../../components/dialog/Certification';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { envUser } from '../../../commons/themes/global';
+import { router } from 'expo-router';
 export default function Certification() {
-  const dialog = useSelector((state: RootState) => state.dialog);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
-  const [image, setImage] = useState(null);
-  const tDialog = () => {
-    dispatch(toggleDialog1());
-  };
-  const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
-    let result: any = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+  const [image, setImage]: any = useState(null);
+  const [image2, setImage2]: any = useState(null);
+  const [image3, setImage3]: any = useState(null);
+  const [choose, setChoose]: any = useState(false);
+  const [Progress, setProgress]: any = useState();
+  const [User, setUser]: any = useState(null);
+  const [Key, setKey]: any = useState('');
+  const [GetCertification, SetCertification]: any = useState(null);
+  const [permission, requestPermission] = ImagePicker.useCameraPermissions();
 
-    if (!result.cancelled) {
-      setImage(result.assets[0].uri);
-      return;
+  useEffect(() => {
+    const CheckCertification = async () => {
+      if ((await AsyncStorage.getItem(envUser)) != null) {
+        const GetUser: any = await AsyncStorage.getItem(envUser);
+        setUser(JSON.parse(GetUser));
+        try {
+          const certification: any =
+            await certificationFireBase.getbyidcertification(
+              JSON.parse(GetUser).id
+            );
+
+          SetCertification(certification);
+          certification?.image
+            ? setImage({ uri: certification.image })
+            : setImage(null);
+          certification?.image2
+            ? setImage2({ uri: certification.image2 })
+            : setImage2(null);
+          certification?.image3
+            ? setImage3({ uri: certification.image3 })
+            : setImage3(null);
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        router.push('/register/');
+      }
+    };
+    CheckCertification();
+  }, [user.checklogin]);
+
+  const pickcamera = async (key: any) => {
+    setChoose(false);
+
+    try {
+      if (permission?.status !== ImagePicker.PermissionStatus.DENIED) {
+        requestPermission();
+      }
+      let result: any = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (!result.canceled) {
+        if (key == 'image') {
+          setImage(result.assets[0]);
+        }
+        if (key == 'image2') {
+          setImage2(result.assets[0]);
+        }
+        if (key == 'image3') {
+          setImage3(result.assets[0]);
+        }
+        return;
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
+  const pickImage = async (key: any) => {
+    setChoose(false);
+    try {
+      let result: any = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
 
-  // đổi font chữ
+      if (!result.canceled) {
+        if (key == 'image') {
+          setImage(result.assets[0]);
+        }
+        if (key == 'image2') {
+          setImage2(result.assets[0]);
+        }
+        if (key == 'image3') {
+          setImage3(result.assets[0]);
+        }
+        // const {uri}=result.assets[0];
+        // const fileName=uri.split('/').pop()
+        // const uploadResp= await certificationFireBase.uploadToFirebase(uri,fileName,"image");
+        // console.log(uploadResp)
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const tDialog = async () => {
+    try {
+      await certificationFireBase.uploadToFirebase(
+        image.uri,
+        image.uri.split('/').pop(),
+        'image',
+        User?.id
+      );
+      await certificationFireBase.uploadToFirebase(
+        image2.uri,
+        image2.uri.split('/').pop(),
+        'image2',
+        User?.id
+      );
+      await certificationFireBase.uploadToFirebase(
+        image3.uri,
+        image3.uri.split('/').pop(),
+        'image3',
+        User?.id
+      );
+      const certification = await certificationFireBase.updatecertification(
+        { check: true },
+        User?.id
+      );
+      SetCertification(certification);
+      dispatch(toggleDialog1());
+      return;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const chooseCameraPhoto = (key: string) => {
+    setChoose(true);
+    setKey(key);
+  };
   const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
     'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
@@ -128,33 +236,17 @@ export default function Certification() {
           각 버튼을 터치하여 사진을 찍으세요.
         </Text>
 
-        <View className=" bg-[#000] flex flex-row  mt-3 	">
+        <View className="  flex flex-2 flex-row mt-3 w-full  	">
           {image ? (
-            <ImageBackground
-              source={{ uri: image }}
-              className="basic-1/2  w-1/2 mx-2 flex border rounded-[2px] border-[#494949]  bg-[#494949] "
-            >
-              <Text
-                className="text-[#eeea14]"
-                style={{ fontFamily: 'Pretendard-Bold' }}
-              >
-                01
-              </Text>
-              <Text
-                className="text-[#a1a0a0] "
-                style={{ fontFamily: 'Pretendard-Bold' }}
-              >
-                스티커 부착 상태
-              </Text>
-              <Text
-                className="text-[#eeea14] text-[9px]"
-                style={{ fontFamily: 'Pretendard-Bold' }}
-              >
-                스티커 헌장이 보이도록
-              </Text>
-            </ImageBackground>
+            <ImageCerification
+              image={image.uri}
+              class=" mx-2 flex-1 border rounded-[2px] border-[#494949]  bg-[#494949] "
+              number="01"
+              text="스티커 부착 상태"
+              text2="스티커 헌장이 보이도록"
+            />
           ) : (
-            <View className="basic-1/2  w-1/2 p-2 mx-2 flex border rounded-[2px] border-[#494949]  bg-[#494949] ">
+            <View className="  w-1/2 p-2 mx-2 flex border rounded-[2px] border-[#494949]  bg-[#494949] ">
               <Text
                 className="text-[#eeea14]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
@@ -173,74 +265,96 @@ export default function Certification() {
               >
                 스티커 헌장이 보이도록
               </Text>
-              <View className="  mt-5 flex  justify-center items-center ">
+              <View className="  mt-2 flex  justify-center items-center ">
                 <Pressable
                   className=" bg-[#a1a0a0] p-2  justify-center items-center rounded-full w-[30%] "
-                  onPress={pickImage}
+                  onPress={() => chooseCameraPhoto('image')}
                 >
                   <AntDesign name="camerao" size={24} color="white" />
                 </Pressable>
               </View>
             </View>
           )}
-          <View className="basic-1/2 w-1/2 mr-3 p-2    flex border rounded-[2px] border-[#494949]  bg-[#494949] ">
-            <Text
-              className="text-[#eeea14]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              02
-            </Text>
-            <Text
-              className="text-[#a1a0a0] "
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              차 뒤에
-            </Text>
-            <Text
-              className="text-[#eeea14] text-[9px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              스티커와 번호판이 포함되어 있습니다.
-            </Text>
-            <View className="  mt-5 flex  justify-center items-center ">
-              <Pressable
-                className=" bg-[#a1a0a0] p-2  justify-center items-center rounded-full w-[30%] "
-                onPress={pickImage}
+          {image2 ? (
+            <ImageCerification
+              image={image2.uri}
+              class="mr-3 flex-2  h-[150px] flex border rounded-[2px] border-[#494949]  bg-[#494949] "
+              number="02"
+              text="차 뒤에"
+              text2="스티커와 번호판이 포함되어 있습니다."
+            />
+          ) : (
+            <View className=" mr-3 p-2    flex-2 flex border rounded-[2px] border-[#494949]  bg-[#494949] ">
+              <Text
+                className="text-[#eeea14]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
               >
-                <AntDesign name="camerao" size={24} color="white" />
-              </Pressable>
+                02
+              </Text>
+              <Text
+                className="text-[#a1a0a0] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                차 뒤에
+              </Text>
+              <Text
+                className="text-[#eeea14] text-[9px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                스티커와 번호판이 포함되어 있습니다.
+              </Text>
+              <View className="  mt-2 flex  justify-center items-center ">
+                <Pressable
+                  className=" bg-[#a1a0a0] p-2  justify-center items-center rounded-full w-[30%] "
+                  onPress={() => chooseCameraPhoto('image2')}
+                >
+                  <AntDesign name="camerao" size={24} color="white" />
+                </Pressable>
+              </View>
             </View>
-          </View>
+          )}
         </View>
-        <View className=" w-full p-2 flex justify-center m-2   border rounded-[2px] border-[#494949]  bg-[#494949] ">
-          <Text
-            className="text-[#eeea14]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
-          >
-            03
-          </Text>
-          <Text
-            className="text-[#a1a0a0] "
-            style={{ fontFamily: 'Pretendard-Bold' }}
-          >
-            자동차 대시보드
-          </Text>
-          <Text
-            className="text-[#eeea14] text-[9px]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
-          >
-            킬로미터가 선명하게 보이도록 #세금 합시다
-          </Text>
-          <View className="  mt-5 flex   ">
-            <Pressable
-              className=" bg-[#a1a0a0] p-2  justify-center items-center rounded-full w-[20%] "
-              onPress={pickImage}
-            >
-              <AntDesign name="camerao" size={24} color="white" />
-            </Pressable>
-          </View>
+        <View className="mt-2 ">
+          {image3 ? (
+            <ImageCerification
+              image={image3.uri}
+              class=" w-full  flex justify-center m-2 h-[100px]  border rounded-[2px] border-[#494949]  bg-[#494949] "
+              number="03"
+              text="자동차 대시보드"
+              text2="킬로미터가 선명하게 보이도록 #세금 합시다"
+            />
+          ) : (
+            <View className=" w-full p-2 flex justify-center m-2   border rounded-[2px] border-[#494949]  bg-[#494949] ">
+              <Text
+                className="text-[#eeea14]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                03
+              </Text>
+              <Text
+                className="text-[#a1a0a0] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                자동차 대시보드
+              </Text>
+              <Text
+                className="text-[#eeea14] text-[9px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                킬로미터가 선명하게 보이도록 #세금 합시다
+              </Text>
+              <View className="  mt-5 flex   ">
+                <Pressable
+                  className=" bg-[#a1a0a0] p-2  justify-center items-center rounded-full w-[20%] "
+                  onPress={() => chooseCameraPhoto('image3')}
+                >
+                  <AntDesign name="camerao" size={24} color="white" />
+                </Pressable>
+              </View>
+            </View>
+          )}
         </View>
-        {image && (
+        {image && image2 && image3 && GetCertification?.check == false && (
           <View className=" bg-[#000] flex justify-center items-center p-2	w-full">
             <Pressable
               className=" bg-[#eeea14] p-5  rounded-[5px]  w-full"
@@ -251,42 +365,26 @@ export default function Certification() {
           </View>
         )}
       </View>
-      <Dialog isVisible={dialog.Certification} onBackdropPress={tDialog}>
+      <Dialog isVisible={choose} onBackdropPress={() => setChoose(false)}>
         <Dialog.Loading />
       </Dialog>
-      <Dialog isVisible={dialog.Certification} onBackdropPress={tDialog}>
-        <View className="text-[15px] flex justify-center items-center">
-          <AntDesign name="checkcircleo" size={40} color="orange" />
-        </View>
-        <View className="flex flex-cols justify-center items-center my-3 ">
-          <Text
-            className="text-[15px] font-bold "
-            style={{ fontFamily: 'Pretendard-Bold' }}
-          >
-            사진 업로드가 완료되었습니다
-          </Text>
-        </View>
-        <Text
-          className="text-[12px] "
-          style={{ fontFamily: 'Pretendard-Bold' }}
-        >
-          사진 촬영이 잘못되었거나, 검수에 부적합하다고 판단될 경우 재촬영을
-          요청할 수 도 있습니다
-        </Text>
-        <View className=" flex justify-center items-center mt-5">
+      <Dialog isVisible={choose} onBackdropPress={() => setChoose(false)}>
+        <View className="text-[15px] flex flex-row justify-center items-center p-3">
           <Pressable
-            className=" bg-[#ecc647] p-3  rounded-[10px]  w-full"
-            onPress={tDialog}
+            className=" bg-[#ecc647] p-3  rounded-[10px] mx-3"
+            onPress={() => pickcamera(Key)}
           >
-            <Text
-              className="text-white text-center text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              홈으로
-            </Text>
+            <AntDesign name="camera" size={24} color="black" />
+          </Pressable>
+          <Pressable
+            className=" bg-[#ecc647] p-3  rounded-[10px]  mx-3"
+            onPress={() => pickImage(Key)}
+          >
+            <Foundation name="photo" size={24} color="black" />
           </Pressable>
         </View>
       </Dialog>
+      <CertificationConfirm />
     </View>
   );
 }

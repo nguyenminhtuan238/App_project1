@@ -12,16 +12,52 @@ import {
 import { useFonts } from 'expo-font';
 
 import LayoutScreen from '../../../components/user/Homelayout/layout';
-import { Logout } from '../../../commons/store/user';
+import { CheckLogin, Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import AccessConfirm from '../../../components/dialog/AccessConfirm';
 import AllowAccess from '../../../components/dialog/AllowAccess';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { envUser } from '../../../commons/themes/global';
+import certificationFireBase from '../../../commons/services/Certification.services';
 export default function Home() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
+  const [GetCertification, SetCertification]: any = useState(null);
+  useEffect(() => {
+    const Check = async () => {
+      try {
+        if ((await AsyncStorage.getItem(envUser)) != null) {
+          const GetUser: any = await AsyncStorage.getItem(envUser);
+          const certification: any =
+            await certificationFireBase.getbyidcertification(
+              JSON.parse(GetUser).id
+            );
+          if (certification.success == false) {
+            const data = {
+              image: '',
+              image2: '',
+              image3: '',
+              check: false,
+              confirm: false,
+            };
+            await certificationFireBase.Addcertification(
+              data,
+              JSON.parse(GetUser).id
+            );
+            SetCertification(certification);
+          }
+          SetCertification(certification);
+          dispatch(CheckLogin(true));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    Check();
+  }, [user.checklogin]);
 
   // đổi font chữ
   const [fontsLoaded] = useFonts({
@@ -50,13 +86,13 @@ export default function Home() {
         <View className="flex flex-row justify-between mt-8 ">
           <View>
             <Text
-              className=" text-xl font-bold text-white"
+             className="text-[#fff] text-[20px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               나의 후원자를{' '}
             </Text>
             <Text
-              className="mb-4 text-xl font-bold text-white"
+              className="mb-4 text-[#fff] text-[20px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               {' '}
@@ -124,22 +160,25 @@ export default function Home() {
           ></Text>
         </View>
       </ImageBackground>
-      <View className="h-[30] bg-[#494949] flex flex-row justify-between 	p-2">
-        <Text
-          className="text-amber-200 text-[10px] ml-3"
-          style={{ fontFamily: 'Pretendard-Bold' }}
-        >
-          차량정보를 등록해주세요차량정보를 등록해주세요
-        </Text>
-        <Link
-          href="/register/"
-          className="text-white text-[10px] mr-3"
-          style={{ fontFamily: 'Pretendard-Bold' }}
-        >
-          등록하러 가다
-          <AntDesign name="right" size={13} color="white" />
-        </Link>
-      </View>
+      {user.checklogin == false && (
+        <View className="h-[30] bg-[#494949] flex flex-row justify-between 	p-2">
+          <Text
+            className="text-amber-200 text-[10px] ml-3"
+            style={{ fontFamily: 'Pretendard-Bold' }}
+          >
+            차량정보를 등록해주세요차량정보를 등록해주세요
+          </Text>
+          <Link
+            href="/register/"
+            className="text-white text-[10px] mr-3"
+            style={{ fontFamily: 'Pretendard-Bold' }}
+          >
+            등록하러 가다
+            <AntDesign name="right" size={13} color="white" />
+          </Link>
+        </View>
+      )}
+
       <View className=" bg-black">
         <View className="p-5">
           <Image
@@ -153,33 +192,77 @@ export default function Home() {
           >
             광고는 홍길동이 맡았다.
           </Text>
-          <View className="border border-white rounded-[10px] p-3 flex">
-            <Text
-              className="text-white text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
+          {user.checklogin ? (
+            <ImageBackground
+              source={require('../../../assets/images/loginsuccess.jpg')}
+              resizeMode="stretch"
+              className="border border-white rounded-[10px] p-3 flex opacity-60"
             >
-              서포터 한명 더!
-            </Text>
-            <Text
-              className="text-gray-400  text-[15px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              서포터를 추가하고 다양한 혜택을 누려보세요
-            </Text>
-            <View className="flex flex-row justify-between gap-2 items-center">
-              <Link
-                href="/Certification/"
-                className="mb-5 text-xl text-amber-400"
+              {GetCertification?.check ? (
+                <View className="flex  justify-center p-3 gap-2 items-center">
+                  <Link
+                    href="/Certification/"
+                    className="mb-2 text-xl text-amber-400 text-[20px]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    정확성....
+                  </Link>
+
+                  <Text
+                    className="text-gray-400  text-[15px]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    사진 인증을 검토 중입니다
+                  </Text>
+                </View>
+              ) : (
+                <View className="flex  justify-center p-3 gap-2 items-center">
+                  <Link
+                    href="/Certification/"
+                    className="mb-2 text-xl text-amber-400 text-[20px]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    스폰서 확인 및 시작하기
+                  </Link>
+
+                  <Text
+                    className="text-gray-400  text-[15px]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    차량에 부착된 불법 스티커를 확인해 주세요.
+                  </Text>
+                </View>
+              )}
+            </ImageBackground>
+          ) : (
+            <View className="border border-white rounded-[10px] p-3 flex">
+              <Text
+                className="text-white text-[20px]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
-                더 많은 지지자{'>'}
-              </Link>
-              <Image
-                source={require('../../../assets/images/file.png')}
-                className="h-[100] w-[100]  "
-              />
+                서포터 한명 더!
+              </Text>
+              <Text
+                className="text-gray-400  text-[15px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                서포터를 추가하고 다양한 혜택을 누려보세요
+              </Text>
+              <View className="flex flex-row justify-between gap-2 items-center">
+                <Link
+                  href="/register/"
+                  className="mb-5 text-xl text-amber-400"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  더 많은 지지자{'>'}
+                </Link>
+                <Image
+                  source={require('../../../assets/images/file.png')}
+                  className="h-[100] w-[100]  "
+                />
+              </View>
             </View>
-          </View>
+          )}
         </View>
       </View>
       <View className=" bg-black mb-10">
