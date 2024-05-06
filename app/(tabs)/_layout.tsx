@@ -213,7 +213,6 @@ export default function Layout() {
           headerTitle: '행사',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerTitleAlign: 'center',
-<<<<<<< HEAD
 
           headerRight: () => (
             <View className="flex flex-row justify-around ">
@@ -223,16 +222,6 @@ export default function Layout() {
                 color="white"
               />
 
-=======
-          headerRight: () => (
-            <View className="flex flex-row justify-around ">
-              <MaterialCommunityIcons
-                name="bell-outline"
-                size={24}
-                color="white"
-              />
-
->>>>>>> dcd6095fb0daa60e8496f13f1f6c52377e66860f
               <Badge
                 status="error"
                 value=""
