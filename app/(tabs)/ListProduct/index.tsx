@@ -35,18 +35,18 @@ export default function ListProduct() {
           className="  bg-[#606163] p-2 rounded-tl-[10px] rounded-bl-[10px]"
         >
           <Text
-            className="text-[#fff] text-[10px]"
+            className="text-[#fff] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
-            신병 모집
+            모집중
           </Text>
         </Pressable>
         <Pressable onPress={() => setSearch(1)} className=" bg-[#44434377] p-2">
           <Text
-            className="text-[#a3a2a2] text-[10px]"
+            className="text-[#a3a2a2] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
-            채용 일정이 나와있습니다
+            모집 예정
           </Text>
         </Pressable>
         <Pressable
@@ -54,10 +54,10 @@ export default function ListProduct() {
           className=" bg-[#44434377] p-2 rounded-tr-[10px] rounded-br-[10px]"
         >
           <Text
-            className="text-[#a3a2a2] text-[10px]"
+            className="text-[#a3a2a2] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
-            모집이 종료되었습니다
+            모집 종료
           </Text>
         </Pressable>
       </View>
@@ -80,21 +80,21 @@ export default function ListProduct() {
               배드블루
             </Text>
             <Text
-              className="text-[#a3a2a2] "
-              style={{ fontFamily: 'Pretendard-Bold' }}
+              className="text-[#AAAAAA] text-[12px]"
+              style={{ fontFamily: 'Pretendard-Medium' }}
             >
               대구광역시 | 시간: 7일
             </Text>
             <Text
-              className="text-[#e1e44e] text-[15px]"
+              className="text-[#e1e44e] text-[16px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               시간: 7일
             </Text>
             <View className="flex flex-row justify-end">
               <Text
-                className="text-[#a3a2a2] "
-                style={{ fontFamily: 'Pretendard-Bold' }}
+                className="text-[#a3a2a2] text-[12px] mt-5"
+                style={{ fontFamily: 'Pretendard-Medium' }}
               >
                 100명 중 26명이 지지하고 있습니다.
               </Text>
@@ -119,21 +119,21 @@ export default function ListProduct() {
               배드블루
             </Text>
             <Text
-              className="text-[#a3a2a2] "
-              style={{ fontFamily: 'Pretendard-Bold' }}
+              className="text-[#AAAAAA] text-[12px]"
+              style={{ fontFamily: 'Pretendard-Medium' }}
             >
               대구광역시 | 시간: 7일
             </Text>
             <Text
-              className="text-[#e1e44e] text-[15px]"
+              className="text-[#e1e44e] text-[16px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               시간: 7일
             </Text>
             <View className="flex flex-row justify-end">
               <Text
-                className="text-[#a3a2a2] "
-                style={{ fontFamily: 'Pretendard-Bold' }}
+                className="text-[#a3a2a2] text-[12px] mt-5"
+                style={{ fontFamily: 'Pretendard-Medium' }}
               >
                 100명 중 26명이 지지하고 있습니다.
               </Text>
@@ -158,21 +158,21 @@ export default function ListProduct() {
               배드블루
             </Text>
             <Text
-              className="text-[#a3a2a2] "
-              style={{ fontFamily: 'Pretendard-Bold' }}
+              className="text-[#AAAAAA] text-[12px]"
+              style={{ fontFamily: 'Pretendard-Medium' }}
             >
               대구광역시 | 시간: 7일
             </Text>
             <Text
-              className="text-[#e1e44e] text-[15px]"
+              className="text-[#e1e44e] text-[16px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               시간: 7일
             </Text>
             <View className="flex flex-row justify-end">
               <Text
-                className="text-[#a3a2a2] "
-                style={{ fontFamily: 'Pretendard-Bold' }}
+                className="text-[#a3a2a2] text-[12px] mt-5"
+                style={{ fontFamily: 'Pretendard-Medium' }}
               >
                 100명 중 26명이 지지하고 있습니다.
               </Text>
@@ -198,21 +198,21 @@ export default function ListProduct() {
               배드블루
             </Text>
             <Text
-              className="text-[#a3a2a2] "
-              style={{ fontFamily: 'Pretendard-Bold' }}
+              className="text-[#AAAAAA] text-[12px]"
+              style={{ fontFamily: 'Pretendard-Medium' }}
             >
               대구광역시 | 시간: 7일
             </Text>
             <Text
-              className="text-[#e1e44e] text-[15px]"
+              className="text-[#e1e44e] text-[16px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               시간: 7일
             </Text>
             <View className="flex flex-row justify-end">
               <Text
-                className="text-[#a3a2a2] "
-                style={{ fontFamily: 'Pretendard-Bold' }}
+                className="text-[#a3a2a2] text-[12px] mt-5"
+                style={{ fontFamily: 'Pretendard-Medium' }}
               >
                 100명 중 26명이 지지하고 있습니다.
               </Text>

@@ -5,7 +5,7 @@ import { Dialog } from '@rneui/themed';
 import { useFonts } from 'expo-font';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Entypo, FontAwesome } from '@expo/vector-icons';
 import { toggleDialog2 } from '../../../commons/store/dialog';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { envUser } from '../../../commons/themes/global';
@@ -19,6 +19,10 @@ export default function WithDrawal() {
   const [Search, setSearch] = useState(1);
   const [User, setUser]: any = useState();
   const [Status, setStatus]: any = useState([]);
+  const [BlockWithDrawal, setBloack] = useState(false);
+  const setBlockWithDrawal = () => {
+    setBloack(!BlockWithDrawal);
+  };
   useEffect(() => {
     const Check = async () => {
       try {
@@ -272,6 +276,135 @@ export default function WithDrawal() {
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
                   확인
+                </Text>
+              </Pressable>
+            </View>
+          </Dialog>
+          <Dialog
+            isVisible={BlockWithDrawal}
+            onBackdropPress={setBlockWithDrawal}
+          >
+            <Dialog.Loading />
+          </Dialog>
+          <Dialog
+            isVisible={BlockWithDrawal}
+            onBackdropPress={setBlockWithDrawal}
+          >
+            <View className="flex flex-row justify-between  mb-5">
+              <Text
+                className="text-[15px] font-bold "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                지급명세서 발행을 위한 정보 수집
+              </Text>
+              <Pressable onPress={setBlockWithDrawal}>
+                <Entypo name="cross" size={24} color="black" />
+              </Pressable>
+            </View>
+            <View className="flex bg-gray-200 p-5">
+              <Text
+                className="text-[13px] text-[#000]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                {' '}
+                고유 식별 정보 수집
+              </Text>
+              <View className="flex flex-row  mt-3">
+                <View className="my-auto py-auto">
+                  <FontAwesome name="circle" size={13} color="yellow" />
+                </View>
+                <Text
+                  className="text-[13px] text-[#000] mx-3"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  주민등록번호/외국인등록번호
+                </Text>
+              </View>
+            </View>
+            <View className="border-b border-gray-300">
+              <View className="flex flex-row my-3 ">
+                <Text
+                  className="basis-1/3"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  이름
+                </Text>
+                <Text
+                  className="basis-1/2 text-gray-300"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  이름을 입력하세요
+                </Text>
+              </View>
+            </View>
+            <View className="border-b border-gray-300">
+              <View className="flex flex-row my-3 ">
+                <Text
+                  className="basis-1/3"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  영주권등록번호(외국인등록번호)
+                </Text>
+                <Text
+                  className="basis-1/2 text-gray-300"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  비포함 숫자를 입력하세요.
+                </Text>
+              </View>
+            </View>
+            <View className="mt-5">
+              <Text
+                className="text-[12px] text-[#7e7e7e]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                -청구서 작성을 위해 주민등록번호를 수집하며, 한 번만 입력하시면
+                향후 거래 기록에 사용됩니다.
+              </Text>
+              <Text
+                className="text-[12px] text-[#7e7e7e]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                -수집된 정보는{' '}
+                <Text style={{ fontFamily: 'Pretendard-Bold' }}>
+                  {' '}
+                  법적 보유기간 종료 후 즉시 파기
+                </Text>{' '}
+                됩니다.
+              </Text>
+              <Text
+                className="text-[12px] text-[#7e7e7e]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                -본 동의를 거부하실 수 있으나, 동의를 거부하실 경우 어떠한
+                이익도 받으실 수 없습니다.
+              </Text>
+              <Text
+                className="text-[12px] text-[#7e7e7e] mt-2"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                *SSUIK 관련 소득은
+                <Text
+                  className="text-[#ecc647]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  {' '}
+                  소득세법 제2조(기타소득)
+                </Text>{' '}
+                에 해당하며, 동법 제164조에 따른 지급신고를 위해
+                주민등록번호(또는 외국인등록번호)를 수집합니다.
+              </Text>
+            </View>
+            <View className=" flex justify-center items-center mt-5">
+              <Pressable
+                className=" bg-[#ecc647] p-3  rounded-[30px]  w-full"
+                onPress={setBlockWithDrawal}
+              >
+                <Text
+                  className="text-white text-center text-[20px]"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  등을 확인하고
                 </Text>
               </Pressable>
             </View>

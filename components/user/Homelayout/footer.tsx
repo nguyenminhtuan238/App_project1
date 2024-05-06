@@ -39,7 +39,7 @@ export default function Footer() {
           className="  h-8 w-1/4 "
           onPress={() => {
             dispatch(toggleNavigationbar(1));
-            router.push('/Map/');
+            router.push('/Event/');
           }}
         >
           <View className="flex justify-items-center items-center">

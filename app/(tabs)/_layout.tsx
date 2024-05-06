@@ -207,7 +207,59 @@ export default function Layout() {
           headerBackVisible: false,
         }}
       />
+      <Stack.Screen
+        name="Event/index"
+        options={{
+          headerTitle: '행사',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleAlign: 'center',
 
+          headerRight: () => (
+            <View className="flex flex-row justify-around ">
+              <MaterialCommunityIcons
+                name="bell-outline"
+                size={24}
+                color="white"
+              />
+
+              <Badge
+                status="error"
+                value=""
+                containerStyle={{ position: 'absolute', top: 1, left: 18 }}
+              />
+            </View>
+          ),
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerBackVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailEvent/index"
+        options={{
+          headerTitle: '이벤트 내용',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
       <Stack.Screen
         name="Application/index"
         options={{

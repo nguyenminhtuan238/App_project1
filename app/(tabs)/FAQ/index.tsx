@@ -96,7 +96,10 @@ export default function FAQ() {
             </Pressable>
             {Accordion && (
               <View className="bg-[#4d4c4c] p-3">
-                <Text className="text-[#e7d745]"     style={{ fontFamily: 'Pretendard-Bold' }}>
+                <Text
+                  className="text-[#e7d745]"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
                   출금을 요청하시면 2~3일 이내에 입금이 처리됩니다. 출금 등록을
                   하신 후 잠시 기다려 주시면 감사하겠습니다.
                 </Text>

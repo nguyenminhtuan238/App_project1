@@ -38,19 +38,28 @@ export default function FAQ2() {
           <View className="p-1">
             <View className=" flex flex-row">
               <Entypo name="dot-single" size={24} color={'#929191'} />
-              <Text className="text-[#929191]  text-[12px]"   style={{ fontFamily: 'Pretendard-Bold' }}>
+              <Text
+                className="text-[#929191] text-[12px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
                 신청은 24시간 가능합니다
               </Text>
             </View>
             <View className=" flex flex-row">
               <Entypo name="dot-single" size={24} color={'#929191'} />
-              <Text className="text-[#929191]  text-[12px]"   style={{ fontFamily: 'Pretendard-Bold' }}>
+              <Text
+                className="text-[#929191] text-[12px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
                 응대시간 : 평일 11:00~18:00 (토,일,공휴일 휴무)
               </Text>
             </View>
             <View className=" flex flex-row">
               <Entypo name="dot-single" size={24} color={'#929191'} />
-              <Text className="text-[#929191] text-[12px]"   style={{ fontFamily: 'Pretendard-Bold' }}>
+              <Text
+                className="text-[#929191] text-[12px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
                 답변시간 이후 접수된 문의사항은 업무시간 내 순차적으로 답변해
                 드립니다.
               </Text>

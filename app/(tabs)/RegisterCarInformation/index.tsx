@@ -92,12 +92,18 @@ export default function RegisterCarInformation() {
             className="px-2 flex justify-center w-full h-[60px] border-b-2 border-[#a3a2a2] bg-[#1f232c]"
             onPress={toggleDropdown}
           >
-            <View className="flex justify-center">
+            <View className="flex flex-row justify-center">
               <Text
                 className="px-2 text-[#fff] text-[20px]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 공동 명의인 경우 차량 소유자의 예
+              </Text>
+              <Text
+                className="text-yellow-500 ml-auto text-xl"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                V
               </Text>
             </View>
           </Pressable>

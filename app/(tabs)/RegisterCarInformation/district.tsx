@@ -14,6 +14,14 @@ export default function District() {
   const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
+
+  const [selectedDistrict, setSelectedDistrict] = useState('');
+
+  // chọn district
+  const handleDistrictSelection = (district: string) => {
+    setSelectedDistrict(district);
+  };
+
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
@@ -38,12 +46,6 @@ export default function District() {
   if (!fontsLoaded) {
     return null; // or other temporary content
   }
-
-  const [selectedDistrict, setSelectedDistrict] = useState('');
-  // chọn city
-  const handleDistrictSelection = (district: string) => {
-    setSelectedDistrict(district);
-  };
 
   const data = [
     { id: '1', name: '수원시' },

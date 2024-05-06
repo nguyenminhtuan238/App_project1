@@ -40,7 +40,7 @@ export default function ApplyForSponsorship() {
             onPress={() => router.push('/(tabs)/DeliveryAddress/')}
           >
             <Text
-              className="text-black text-[20px]"
+              className="text-black text-[16px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               배송지 추가
@@ -49,14 +49,14 @@ export default function ApplyForSponsorship() {
         </View>
 
         <Text
-          className="mx-3 mb-5 text-[#a3a2a2] text-[15px]"
-          style={{ fontFamily: 'Pretendard-Bold' }}
+          className="mx-3 mb-5 text-[#fff] text-[14px]"
+          style={{ fontFamily: 'Pretendard-Medium' }}
         >
           배송지를 한 번만 추가해놓으면 이후에 편리하게 선택할 수 있어 요.
         </Text>
       </View>
 
-      <View className="border-t-[5px] border-[#2c2c2c]">
+      <View className="border-t-[5px] border-[#2B2B2B]">
         <Text
           className="mt-5 mx-5 text-[#fff] text-[20px]"
           style={{ fontFamily: 'Pretendard-Bold' }}
@@ -82,21 +82,21 @@ export default function ApplyForSponsorship() {
               MILWAUKEE BUCKS
             </Text>
             <Text
-              className="text-[#a3a2a2] mt-2"
-              style={{ fontFamily: 'Pretendard-Bold' }}
+              className="text-[#AAAAAA] mt-2 text-[12px]"
+              style={{ fontFamily: 'Pretendard-Medium' }}
             >
               대구광역시 | 기간 : 120일
             </Text>
             <Text
-              className="text-[#e1e44e] text-[20px] my-5"
+              className="text-[#e1e44e] text-[16px] my-5"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               12,000P
             </Text>
             <View className="flex flex-row justify-end mt-3">
               <Text
-                className="text-[#a3a2a2]"
-                style={{ fontFamily: 'Pretendard-Bold' }}
+                className="text-[#fff] text-[12px]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
               >
                 100명중 <Text className="text-yellow-500">26명</Text>이 서포트
                 중 입니다.
