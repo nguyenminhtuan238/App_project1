@@ -84,7 +84,6 @@ export default function Home() {
             </Link>
             <Link
               className="mb-2 text-[18px] text-yellow-500"
-              //href="/(tabs)/RegisterCarInformation/"
               href="/(tabs)/ApplyForSponsorship/"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
@@ -92,7 +91,6 @@ export default function Home() {
             </Link>
             <Link
               className="mb-2 text-[18px] text-yellow-500"
-              //href="/(tabs)/RegisterCarInformation/"
               href="/(tabs)/RegisterCarInformation/"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
