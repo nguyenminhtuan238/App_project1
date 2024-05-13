@@ -5,17 +5,17 @@ import BackgroundGeolocation, {
   Location,
   Subscription,
 } from 'react-native-background-geolocation';
-
+import MapView from 'react-native-maps';
 export default function Map() {
   const [enabled, setEnabled] = React.useState(false);
-  const [location, setLocation] = React.useState('');
+  const [location, setLocation]: any = React.useState('');
 
   React.useEffect(() => {
     /// 1.  Subscribe to events.
     const onLocation: Subscription = BackgroundGeolocation.onLocation(
       (location) => {
-        console.log('[onLocation]', location);
-        setLocation(JSON.stringify(location, null, 2));
+        // console.log('[onLocation]', location);
+        setLocation(location);
       }
     );
 
@@ -35,7 +35,6 @@ export default function Map() {
         console.log('[onProviderChange]', event);
       });
 
-    /// 2. ready the plugin.
     BackgroundGeolocation.ready({
       // Geolocation Config
       desiredAccuracy: BackgroundGeolocation.DESIRED_ACCURACY_HIGH,
@@ -88,10 +87,17 @@ export default function Map() {
   }, [enabled]);
 
   return (
-    <View style={{ alignItems: 'center' }}>
-      <Text>Click to enable BackgroundGeolocation</Text>
+    <View className="flex-1">
       <Switch value={enabled} onValueChange={setEnabled} />
-      <Text style={{ fontFamily: 'monospace', fontSize: 12 }}>{location}</Text>
+      <MapView
+        region={{
+          latitude: location ? location.coords.latitude : 16.16666666,
+          longitude: location ? location.coords.longitude : 107.83333333,
+          latitudeDelta: 0.04,
+          longitudeDelta: 0.05,
+        }}
+        className="w-full h-full"
+      />
     </View>
   );
 }

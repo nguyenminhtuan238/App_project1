@@ -215,6 +215,7 @@ export default function Layout() {
           headerTitle: '행사',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerTitleAlign: 'center',
+
           headerRight: () => (
             <View className="flex flex-row justify-around ">
               <MaterialCommunityIcons

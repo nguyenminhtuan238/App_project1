@@ -2,8 +2,9 @@
 
 buildscript {
     ext {
-// @generated begin expo-gradle-ext-vars - expo prebuild (DO NOT MODIFY) sync-da39a3ee5e6b4b0d3255bfef95601890afd80709
-
+// @generated begin expo-gradle-ext-vars - expo prebuild (DO NOT MODIFY) sync-a14167d3df9d6380c3d77a8f8070215ea8a94013
+	googlePlayServicesLocationVersion = "21.1.0"
+	appCompatVersion = "1.4.2"
 // @generated end expo-gradle-ext-vars
         buildToolsVersion = findProperty('android.buildToolsVersion') ?: '33.0.0'
         minSdkVersion = Integer.parseInt(findProperty('android.minSdkVersion') ?: '21')
@@ -20,6 +21,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
+        classpath 'com.google.gms:google-services:4.3.3'
         classpath('com.android.tools.build:gradle:7.4.2')
         classpath('com.facebook.react:react-native-gradle-plugin')
     }

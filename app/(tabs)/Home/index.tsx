@@ -12,16 +12,52 @@ import {
 import { useFonts } from 'expo-font';
 
 import LayoutScreen from '../../../components/user/Homelayout/layout';
-import { Logout } from '../../../commons/store/user';
+import { CheckLogin, Logout } from '../../../commons/store/user';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import AccessConfirm from '../../../components/dialog/AccessConfirm';
 import AllowAccess from '../../../components/dialog/AllowAccess';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { envUser } from '../../../commons/themes/global';
+import certificationFireBase from '../../../commons/services/Certification.services';
 export default function Home() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
+  const [GetCertification, SetCertification]: any = useState(null);
+  useEffect(() => {
+    const Check = async () => {
+      try {
+        if ((await AsyncStorage.getItem(envUser)) != null) {
+          const GetUser: any = await AsyncStorage.getItem(envUser);
+          const certification: any =
+            await certificationFireBase.getbyidcertification(
+              JSON.parse(GetUser).id
+            );
+          if (certification.success == false) {
+            const data = {
+              image: '',
+              image2: '',
+              image3: '',
+              check: false,
+              confirm: false,
+            };
+            await certificationFireBase.Addcertification(
+              data,
+              JSON.parse(GetUser).id
+            );
+            SetCertification(certification);
+          }
+          SetCertification(certification);
+          dispatch(CheckLogin(true));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    Check();
+  }, [user.checklogin]);
 
   // đổi font chữ
   const [fontsLoaded] = useFonts({
@@ -84,14 +120,16 @@ export default function Home() {
             </Link>
             {/* <Link
               className="mb-2 text-[18px] text-yellow-500"
-              href="/(tabs)/ApplyForSponsorship/"
+              //href="/(tabs)/RegisterCarInformation/"
+              href="/Map/"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               신청서 작성{'>'}
             </Link>
             <Link
               className="mb-2 text-[18px] text-yellow-500"
-              href="/(tabs)/RegisterCarInformation/"
+              //href="/(tabs)/RegisterCarInformation/"
+              href="/Admin/Home/"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               차량정보 등록{'>'}
@@ -129,23 +167,24 @@ export default function Home() {
           ></Text>
         </View>
       </ImageBackground>
-
-      <View className="h-[44px] bg-[#494949] flex flex-row justify-between py-[10px] px-[20px]">
-        <Text
-          className="text-yellow-300 text-[16px]"
-          style={{ fontFamily: 'Pretendard-Medium' }}
-        >
-          차량정보를 등록해주세요
-        </Text>
-        <Link
-          href="/register/"
-          className="text-[#FFFFFF] text-[16px]"
-          style={{ fontFamily: 'Pretendard-Bold' }}
-        >
-          등록하러 가기
-          <AntDesign name="right" size={16} color="white" />
-        </Link>
-      </View>
+      {!user.checklogin && (
+        <View className="h-[44px] bg-[#494949] flex flex-row justify-between 	p-2">
+          <Text
+            className="text-amber-200 text-[16px] ml-3"
+            style={{ fontFamily: 'Pretendard-Medium' }}
+          >
+            차량정보를 등록해주세요
+          </Text>
+          <Link
+            href="/register/"
+            className="text-[#fff] text-[16px] mr-3"
+            style={{ fontFamily: 'Pretendard-Bold' }}
+          >
+            등록하러 가다
+            <AntDesign name="right" size={13} color="white" />
+          </Link>
+        </View>
+      )}
       <View className=" bg-black">
         <View className="p-5">
           <Image
@@ -159,39 +198,77 @@ export default function Home() {
           >
             홍길동님이 진행 중인 광고
           </Text>
-          <View className="w-[335px] h-[160px] px-[20px] py-[20px] border border-[#FFFFFF] rounded-[12px] flex">
-            <Text
-              className="text-[#FFFFFF] text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
+          {user.checklogin ? (
+            <ImageBackground
+              source={require('../../../assets/images/loginsuccess.jpg')}
+              resizeMode="stretch"
+              className="border border-white rounded-[10px] p-3 flex opacity-60"
             >
-              서포터를 추가해보세요!
-            </Text>
-            <Text
-              className="text-[#FFFFFF] text-[14px]"
-              style={{ fontFamily: 'Pretendard-Medium' }}
-            >
-              서포터를 추가하고 많은 혜택을 누려보세요.
-            </Text>
-            <View className="flex flex-row justify-between gap-2 items-center">
-              <View className="basis-1/2">
+              {GetCertification?.check ? (
+                <View className="flex  justify-center p-3 gap-2 items-center">
+                  <Link
+                    href="/Certification/"
+                    className="mb-2 text-xl text-amber-400 text-[20px]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    정확성....
+                  </Link>
+
+                  <Text
+                    className="text-white  text-[14px]"
+                    style={{ fontFamily: 'Pretendard-Medium' }}
+                  >
+                    사진 인증을 검토 중입니다
+                  </Text>
+                </View>
+              ) : (
+                <View className="flex  justify-center p-3 gap-2 items-center">
+                  <Link
+                    href="/Certification/"
+                    className="mb-2 text-xl text-yellow-300 text-[20px]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    스폰서 확인 및 시작하기
+                  </Link>
+
+                  <Text
+                    className="text-gray-400  text-[15px]"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    차량에 부착된 불법 스티커를 확인해 주세요.
+                  </Text>
+                </View>
+              )}
+            </ImageBackground>
+          ) : (
+            <View className="border border-white rounded-[10px] p-3 flex">
+              <Text
+                className="text-white text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                서포터 한명 더!
+              </Text>
+              <Text
+                className="text-white  text-[14px]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                서포터를 추가하고 다양한 혜택을 누려보세요
+              </Text>
+              <View className="flex flex-row justify-between gap-2 items-center">
                 <Link
-                  href="/Certification/"
-                  className="text-[16px] text-yellow-300"
+                  href="/register/"
+                  className="mb-5 text-[16px] text-yellow-300 mt-auto"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  서포터 추가하기
-                  <AntDesign name="right" size={16} color="#c5c04b"/>
+                  더 많은 지지자{'>'}
                 </Link>
-              </View>
-              
-              <View className="basis-1/2">
                 <Image
-                source={require('../../../assets/images/file.png')}
-                className="h-[80px] w-[80px] ml-auto"
+                  source={require('../../../assets/images/file.png')}
+                  className="h-[100] w-[100]  "
                 />
               </View>
             </View>
-          </View>
+          )}
         </View>
       </View>
       <View className=" bg-black mb-10">

@@ -1,18 +1,8 @@
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
-
+import { router } from 'expo-router';
+import { useState } from 'react';
+import { View, Text, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
 import { CheckBox } from '@rneui/themed';
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
 import { Ionicons } from '@expo/vector-icons';

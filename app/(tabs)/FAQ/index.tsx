@@ -1,27 +1,13 @@
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
-
+import { router } from 'expo-router';
+import { useState } from 'react';
+import { View, Text, ScrollView, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
-
 import LayoutScreen from '../../../components/user/Homelayout/layout';
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
-import AccessConfirm from '../../../components/dialog/AccessConfirm';
-import AllowAccess from '../../../components/dialog/AllowAccess';
-import { toggleNavigationbar } from '../../../commons/store/Navigationbar';
+import { AntDesign } from '@expo/vector-icons';
 export default function FAQ() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [Accordion, GetAccordion] = useState(false);
   enum SetAccordion {

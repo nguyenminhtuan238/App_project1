@@ -1,4 +1,4 @@
-package Expo.expotest;
+package com.ssuik.android;
 
 import android.os.Build;
 import android.os.Bundle;

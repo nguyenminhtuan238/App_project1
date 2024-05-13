@@ -1,25 +1,31 @@
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
+import { router } from 'expo-router';
+import { View, Text, Image, Pressable } from 'react-native';
 
 import { useFonts } from 'expo-font';
-
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
+import { useEffect } from 'react';
+import { envUser } from '../../../commons/themes/global';
+import userFireBase from '../../../commons/services/User.services';
+import { CheckLogin } from '../../../commons/store/user';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function DetailProduct() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
-  const [Search, setSearch] = useState(1);
-
+  useEffect(() => {
+    const Check = async () => {
+      try {
+        const GetUser: any = await AsyncStorage.getItem(envUser);
+        if (GetUser != null) {
+          const User: any = await userFireBase.getbyiduser(
+            JSON.parse(GetUser)?.id
+          );
+          dispatch(CheckLogin(true));
+        }
+      } catch (error) {}
+    };
+    Check();
+  }, [user.checklogin]);
   // đổi font chữ
   const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
@@ -85,17 +91,28 @@ export default function DetailProduct() {
           </Text>
         </View>
         <View className=" bg-[#000] flex justify-center items-center p-5	w-full">
-          <Pressable
-            className=" bg-[#eeea14] p-5  rounded-full  w-full"
-            onPress={() => router.push('/register/')}
-          >
-            <Text
-              className="text-center text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
+          {user.checklogin ? (
+            <Pressable className=" bg-[#eeea14] p-5  rounded-full  w-full">
+              <Text
+                className="text-center text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                스폰서 신청
+              </Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              className=" bg-[#eeea14] p-5  rounded-full  w-full"
+              onPress={() => router.push('/register/')}
             >
-              스폰서 신청
-            </Text>
-          </Pressable>
+              <Text
+                className="text-center text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                스폰서 신청
+              </Text>
+            </Pressable>
+          )}
         </View>
       </View>
     </View>

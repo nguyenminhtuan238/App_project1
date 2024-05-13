@@ -1,27 +1,11 @@
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
-
+import { View, Text, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
-
 import LayoutScreen from '../../../components/user/Homelayout/layout';
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
 import { Entypo } from '@expo/vector-icons';
-import AccessConfirm from '../../../components/dialog/AccessConfirm';
-import AllowAccess from '../../../components/dialog/AllowAccess';
-import { toggleNavigationbar } from '../../../commons/store/Navigationbar';
 export default function FAQ2() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   // đổi font chữ
   const [fontsLoaded] = useFonts({

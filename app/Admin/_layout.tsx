@@ -1,15 +1,14 @@
-import { router } from 'expo-router';
-import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import '../../assets/css/global.css';
+
 import { useFonts } from 'expo-font';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from '../../commons/store';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { router, Slot, Stack, Tabs } from 'expo-router';
 
-import { Logout } from '../../commons/store/user';
-
-const LogoutScreen = () => {
-  useEffect(() => {
-    Logout();
-    router.push('/');
-  }, []);
+export default function Layout() {
+  const hidden = useSelector((state: RootState) => state.hidden);
+  const dispatch: AppDispatch = useDispatch();
 
   // đổi font chữ
   const [fontsLoaded] = useFonts({
@@ -29,10 +28,18 @@ const LogoutScreen = () => {
   }
 
   return (
-    <View>
-      <Text style={{ fontFamily: 'Pretendard-Bold' }}>Đăng Xuất..........</Text>
-    </View>
+    <Stack>
+      <Stack.Screen
+        name="Home/index"
+        options={{
+          headerTitle: '관리 홈',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+        }}
+      />
+    </Stack>
   );
-};
-
-export default LogoutScreen;
+}

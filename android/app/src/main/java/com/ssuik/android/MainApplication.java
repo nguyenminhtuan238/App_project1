@@ -1,4 +1,4 @@
-package Expo.expotest;
+package com.ssuik.android;
 
 import android.app.Application;
 import android.content.res.Configuration;
