@@ -168,20 +168,20 @@ export default function Home() {
         </View>
       </ImageBackground>
       {!user.checklogin && (
-        <View className="h-[44px] bg-[#494949] flex flex-row justify-between 	p-2">
+        <View className="h-[44px] bg-[#494949] flex flex-row justify-between py-[10px] px-[20px]">
           <Text
-            className="text-amber-200 text-[16px] ml-3"
+            className="text-yellow-300 text-[16px]"
             style={{ fontFamily: 'Pretendard-Medium' }}
           >
             차량정보를 등록해주세요
           </Text>
           <Link
             href="/register/"
-            className="text-[#fff] text-[16px] mr-3"
+            className="text-[#fff] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
-            등록하러 가다
-            <AntDesign name="right" size={13} color="white" />
+            등록하러 가기
+            <AntDesign name="right" size={16} color="white" />
           </Link>
         </View>
       )}
