@@ -28,87 +28,129 @@ export default function Register() {
   }
 
   return (
-    <View className="flex  h-screen items-center  justify-center	bg-[#000]">
-      <Text
-        className="text-[#fff] text-[16px]  bg-black rounded-full p-3 border border-[#7e7e7e4b] "
-        style={{ fontFamily: 'Pretendard-Medium' }}
+    <View className="flex h-screen items-center justify-center bg-[#000] py-[80px]">
+      
+      <View 
+        className="w-[225px] h-[148px]"
       >
-        내 브랜드는 일상과{' '}
-        <Link
-          href="/login/"
-          className="text-amber-300"
-          style={{ fontFamily: 'Pretendard-Bold' }}
-        >
-          함께한다
-        </Link>
-      </Text>
-      <Image
-        source={require('../../../assets/images/logo.jpg')}
-        className="w-[240px] h-[240px]"
-      />
 
+        <View 
+          className="mx-auto mb-[10px] w-[230px] h-[44px] border border-[#FFFFFF] rounded-full"
+        >
+          <Text className="mx-auto my-auto">
+            <Text 
+              className="text-[16px] text-[#FFFFFF]"
+              style={{ fontFamily: 'Pretendard-Medium' }}
+            >
+              일상생활과 함께하는
+            </Text>
+            <Text className="text-[16px] text-amber-300">
+              <Link
+                href="/login/"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              > 내 브랜드
+              </Link>
+            </Text>
+          </Text>
+        </View>
+
+        <View 
+          className="mx-auto mt-[10px] w-[213px] h-[84px] "
+        >
+          <View 
+            className="mx-auto my-auto"
+          >
+            <View className="mb-auto w-[212.39px] h-[7.71px] bg-[#F6CA23] mb-[15px]" />
+
+            <View 
+              className="mx-auto my-auto"
+            >
+              <Image
+              source={require('../../../assets/images/logo15.jpg')}
+              className="w-[212px] h-[40px]"
+            />
+            </View>
+
+            <View
+              className="mt-auto flex flex-row mt-[15px]"
+            >
+              <View className="w-[56.61px] h-[7.3px] bg-[#FFFFFF] mr-auto"/>
+              <View className="w-[56.15px] h-[7.3px] bg-[#FFFFFF]"/>
+              <View className="w-[56.15px] h-[7.3px] bg-[#FFFFFF] ml-auto"/>
+
+            </View>
+
+          </View>
+        </View>
+      </View>
+      
       <Text
-        className="text-[#fff] text-[14px]"
+        className="text-[#FFFFFF] text-[14px] mt-auto mb-[20px]"
         style={{ fontFamily: 'Pretendard-Bold' }}
       >
-        -SNS 계정으로 쉽게 시작해보세요-
+        - SNS계정으로 간편하게 시작하기 -
       </Text>
-      <TouchableHighlight className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-amber-300 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <View className="text-white text-center  flex flex-row ">
+      <TouchableHighlight className="w-[335px] h-[60px] flex justify-center py-[20px] px-[20px] my-[10px] border border-transparent rounded-md shadow-sm text-sm font-medium  bg-amber-300 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <View className="text-white text-center flex flex-row ">
           <Image
-            className="w-[24px] h-[24px]"
+            className="w-[32px] h-[32px]"
             source={require('../../../assets/images/messagecircle.png')}
           />
           <Text
-            className="ml-[20px] text-[16px]"
+            className="mx-auto my-auto text-[16px]"
             style={{ fontFamily: 'Pretendard-SemiBold' }}
           >
-            카카오톡 시작하기
+            카카오톡으로 시작하기
           </Text>
         </View>
       </TouchableHighlight>
       <TouchableHighlight
         onPress={() => router.push('/(tabs)/Confirm/')}
-        className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-emerald-400 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="w-[335px] h-[60px] flex justify-center py-[20px] px-[20px] my-[10px] border border-transparent rounded-md shadow-sm text-sm font-medium  bg-emerald-400 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         <View className="text-white text-center  flex flex-row ">
           <Image
-            className="w-[24px] h-[24px]"
+            className="w-[32px] h-[32px]"
             source={require('../../../assets/images/naver.png')}
           />
           <Text
-            className="ml-[20px] text-[16px]"
+            className="mx-auto my-auto text-[16px] text-[#FFFFFF]"
             style={{ fontFamily: 'Pretendard-SemiBold' }}
           >
-            네이버로 시작해 보세요
+            네이버로 시작하기
           </Text>
         </View>
       </TouchableHighlight>
-      <TouchableHighlight className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-amber-300 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <TouchableHighlight 
+        className="w-[335px] h-[60px] flex justify-center py-[20px] px-[20px] my-[10px] border border-transparent rounded-md shadow-sm text-sm font-medium bg-amber-300 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
         <View className="text-white text-center  flex flex-row ">
-          <AntDesign name="apple1" size={24} color="black" />
+          <AntDesign name="apple1" size={18} color="black" />
           <Text
-            className="ml-[20px] text-[16px]"
+            className="mx-auto my-auto text-[16px]"
             style={{ fontFamily: 'Pretendard-SemiBold' }}
           >
             사과부터 시작해 보세요
           </Text>
         </View>
       </TouchableHighlight>
-      <TouchableHighlight className="w-4/5 flex justify-center py-3 px-4 my-1 border border-transparent rounded-md shadow-sm text-sm font-medium  bg-[#fff] hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <View className="text-white text-center  flex flex-row ">
+      <TouchableHighlight 
+        className="w-[335px] h-[60px] flex justify-center py-[20px] px-[20px] my-[10px] border border-transparent rounded-md shadow-sm text-sm font-medium bg-[#fff] hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        <View className="text-white text-center flex flex-row ">
           <Image
-            className="w-[24px] h-[24px] "
+            className="w-[32px] h-[32px] "
             source={require('../../../assets/images/Google.png')}
           />
           <Text
-            className="ml-[20px] text-[16px]"
+            className="mx-auto my-auto text-[16px]"
             style={{ fontFamily: 'Pretendard-SemiBold' }}
           >
             Google 시작하기
           </Text>
         </View>
       </TouchableHighlight>
+    
     </View>
   );
 }

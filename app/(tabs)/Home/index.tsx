@@ -45,44 +45,44 @@ export default function Home() {
       <ImageBackground
         source={require('../../../assets/images/backgroundhome.jpg')}
         resizeMode="stretch"
-        className="h-[250] w-[375] flex justify-center p-8   "
+        className=" w-[375px] h-[260px] flex justify-center p-8 mx-auto"
       >
         <View className="flex flex-row justify-between mt-8 ">
           <View>
             <Text
-              className="text-[#fff] text-[20px]"
+              className="text-[#FFFFFF] text-[20px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
-              나의 후원자를{' '}
+              나의 스폰서를{' '}
             </Text>
             <Text
-              className="mb-4 text-[#fff] text-[20px]"
+              className="mb-4 text-[#FFFFFF] text-[20px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
-              {' '}
-              찾아보세요
+              
+              찾아주세요
             </Text>
             <Text
-              className="text-[14px] text-[#fff]"
+              className="text-[14px] text-[#FFFFFF]"
               style={{ fontFamily: 'Pretendard-Medium' }}
             >
-              밴드를 선택하고
+              브랜드를 선택하고
             </Text>
             <Text
-              className="mb-4 text-[14px] text-[#fff]"
+              className="mb-4 text-[14px] text-[#FFFFFF]"
               style={{ fontFamily: 'Pretendard-Medium' }}
             >
-              {' '}
-              많은 사람들을 만나보세요
+              다양한 혜택을 만나보세요.
             </Text>
             <Link
-              className="mb-2 text-[18px] text-yellow-500"
+              className="mb-2 text-[16px] text-yellow-500"
               href="/(tabs)/ListProduct/"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
-              스폰서 찾기{'>'}
+              스폰서 찾아보기
+              <AntDesign name="right" size={16} color="#c5c04b" />
             </Link>
-            <Link
+            {/* <Link
               className="mb-2 text-[18px] text-yellow-500"
               href="/(tabs)/ApplyForSponsorship/"
               style={{ fontFamily: 'Pretendard-Bold' }}
@@ -95,12 +95,12 @@ export default function Home() {
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               차량정보 등록{'>'}
-            </Link>
+            </Link> */}
           </View>
           <View>
             <Image
               source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100]"
+              className="h-[113.73px] w-[101.74px] mt-[30px] ml-[70px]"
             />
           </View>
         </View>
@@ -118,7 +118,7 @@ export default function Home() {
             05
           </Text>
         </View>
-        <View className=" flex flex-row  justify-between ">
+        <View className=" flex flex-row justify-between ">
           <Text
             className="border-b-2 border-gray-500 w-[25%]"
             style={{ fontFamily: 'Pretendard-Bold' }}
@@ -129,60 +129,67 @@ export default function Home() {
           ></Text>
         </View>
       </ImageBackground>
-      <View className="h-[44px] bg-[#494949] flex flex-row justify-between 	p-2">
+
+      <View className="h-[44px] bg-[#494949] flex flex-row justify-between py-[10px] px-[20px]">
         <Text
-          className="text-amber-200 text-[16px] ml-3"
+          className="text-yellow-300 text-[16px]"
           style={{ fontFamily: 'Pretendard-Medium' }}
         >
           차량정보를 등록해주세요
         </Text>
         <Link
           href="/register/"
-          className="text-[#fff] text-[16px] mr-3"
+          className="text-[#FFFFFF] text-[16px]"
           style={{ fontFamily: 'Pretendard-Bold' }}
         >
-          등록하러 가다
-          <AntDesign name="right" size={13} color="white" />
+          등록하러 가기
+          <AntDesign name="right" size={16} color="white" />
         </Link>
       </View>
       <View className=" bg-black">
         <View className="p-5">
           <Image
             source={require('../../../assets/images/pagation.jpg')}
-            className="w-[150] h-[5]"
+            className="w-[150] h-[5] mt-5"
             resizeMode="stretch"
           />
           <Text
-            className="text-[#fff] my-3 text-[20px]"
+            className="text-[#FFFFFF] my-3 text-[20px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             홍길동님이 진행 중인 광고
           </Text>
-          <View className="border border-[#fff] rounded-[10px] p-3 flex">
+          <View className="w-[335px] h-[160px] px-[20px] py-[20px] border border-[#FFFFFF] rounded-[12px] flex">
             <Text
-              className="text-[#fff] text-[20px]"
+              className="text-[#FFFFFF] text-[20px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               서포터를 추가해보세요!
             </Text>
             <Text
-              className="text-[#fff] text-[14px]"
+              className="text-[#FFFFFF] text-[14px]"
               style={{ fontFamily: 'Pretendard-Medium' }}
             >
               서포터를 추가하고 많은 혜택을 누려보세요.
             </Text>
             <View className="flex flex-row justify-between gap-2 items-center">
-              <Link
-                href="/Certification/"
-                className="mb-5 text-[16px] text-yellow-300 mt-auto"
-                style={{ fontFamily: 'Pretendard-Bold' }}
-              >
-                서포터 추가하기{'>'}
-              </Link>
-              <Image
+              <View className="basis-1/2">
+                <Link
+                  href="/Certification/"
+                  className="text-[16px] text-yellow-300"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  서포터 추가하기
+                  <AntDesign name="right" size={16} color="#c5c04b"/>
+                </Link>
+              </View>
+              
+              <View className="basis-1/2">
+                <Image
                 source={require('../../../assets/images/file.png')}
-                className="h-[100] w-[100]  "
-              />
+                className="h-[80px] w-[80px] ml-auto"
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -195,50 +202,61 @@ export default function Home() {
             resizeMode="stretch"
           />
           <Text
-            className="text-[#fff] my-3 text-[20px]"
+            className="text-[#FFFFFF] my-3 text-[20px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             홍길동님을 위한 추천광고
           </Text>
           <ScrollView horizontal>
-            <View className="border border-white bg-white rounded-[10px]   mx-3 w-[230] h-[279]">
+            <View className="border border-white bg-white rounded-[12px] mr-[40px] w-[230] h-[279]">
               <Pressable
-                className=" flex justify-center items-center p-3"
+                className="w-[230px] h-[157px] flex justify-center items-center"
                 onPress={() => router.push('/(tabs)/DetailProduct/')}
               >
                 <Image
                   source={require('../../../assets/images/Bear.png')}
-                  className="h-[100] w-[100]"
+                  className="w-[105px] h-[116.67px]"
                 />
               </Pressable>
-              <View className="flex justify-center items-center py-3  bg-black ">
+              <View className="w-[230px] h-[38px] flex justify-center items-center bg-[#2E2E2E] ">
                 <Text
                   className="text-white text-[12px]"
                   style={{ fontFamily: 'Pretendard-Medium' }}
                 >
-                  100명 중 26명이 지지하고 있습니다.
+                  100명중 
+                  <Text 
+                    className="text-yellow-300 " 
+                    style={{ fontFamily: 'Pretendard-Medium' }}
+                  >
+                    {' '} 26명
+                  </Text>
+                  이 서포트 중 입니다.
                 </Text>
               </View>
-              <View className="flex flex-row justify-between  px-1  my-3 ">
+              <View className="w-[230px] h-[50px] px-[12px] py-[10px] flex flex-row justify-between">
                 <Text
                   className="text-[16px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  배드블루
+                  Bad Blue
                 </Text>
-                <Text
-                  className="text-[12px]"
-                  style={{ fontFamily: 'Pretendard-Bold' }}
+                <View
+                  className="w-[75px] h-[30px] px-[6px] py-[3px] bg-[#F3F3F3]"
                 >
-                  대구광역시
-                </Text>
+                  <Text
+                    className="text-[12px] text-[#2E2E2E] mx-auto my-auto"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    대구광역시
+                  </Text>
+                </View>
               </View>
-              <View className="flex flex-row justify-between  px-1  my-[20] ">
+              <View className="w-[230px] h-[34px] px-[12px] pb-[10px] flex flex-row justify-between">
                 <Text
-                  className="text-[12px] text-gray-400"
+                  className="text-[12px] text-[#000000]"
                   style={{ fontFamily: 'Pretendard-Medium' }}
                 >
-                  시간: 30일
+                  기간 : 30일
                 </Text>
                 <Text
                   className="text-amber-300 text-[16px]"
@@ -248,44 +266,115 @@ export default function Home() {
                 </Text>
               </View>
             </View>
-            <View className="border border-white bg-white rounded-[10px]   mx-3 w-[230] h-[279]">
+       
+            <View className="border border-white bg-white rounded-[12px] mr-[40px] w-[230] h-[279]">
               <Pressable
-                className=" flex justify-center items-center p-3"
+                className="w-[230px] h-[157px] flex justify-center items-center"
                 onPress={() => router.push('/(tabs)/DetailProduct/')}
               >
                 <Image
                   source={require('../../../assets/images/Bear.png')}
-                  className="h-[100] w-[100]"
+                  className="w-[105px] h-[116.67px]"
                 />
               </Pressable>
-              <View className="flex justify-center items-center py-3  bg-black ">
+              <View className="w-[230px] h-[38px] flex justify-center items-center bg-[#2E2E2E] ">
                 <Text
                   className="text-white text-[12px]"
                   style={{ fontFamily: 'Pretendard-Medium' }}
                 >
-                  100명 중 26명이 지지하고 있습니다.
+                  100명중 
+                  <Text 
+                    className="text-yellow-300 " 
+                    style={{ fontFamily: 'Pretendard-Medium' }}
+                  >
+                    {' '} 26명
+                  </Text>
+                  이 서포트 중 입니다.
                 </Text>
               </View>
-              <View className="flex flex-row justify-between  px-1  my-3 ">
+              <View className="w-[230px] h-[50px] px-[12px] py-[10px] flex flex-row justify-between">
                 <Text
-                  className="text-[16px] "
+                  className="text-[16px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  배드블루
+                  Bad Blue
                 </Text>
-                <Text
-                  className="text-[12px]"
-                  style={{ fontFamily: 'Pretendard-Bold' }}
+                <View
+                  className="w-[75px] h-[30px] px-[6px] py-[3px] bg-[#F3F3F3]"
                 >
-                  대구광역시
-                </Text>
+                  <Text
+                    className="text-[12px] text-[#2E2E2E] mx-auto my-auto"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    대구광역시
+                  </Text>
+                </View>
               </View>
-              <View className="flex flex-row justify-between  px-1  my-[20] ">
+              <View className="w-[230px] h-[34px] px-[12px] pb-[10px] flex flex-row justify-between">
                 <Text
-                  className="text-[12px] text-gray-400"
+                  className="text-[12px] text-[#000000]"
                   style={{ fontFamily: 'Pretendard-Medium' }}
                 >
-                  시간: 30일
+                  기간 : 30일
+                </Text>
+                <Text
+                  className="text-amber-300 text-[16px]"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  25.000P
+                </Text>
+              </View>
+            </View>
+
+            <View className="border border-white bg-white rounded-[12px] mr-[40px] w-[230] h-[279]">
+              <Pressable
+                className="w-[230px] h-[157px] flex justify-center items-center"
+                onPress={() => router.push('/(tabs)/DetailProduct/')}
+              >
+                <Image
+                  source={require('../../../assets/images/Bear.png')}
+                  className="w-[105px] h-[116.67px]"
+                />
+              </Pressable>
+              <View className="w-[230px] h-[38px] flex justify-center items-center bg-[#2E2E2E] ">
+                <Text
+                  className="text-white text-[12px]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  100명중 
+                  <Text 
+                    className="text-yellow-300 " 
+                    style={{ fontFamily: 'Pretendard-Medium' }}
+                  >
+                    {' '} 26명
+                  </Text>
+                  이 서포트 중 입니다.
+                </Text>
+              </View>
+              <View className="w-[230px] h-[50px] px-[12px] py-[10px] flex flex-row justify-between">
+                <Text
+                  className="text-[16px]"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  Bad Blue
+                </Text>
+                <View
+                  className="w-[75px] h-[30px] px-[6px] py-[3px] bg-[#F3F3F3]"
+                >
+                  <Text
+                    className="text-[12px] text-[#2E2E2E] mx-auto my-auto"
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    대구광역시
+                  </Text>
+                </View>
+              </View>
+              <View className="w-[230px] h-[34px] px-[12px] pb-[10px] flex flex-row justify-between">
+                <Text
+                  className="text-[12px] text-[#000000]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  기간 : 30일
                 </Text>
                 <Text
                   className="text-amber-300 text-[16px]"

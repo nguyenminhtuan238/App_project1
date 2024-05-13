@@ -42,23 +42,25 @@ export default function Layout() {
 
   return (
     <Stack>
+      
       <Stack.Screen
         name="Home/index"
         options={{
-          headerTitle: '',
-          headerLeft: () => (
-            <Image
+          headerTitle: () => (
+            <View style={{ width: 375, height: 60 }}>
+              <Image
               source={require('../../assets/images/logo23.png')}
-              className="w-[72] h-[24] "
+              className="w-[71] h-[28] my-auto"
               resizeMode="stretch"
             />
+            </View>
           ),
-
+          headerLeft: () => null,
           headerRight: () => (
-            <View className="flex flex-row justify-around ">
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
               <MaterialCommunityIcons
                 name="bell-outline"
-                size={24}
+                size={32}
                 color="white"
               />
 
