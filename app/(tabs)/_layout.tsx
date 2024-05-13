@@ -108,8 +108,8 @@ export default function Layout() {
       <Stack.Screen
         name="ListProduct/index"
         options={{
-          headerTitle: '기부자',
-          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitle: '스폰서',
+          headerTitleStyle: { fontFamily: 'Pretendard-Bold', color: 'white', fontSize: 20},
           headerStyle: {
             backgroundColor: 'black',
           },
@@ -134,8 +134,8 @@ export default function Layout() {
       <Stack.Screen
         name="DetailProduct/index"
         options={{
-          headerTitle: '기부자',
-          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitle: '스폰서 상세',
+          headerTitleStyle: { fontFamily: 'Pretendard-Bold', color: 'white', fontSize: 20 },
           headerStyle: {
             backgroundColor: 'black',
           },

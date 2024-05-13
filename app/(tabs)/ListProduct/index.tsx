@@ -39,21 +39,26 @@ export default function ListProduct() {
 
   return (
     <ScrollView className=" bg-[#000]">
-      <View className=" flex-row justify-center  border rounded-[15px]  ">
+      <View 
+        className=" w-[335px] h-[48px] mx-auto my-[30px] flex-row justify-center items-center rounded-full bg-[#1f242a]"
+      >
         <Pressable
           onPress={() => setSearch(1)}
-          className="  bg-[#606163] p-2 rounded-tl-[10px] rounded-bl-[10px]"
+          className="w-[111px] h-[48px] mr-auto flex justify-center items-center rounded-full bg-[#424850]"
         >
           <Text
-            className="text-[#fff] text-[16px]"
+            className="text-[#FFFFFF] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             모집중
           </Text>
         </Pressable>
-        <Pressable onPress={() => setSearch(1)} className=" bg-[#44434377] p-2">
+        <Pressable 
+          onPress={() => setSearch(1)} 
+          className="w-[111px] h-[48px] mx-auto flex justify-center items-center rounded-full bg-[#1f242a]"
+        >
           <Text
-            className="text-[#a3a2a2] text-[16px]"
+            className="text-[#5F6265] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             모집 예정
@@ -61,171 +66,327 @@ export default function ListProduct() {
         </Pressable>
         <Pressable
           onPress={() => setSearch(1)}
-          className=" bg-[#44434377] p-2 rounded-tr-[10px] rounded-br-[10px]"
+          className="w-[111px] h-[48px] ml-auto flex justify-center items-center rounded-full bg-[#1f242a]"
         >
           <Text
-            className="text-[#a3a2a2] text-[16px]"
+            className="text-[#5F6265] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
             모집 종료
           </Text>
         </Pressable>
       </View>
-      <View className="mt-5">
+
+      <View className="w-[335px] mx-auto">
+
         <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
+          className="w-[335px] h-[141px] mb-[20px] border-b border-gray-700 "
           onPress={() => router.push('/(tabs)/DetailProduct/')}
         >
-          <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100] "
-            />
-          </View>
-          <View className="basis-1/2 mr-3">
-            <Text
-              className="text-[#fff] text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              배드블루
-            </Text>
-            <Text
-              className="text-[#AAAAAA] text-[12px]"
-              style={{ fontFamily: 'Pretendard-Medium' }}
-            >
-              대구광역시 | 시간: 7일
-            </Text>
-            <Text
-              className="text-[#e1e44e] text-[16px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              시간: 7일
-            </Text>
-            <View className="flex flex-row justify-end">
-              <Text
-                className="text-[#a3a2a2] text-[12px] mt-5"
-                style={{ fontFamily: 'Pretendard-Medium' }}
-              >
-                100명 중 26명이 지지하고 있습니다.
-              </Text>
+          <View className="flex flex-row justify-center">
+            <View className="h-[120px] w-[120px] mr-[12px] bg-white rounded-[12px] flex flex-row justify-center">
+              <Image
+                source={require('../../../assets/images/Bear.png')}
+                className="w-[75px] h-[85px] mx-auto my-auto"
+              />
             </View>
-          </View>
-        </Pressable>
-        <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
-          onPress={() => router.push('/(tabs)/DetailProduct/')}
-        >
-          <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100] "
-            />
-          </View>
-          <View className="basis-1/2 mr-3">
-            <Text
-              className="text-[#fff] text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              배드블루
-            </Text>
-            <Text
-              className="text-[#AAAAAA] text-[12px]"
-              style={{ fontFamily: 'Pretendard-Medium' }}
-            >
-              대구광역시 | 시간: 7일
-            </Text>
-            <Text
-              className="text-[#e1e44e] text-[16px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              시간: 7일
-            </Text>
-            <View className="flex flex-row justify-end">
+            <View className="w-[203px] h-[120px]">
               <Text
-                className="text-[#a3a2a2] text-[12px] mt-5"
+                className="text-[#FFFFFF] text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                Bad Blue
+              </Text>
+              <Text
+                className="text-[#AAAAAA] text-[12px]"
                 style={{ fontFamily: 'Pretendard-Medium' }}
               >
-                100명 중 26명이 지지하고 있습니다.
+                대구광역시 | 기간 : 30일
               </Text>
-            </View>
-          </View>
-        </Pressable>
-        <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5  justify-center "
-          onPress={() => router.push('/(tabs)/DetailProduct/')}
-        >
-          <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100] "
-            />
-          </View>
-          <View className="basis-1/2 mr-3">
-            <Text
-              className="text-[#fff] text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              배드블루
-            </Text>
-            <Text
-              className="text-[#AAAAAA] text-[12px]"
-              style={{ fontFamily: 'Pretendard-Medium' }}
-            >
-              대구광역시 | 시간: 7일
-            </Text>
-            <Text
-              className="text-[#e1e44e] text-[16px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              시간: 7일
-            </Text>
-            <View className="flex flex-row justify-end">
               <Text
-                className="text-[#a3a2a2] text-[12px] mt-5"
-                style={{ fontFamily: 'Pretendard-Medium' }}
+                className="text-[#e1e44e] text-[16px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
               >
-                100명 중 26명이 지지하고 있습니다.
+                25,000P
               </Text>
+              
+              <View className="mt-auto ml-auto">
+                <Text
+                  className="text-[#FFFFFF] text-[12px]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  100명중
+                  <Text 
+                    className="text-[#e1e44e]"
+                  >
+                    {' '}
+                    26명
+                  </Text>
+                  이 서포트 중 입니다.
+                </Text>
+              </View>
+            
+              
             </View>
           </View>
         </Pressable>
 
         <Pressable
-          className="border-b border-gray-700 mb-2 flex flex-row p-5 justify-center "
+          className="w-[335px] h-[141px] mb-[20px] border-b border-gray-700 "
           onPress={() => router.push('/(tabs)/DetailProduct/')}
         >
-          <View className="basis-1/2 bg-white rounded-[10px] mx-3 p-5 flex flex-row justify-center">
-            <Image
-              source={require('../../../assets/images/Bear.png')}
-              className="h-[100] w-[100] "
-            />
-          </View>
-          <View className="basis-1/2 mr-3">
-            <Text
-              className="text-[#fff] text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              배드블루
-            </Text>
-            <Text
-              className="text-[#AAAAAA] text-[12px]"
-              style={{ fontFamily: 'Pretendard-Medium' }}
-            >
-              대구광역시 | 시간: 7일
-            </Text>
-            <Text
-              className="text-[#e1e44e] text-[16px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              시간: 7일
-            </Text>
-            <View className="flex flex-row justify-end">
+          <View className="flex flex-row justify-center">
+            <View className="h-[120px] w-[120px] mr-[12px] bg-white rounded-[12px] flex flex-row justify-center">
+              <Image
+                source={require('../../../assets/images/Bear.png')}
+                className="w-[75px] h-[85px] mx-auto my-auto"
+              />
+            </View>
+            <View className="w-[203px] h-[120px]">
               <Text
-                className="text-[#a3a2a2] text-[12px] mt-5"
+                className="text-[#FFFFFF] text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                Bad Blue
+              </Text>
+              <Text
+                className="text-[#AAAAAA] text-[12px]"
                 style={{ fontFamily: 'Pretendard-Medium' }}
               >
-                100명 중 26명이 지지하고 있습니다.
+                대구광역시 | 기간 : 30일
               </Text>
+              <Text
+                className="text-[#e1e44e] text-[16px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                25,000P
+              </Text>
+              
+              <View className="mt-auto ml-auto">
+                <Text
+                  className="text-[#FFFFFF] text-[12px]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  100명중
+                  <Text 
+                    className="text-[#e1e44e]"
+                  >
+                    {' '}
+                    26명
+                  </Text>
+                  이 서포트 중 입니다.
+                </Text>
+              </View>
+            
+              
+            </View>
+          </View>
+        </Pressable>
+
+        <Pressable
+          className="w-[335px] h-[141px] mb-[20px] border-b border-gray-700 "
+          onPress={() => router.push('/(tabs)/DetailProduct/')}
+        >
+          <View className="flex flex-row justify-center">
+            <View className="h-[120px] w-[120px] mr-[12px] bg-white rounded-[12px] flex flex-row justify-center">
+              <Image
+                source={require('../../../assets/images/Bear.png')}
+                className="w-[75px] h-[85px] mx-auto my-auto"
+              />
+            </View>
+            <View className="w-[203px] h-[120px]">
+              <Text
+                className="text-[#FFFFFF] text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                Bad Blue
+              </Text>
+              <Text
+                className="text-[#AAAAAA] text-[12px]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                대구광역시 | 기간 : 30일
+              </Text>
+              <Text
+                className="text-[#e1e44e] text-[16px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                25,000P
+              </Text>
+              
+              <View className="mt-auto ml-auto">
+                <Text
+                  className="text-[#FFFFFF] text-[12px]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  100명중
+                  <Text 
+                    className="text-[#e1e44e]"
+                  >
+                    {' '}
+                    26명
+                  </Text>
+                  이 서포트 중 입니다.
+                </Text>
+              </View>
+            
+              
+            </View>
+          </View>
+        </Pressable>
+
+        <Pressable
+          className="w-[335px] h-[141px] mb-[20px] border-b border-gray-700 "
+          onPress={() => router.push('/(tabs)/DetailProduct/')}
+        >
+          <View className="flex flex-row justify-center">
+            <View className="h-[120px] w-[120px] mr-[12px] bg-white rounded-[12px] flex flex-row justify-center">
+              <Image
+                source={require('../../../assets/images/Bear.png')}
+                className="w-[75px] h-[85px] mx-auto my-auto"
+              />
+            </View>
+            <View className="w-[203px] h-[120px]">
+              <Text
+                className="text-[#FFFFFF] text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                Bad Blue
+              </Text>
+              <Text
+                className="text-[#AAAAAA] text-[12px]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                대구광역시 | 기간 : 30일
+              </Text>
+              <Text
+                className="text-[#e1e44e] text-[16px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                25,000P
+              </Text>
+              
+              <View className="mt-auto ml-auto">
+                <Text
+                  className="text-[#FFFFFF] text-[12px]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  100명중
+                  <Text 
+                    className="text-[#e1e44e]"
+                  >
+                    {' '}
+                    26명
+                  </Text>
+                  이 서포트 중 입니다.
+                </Text>
+              </View>
+            
+              
+            </View>
+          </View>
+        </Pressable>
+
+        <Pressable
+          className="w-[335px] h-[141px] mb-[20px] border-b border-gray-700 "
+          onPress={() => router.push('/(tabs)/DetailProduct/')}
+        >
+          <View className="flex flex-row justify-center">
+            <View className="h-[120px] w-[120px] mr-[12px] bg-white rounded-[12px] flex flex-row justify-center">
+              <Image
+                source={require('../../../assets/images/Bear.png')}
+                className="w-[75px] h-[85px] mx-auto my-auto"
+              />
+            </View>
+            <View className="w-[203px] h-[120px]">
+              <Text
+                className="text-[#FFFFFF] text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                Bad Blue
+              </Text>
+              <Text
+                className="text-[#AAAAAA] text-[12px]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                대구광역시 | 기간 : 30일
+              </Text>
+              <Text
+                className="text-[#e1e44e] text-[16px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                25,000P
+              </Text>
+              
+              <View className="mt-auto ml-auto">
+                <Text
+                  className="text-[#FFFFFF] text-[12px]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  100명중
+                  <Text 
+                    className="text-[#e1e44e]"
+                  >
+                    {' '}
+                    26명
+                  </Text>
+                  이 서포트 중 입니다.
+                </Text>
+              </View>
+            
+              
+            </View>
+          </View>
+        </Pressable>
+
+        <Pressable
+          className="w-[335px] h-[141px] mb-[20px] border-b border-gray-700 "
+          onPress={() => router.push('/(tabs)/DetailProduct/')}
+        >
+          <View className="flex flex-row justify-center">
+            <View className="h-[120px] w-[120px] mr-[12px] bg-white rounded-[12px] flex flex-row justify-center">
+              <Image
+                source={require('../../../assets/images/Bear.png')}
+                className="w-[75px] h-[85px] mx-auto my-auto"
+              />
+            </View>
+            <View className="w-[203px] h-[120px]">
+              <Text
+                className="text-[#FFFFFF] text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                Bad Blue
+              </Text>
+              <Text
+                className="text-[#AAAAAA] text-[12px]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                대구광역시 | 기간 : 30일
+              </Text>
+              <Text
+                className="text-[#e1e44e] text-[16px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                25,000P
+              </Text>
+              
+              <View className="mt-auto ml-auto">
+                <Text
+                  className="text-[#FFFFFF] text-[12px]"
+                  style={{ fontFamily: 'Pretendard-Medium' }}
+                >
+                  100명중
+                  <Text 
+                    className="text-[#e1e44e]"
+                  >
+                    {' '}
+                    26명
+                  </Text>
+                  이 서포트 중 입니다.
+                </Text>
+              </View>
+            
+              
             </View>
           </View>
         </Pressable>
