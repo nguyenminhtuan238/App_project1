@@ -1,4 +1,4 @@
-import { Link, router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   View,
@@ -6,21 +6,43 @@ import {
   ScrollView,
   Pressable,
   TextInput,
-  Button,
   Alert,
 } from 'react-native';
 
 import { useFonts } from 'expo-font';
-
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { envUser } from '../../../commons/themes/global';
+import userFireBase from '../../../commons/services/User.services';
+import { CheckLogin } from '../../../commons/store/user';
+import CarRegistrationFireBase from '../../../commons/services/CarRegistration.services';
 export default function RegisterCarInformation() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
-  const [Search, setSearch] = useState(1);
-
+  const params = useLocalSearchParams();
+  const [User, setUser]: any = useState();
+  const [Name, setName] = useState('');
+  const [vehiclenumber, setvehiclenumber] = useState('');
+  const [Carcolor, setCarcolor] = useState('');
+  const [Color, setColor] = useState('');
+  const [Modelyear, setModelyear] = useState('');
+  const [Address, setAddress] = useState('');
+  useEffect(() => {
+    const Check = async () => {
+      try {
+        const GetUser: any = await AsyncStorage.getItem(envUser);
+        if (GetUser != null) {
+          const User: any = await userFireBase.getbyiduser(
+            JSON.parse(GetUser)?.id
+          );
+          setUser(User);
+          dispatch(CheckLogin(true));
+        }
+      } catch (error) {}
+    };
+    Check();
+  }, [user.checklogin]);
   // Ô xổ xuống
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -35,21 +57,34 @@ export default function RegisterCarInformation() {
   // };
 
   // Ô nhập liệu
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
-
-  const handleInputChange1 = (inputText: string) => {
-    setText1(inputText);
-  };
-
-  const handleInputChange2 = (inputText: string) => {
-    setText2(inputText);
-  };
 
   const handleButtonPress = () => {
-    Alert.alert('Input values', `차량 소유자: ${text1}, 차량 번호: ${text2}`);
+    Alert.alert(
+      'Input values',
+      `차량 소유자: ${Name}, 차량 번호: ${vehiclenumber}`
+    );
   };
-
+  const handleCarRegistrationFire = async () => {
+    try {
+      const GetUser: any = await AsyncStorage.getItem(envUser);
+      const data = {
+        Carcolor,
+        Name,
+        ID_user: JSON.parse(GetUser)?.id,
+        Modelyear,
+        Color,
+        vehiclenumber,
+      };
+      const IDCarRegistration: any =
+        await CarRegistrationFireBase.AddCarRegistration(data);
+      router.push({
+        pathname: '/(tabs)/RegisterCarInformation/city',
+        params: { id: IDCarRegistration._key.path.segments[1] },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // đổi font chữ
   const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
@@ -96,12 +131,18 @@ export default function RegisterCarInformation() {
             className="px-2 flex justify-center w-full h-[60px] border-b-2 border-[#a3a2a2] bg-[#1f232c]"
             onPress={toggleDropdown}
           >
-            <View className="flex justify-center">
+            <View className="flex flex-row justify-center">
               <Text
                 className="px-2 text-[#fff] text-[20px]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
                 공동 명의인 경우 차량 소유자의 예
+              </Text>
+              <Text
+                className="text-yellow-500 ml-auto text-xl"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                V
               </Text>
             </View>
           </Pressable>
@@ -194,8 +235,8 @@ export default function RegisterCarInformation() {
           <TextInput
             className="mx-2 p-[10px] mb-[15px] h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
             style={{ fontFamily: 'Pretendard-Bold' }}
-            onChangeText={handleInputChange1}
-            value={text1}
+            onChangeText={setName}
+            value={Name}
             placeholder="차량 소유자를 입력하세요."
             placeholderTextColor="#a3a2a2"
           />
@@ -210,8 +251,8 @@ export default function RegisterCarInformation() {
           <TextInput
             className="mx-2 p-[10px] mb-[25px] h-[50px] text-[#fff] text-[20px] border-b border-[#a3a2a2]"
             style={{ fontFamily: 'Pretendard-Bold' }}
-            onChangeText={handleInputChange2}
-            value={text2}
+            onChangeText={setvehiclenumber}
+            value={vehiclenumber}
             placeholder="차량번호를 입력해주세요."
             placeholderTextColor="#a3a2a2"
           />
@@ -253,11 +294,13 @@ export default function RegisterCarInformation() {
               >
                 차량 번호
               </Text>
-
-              <Text
-                className="mt-5 w-full h-[50px] border-b border-[#a3a2a2]"
+              <TextInput
+                className="mt-5 w-full h-[50px] border-b text-[#fff] border-[#a3a2a2]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
-              ></Text>
+                onChangeText={setvehiclenumber}
+                value={vehiclenumber}
+                placeholderTextColor="#a3a2a2"
+              />
 
               <Text
                 className="mt-5 text-[#a3a2a2] text-[20px]"
@@ -266,10 +309,13 @@ export default function RegisterCarInformation() {
                 자동차 모델/모델 이름
               </Text>
 
-              <Text
-                className="mt-5 w-full h-[50px] border-b border-[#a3a2a2]"
+              <TextInput
+                className="mt-5 w-full h-[50px] border-b text-[#fff] border-[#a3a2a2]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
-              ></Text>
+                onChangeText={setCarcolor}
+                value={Carcolor}
+                placeholderTextColor="#a3a2a2"
+              />
 
               <Text
                 className="mt-5 text-[#a3a2a2] text-[20px]"
@@ -278,10 +324,13 @@ export default function RegisterCarInformation() {
                 모델 연도
               </Text>
 
-              <Text
-                className="mt-5 w-full h-[50px] border-b border-[#a3a2a2]"
+              <TextInput
+                className="mt-5 w-full h-[50px] border-b text-[#fff] border-[#a3a2a2]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
-              ></Text>
+                onChangeText={setModelyear}
+                value={Modelyear}
+                placeholderTextColor="#a3a2a2"
+              />
 
               <Text
                 className="mt-5 text-[#a3a2a2] text-[20px]"
@@ -290,10 +339,13 @@ export default function RegisterCarInformation() {
                 색상
               </Text>
 
-              <Text
-                className="mt-5 w-full h-[50px] border-b border-[#a3a2a2]"
+              <TextInput
+                className="mt-5 w-full h-[50px] border-b text-[#fff] border-[#a3a2a2]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
-              ></Text>
+                onChangeText={setColor}
+                value={Color}
+                placeholderTextColor="#a3a2a2"
+              />
 
               <Text
                 className="mt-5 text-[#a3a2a2] text-[20px]"
@@ -302,24 +354,38 @@ export default function RegisterCarInformation() {
                 차량 등록 주소
               </Text>
 
-              <Text
-                className="mt-5 w-full h-[50px] border-b border-[#a3a2a2]"
+              <TextInput
+                className="mt-5 w-full h-[50px] border-b text-[#fff] border-[#a3a2a2]"
                 style={{ fontFamily: 'Pretendard-Bold' }}
-              ></Text>
+                onChangeText={setAddress}
+                value={Address}
+                placeholderTextColor="#a3a2a2"
+              />
             </View>
           </View>
 
-          <Pressable
-            className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-            onPress={() => router.push('/(tabs)/RegisterCarInformation/city')}
-          >
-            <Text
-              className="text-[20px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
+          {Color && vehiclenumber && Modelyear && Carcolor && Address ? (
+            <Pressable
+              className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+              onPress={handleCarRegistrationFire}
             >
-              계속하다
-            </Text>
-          </Pressable>
+              <Text
+                className="text-[20px]"
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                계속하다
+              </Text>
+            </Pressable>
+          ) : (
+            <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-gray-300 rounded-full">
+              <Text
+                className="text-[20px]"
+                style={{ fontFamily: 'Pretendard-Medium' }}
+              >
+                계속하다
+              </Text>
+            </Pressable>
+          )}
         </View>
       </ScrollView>
     </View>

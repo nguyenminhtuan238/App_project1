@@ -1,22 +1,11 @@
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
-
+import { useState } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import { useFonts } from 'expo-font';
-
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
 import { AntDesign, Ionicons, Foundation } from '@expo/vector-icons';
 export default function Notification() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
 

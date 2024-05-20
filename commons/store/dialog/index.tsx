@@ -5,12 +5,14 @@ interface dialogState {
   confirm: false | true;
   Certification: false | true;
   WithDrawal: false | true;
+  BlockWithDrawal: false | true;
 }
 const initialState = {
   Access: true,
   confirm: false,
   Certification: false,
   WithDrawal: false,
+  BlockWithDrawal: false,
 } as dialogState;
 const dialog = createSlice({
   name: 'dialog',
@@ -25,7 +27,15 @@ const dialog = createSlice({
     toggleDialog2: (state) => {
       state.WithDrawal = !state.WithDrawal;
     },
+    toggleBlockWithDrawal: (state) => {
+      state.BlockWithDrawal = !state.BlockWithDrawal;
+    },
   },
 });
-export const { toggleDialog, toggleDialog1, toggleDialog2 } = dialog.actions;
+export const {
+  toggleDialog,
+  toggleDialog1,
+  toggleDialog2,
+  toggleBlockWithDrawal,
+} = dialog.actions;
 export default dialog.reducer;

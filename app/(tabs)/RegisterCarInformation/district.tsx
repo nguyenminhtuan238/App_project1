@@ -1,25 +1,35 @@
-import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  ScrollView,
   Pressable,
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-
-import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
+import { router, useLocalSearchParams } from 'expo-router';
+import CarRegistrationFireBase from '../../../commons/services/CarRegistration.services';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { envUser } from '../../../commons/themes/global';
+import userFireBase from '../../../commons/services/User.services';
+import certificationFireBase from '../../../commons/services/Certification.services';
+import { CheckLogin } from '../../../commons/store/user';
+import { getHidden } from '../../../commons/store/hidden';
 export default function District() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
+  const { id }: any = useLocalSearchParams();
+  const [selectedDistrict, setSelectedDistrict] = useState('수원시');
+
+  // chọn district
+  const handleDistrictSelection = (district: string) => {
+    setSelectedDistrict(district);
+  };
+
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
@@ -44,12 +54,6 @@ export default function District() {
   if (!fontsLoaded) {
     return null; // or other temporary content
   }
-
-  const [selectedDistrict, setSelectedDistrict] = useState('');
-  // chọn city
-  const handleDistrictSelection = (district: string) => {
-    setSelectedDistrict(district);
-  };
 
   const data = [
     { id: '1', name: '수원시' },
@@ -139,7 +143,24 @@ export default function District() {
       </TouchableOpacity>
     </View>
   );
-
+  const HandleupdateDistrict = async () => {
+    try {
+      const GetUser: any = await AsyncStorage.getItem(envUser);
+      await certificationFireBase.updatecertification(
+        { confirm: true },
+        JSON.parse(GetUser)?.id
+      );
+      await CarRegistrationFireBase.updateCarRegistration(
+        { District: selectedDistrict },
+        id
+      );
+      dispatch(CheckLogin(true));
+      dispatch(getHidden());
+      router.push('/(tabs)/RegisteredCar');
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <View className="bg-[#000] h-full">
       <View className="border-yellow-500 border-t-4 w-3/3" />
@@ -173,16 +194,21 @@ export default function District() {
         className="ml-auto"
       />
 
-      <View className="my-2 border-t-4 border-[#1f232c]">
-        <Pressable className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full">
-          <Text
-            className="text-[20px]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
+      {selectedDistrict && (
+        <View className="my-2 border-t-4 border-[#1f232c]">
+          <Pressable
+            onPress={HandleupdateDistrict}
+            className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
           >
-            계속하다
-          </Text>
-        </Pressable>
-      </View>
+            <Text
+              className="text-[20px]"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              계속하다
+            </Text>
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 }

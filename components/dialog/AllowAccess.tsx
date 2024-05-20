@@ -13,9 +13,6 @@ export default function AllowAccess() {
   return (
     <View>
       <Dialog isVisible={dialog.confirm} onBackdropPress={toggleDialog1}>
-        <Dialog.Loading />
-      </Dialog>
-      <Dialog isVisible={dialog.confirm} onBackdropPress={toggleDialog1}>
         <Text className="text-[15px] font-bold">
           위치 권한을<Text className="text-[#ecc647]">'항상 허용'</Text>으로
           변경해 주세요.

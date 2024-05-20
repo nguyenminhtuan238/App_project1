@@ -14,9 +14,6 @@ export default function AccessConfirm() {
   return (
     <View>
       <Dialog isVisible={dialog.Access}>
-        <Dialog.Loading />
-      </Dialog>
-      <Dialog isVisible={dialog.Access}>
         <Dialog.Title title="액세스 허용" titleStyle={{ fontSize: 20 }} />
         <Text>
           SSULK는 앱이 닫혀 있거나 사용하지 않는 동안에도 위치 데이터를 수집하고

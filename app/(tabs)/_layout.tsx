@@ -1,26 +1,25 @@
 import '../../assets/css/global.css';
-import {
-  createDrawerNavigator,
-  DrawerItemList,
-} from '@react-navigation/drawer';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { Image, View, Text, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../commons/store';
-import { unwrapResult } from '@reduxjs/toolkit';
-import { router, Slot, Stack, Tabs } from 'expo-router';
-import { Provider } from 'react-redux';
-import store from '../../commons/store';
+import { router, Stack } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { Link } from 'expo-router';
-import { Avatar, Badge, Icon, withBadge } from '@rneui/themed';
-import Home from './Home';
-import { HiddenRegisteredCar } from '../../commons/store/hidden';
+import { Badge } from '@rneui/themed';
+import { getHidden, HiddenRegisteredCar } from '../../commons/store/hidden';
+import CarRegistrationFireBase from '../../commons/services/CarRegistration.services';
+import DeliveryAddressFireBase from '../../commons/services/DeliveryAddress.service';
 
 export default function Layout() {
   const hidden = useSelector((state: RootState) => state.hidden);
+  const CarRegistration = useSelector(
+    (state: RootState) => state.CarRegistration
+  );
+  const DeliveryAddress = useSelector(
+    (state: RootState) => state.DeliveryAddress
+  );
   const dispatch: AppDispatch = useDispatch();
 
   // đổi font chữ
@@ -39,7 +38,31 @@ export default function Layout() {
   if (!fontsLoaded) {
     return undefined;
   }
-
+  const DeleteCarRegistration = async () => {
+    try {
+      if (CarRegistration.CarRegistrationid) {
+        await CarRegistrationFireBase.DeleteCarRegistration(
+          CarRegistration.CarRegistrationid
+        );
+        dispatch(getHidden());
+        dispatch(HiddenRegisteredCar());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const DeleteDeliveryAddress = async () => {
+    try {
+      if (DeliveryAddress.DeliveryAddressid) {
+        await DeliveryAddressFireBase.DeleteDeliveryAddress(
+          DeliveryAddress.DeliveryAddressid
+        );
+        dispatch(getHidden());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Stack>
       <Stack.Screen
@@ -55,7 +78,10 @@ export default function Layout() {
           ),
 
           headerRight: () => (
-            <View className="flex flex-row justify-around ">
+            <Pressable
+              className="flex flex-row justify-around "
+              onPress={() => router.push('/Notification/')}
+            >
               <MaterialCommunityIcons
                 name="bell-outline"
                 size={24}
@@ -67,7 +93,7 @@ export default function Layout() {
                 value=""
                 containerStyle={{ position: 'absolute', top: 1, left: 18 }}
               />
-            </View>
+            </Pressable>
           ),
           headerStyle: {
             backgroundColor: '#d1d5db',
@@ -82,7 +108,10 @@ export default function Layout() {
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerTitleAlign: 'center',
           headerRight: () => (
-            <View className="flex flex-row justify-around ">
+            <Pressable
+              className="flex flex-row justify-around "
+              onPress={() => router.push('/Notification/')}
+            >
               <MaterialCommunityIcons
                 name="bell-outline"
                 size={24}
@@ -94,7 +123,7 @@ export default function Layout() {
                 value=""
                 containerStyle={{ position: 'absolute', top: 1, left: 18 }}
               />
-            </View>
+            </Pressable>
           ),
           headerStyle: {
             backgroundColor: 'black',
@@ -106,7 +135,7 @@ export default function Layout() {
       <Stack.Screen
         name="ListProduct/index"
         options={{
-          headerTitle: '기부자',
+          headerTitle: '스폰서',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
@@ -132,7 +161,7 @@ export default function Layout() {
       <Stack.Screen
         name="DetailProduct/index"
         options={{
-          headerTitle: '기부자',
+          headerTitle: '스폰서 상세',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
@@ -158,7 +187,7 @@ export default function Layout() {
       <Stack.Screen
         name="WithDrawal/index"
         options={{
-          headerTitle: '출금 요청',
+          headerTitle: '출금신청',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
@@ -187,7 +216,10 @@ export default function Layout() {
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerTitleAlign: 'center',
           headerRight: () => (
-            <View className="flex flex-row justify-around ">
+            <Pressable
+              className="flex flex-row justify-around "
+              onPress={() => router.push('/Notification/')}
+            >
               <MaterialCommunityIcons
                 name="bell-outline"
                 size={24}
@@ -199,7 +231,7 @@ export default function Layout() {
                 value=""
                 containerStyle={{ position: 'absolute', top: 1, left: 18 }}
               />
-            </View>
+            </Pressable>
           ),
           headerStyle: {
             backgroundColor: 'black',
@@ -207,7 +239,62 @@ export default function Layout() {
           headerBackVisible: false,
         }}
       />
+      <Stack.Screen
+        name="Event/index"
+        options={{
+          headerTitle: '행사',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerTitleAlign: 'center',
 
+          headerRight: () => (
+            <Pressable
+              className="flex flex-row justify-around "
+              onPress={() => router.push('/Notification/')}
+            >
+              <MaterialCommunityIcons
+                name="bell-outline"
+                size={24}
+                color="white"
+              />
+
+              <Badge
+                status="error"
+                value=""
+                containerStyle={{ position: 'absolute', top: 1, left: 18 }}
+              />
+            </Pressable>
+          ),
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerBackVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailEvent/index"
+        options={{
+          headerTitle: '이벤트 내용',
+          headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
+          headerStyle: {
+            backgroundColor: 'black',
+          },
+          headerLeft: () => (
+            <View className="mr-1">
+              <Text
+                className="text-white text-[15px] "
+                style={{ fontFamily: 'Pretendard-Bold' }}
+              >
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color="white"
+                  onPress={router.back}
+                />
+              </Text>
+            </View>
+          ),
+        }}
+      />
       <Stack.Screen
         name="Application/index"
         options={{
@@ -470,7 +557,10 @@ export default function Layout() {
                   수정
                 </Text>
               </Pressable>
-              <Pressable className="mx-2 w-[60px] h-[50px] bg-[#2c2c2c] rounded-xl flex items-center justify-center">
+              <Pressable
+                onPress={DeleteDeliveryAddress}
+                className="mx-2 w-[60px] h-[50px] bg-[#2c2c2c] rounded-xl flex items-center justify-center"
+              >
                 <Text
                   className=" text-red-500 text-[20px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
@@ -645,7 +735,7 @@ export default function Layout() {
       <Stack.Screen
         name="FAQ/index"
         options={{
-          headerTitle: 'FAQ/1:1필수',
+          headerTitle: 'FAQ / 1:1문의',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
@@ -670,7 +760,7 @@ export default function Layout() {
       <Stack.Screen
         name="FAQ/FAQ2"
         options={{
-          headerTitle: 'FAQ/1:1필수',
+          headerTitle: 'FAQ / 1:1문의',
           headerTitleStyle: { fontFamily: 'Pretendard-Black', color: 'white' },
           headerStyle: {
             backgroundColor: 'black',
@@ -748,7 +838,7 @@ export default function Layout() {
                   </Pressable>
                   <Pressable
                     className="bg-[#555555] rounded-[30px]  p-2 flex flex-row ml-2 "
-                    onPress={() => router.push('/FAQ/FAQ2')}
+                    onPress={DeleteCarRegistration}
                   >
                     <Text
                       className="text-[#f84a4a]  text-center "

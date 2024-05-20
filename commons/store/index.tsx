@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import point from './point';
-import Student from './Student';
 import user from './user';
 import dialog from './dialog';
 import Navigationbar from './Navigationbar';
 import hidden from './hidden';
+import CarRegistration from './CarRegistration';
+import DeliveryAddress from './DeliveryAddress';
 const reducer = combineReducers({
   user,
-  Student,
-  point,
   dialog,
   Navigationbar,
   hidden,
+  CarRegistration,
+  DeliveryAddress,
 });
 const store = configureStore({
   reducer,

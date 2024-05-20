@@ -1,107 +1,86 @@
-import AuthAPI from '../../services/auth.services';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { envTOKEN, envREFRESHTOKEN } from '../../themes/global';
-export const LoginUser = createAsyncThunk(
-  'user/login',
-  async (payload: object) => {
-    try {
-      const res: any = await AuthAPI.Login(payload);
-      await AsyncStorage.setItem(envTOKEN, res.settoken);
-      await AsyncStorage.setItem(envREFRESHTOKEN, res.Refreshtoken);
-      return res.success;
-    } catch (error: any) {
-      if (error.response.status === 403) {
-        // console.log(JSON.stringify(error.response.data.message))
-        throw error.response.data.mess;
-      }
-      if (error.response.status === 402) {
-        throw error.response.data.messa;
-      } else {
-        console.log(error);
-      }
-      throw error;
-    }
-  }
-);
-export async function Refreshtoken() {
+import { envREFRESHTOKEN, envUser } from '../../themes/global';
+import userFireBase from '../../services/User.services';
+import { supabase } from '../../themes/supabase';
+import * as QueryParams from 'expo-auth-session/build/QueryParams';
+import pointFireBase from '../../services/point.services';
+
+const LoginPoint = async (data: any) => {
   try {
-    const Token = await AsyncStorage.getItem(envREFRESHTOKEN);
-    const res = await AuthAPI.Refreshtoken(Token);
-    await AsyncStorage.setItem(envTOKEN, envTOKEN);
+    const GetUser = await userFireBase.getbyiduser(data?.id);
+    if (GetUser.success == false) {
+      await userFireBase.Adduser(
+        {
+          Email: data?.email,
+          Point: 0,
+          accumulation: 0,
+          create_at: new Date(Date.now()),
+          update_at: new Date(Date.now()),
+        },
+        data?.id
+      );
+      await pointFireBase.Addpointadd({
+        ID_User: data?.id,
+        Point: 500,
+        StatusPoint: '첫 번째 등록 지점',
+        Createdate: new Date(Date.now()),
+      });
+      await userFireBase.updateuser({ Point: 500 }, data?.id);
+    }
   } catch (error) {
-    console.log(error);
+    throw error;
   }
-}
+};
+
+export const createSessionFromUrl = async (url: string) => {
+  const { params, errorCode } = QueryParams.getQueryParams(url);
+  if (errorCode) throw new Error(errorCode);
+  const { access_token, refresh_token } = params;
+
+  if (!access_token) return;
+
+  const { data, error }: any = await supabase.auth.setSession({
+    access_token,
+    refresh_token,
+  });
+  await AsyncStorage.setItem(envUser, JSON.stringify(data?.user));
+  await LoginPoint(data?.user);
+  if (error) throw error;
+  return data.session;
+};
 export async function Logout() {
   try {
-    await AsyncStorage.removeItem(envTOKEN);
+    await AsyncStorage.removeItem(envUser);
     await AsyncStorage.removeItem(envREFRESHTOKEN);
   } catch (error) {
     console.log(error);
   }
 }
-export const Resetpass = createAsyncThunk(
-  'user/Reset',
-  async (payload: object) => {
-    try {
-      const res: any = await AuthAPI.Reset(payload);
-      return res.success;
-    } catch (error: any) {
-      if (error.response.status === 410) {
-        try {
-          await Refreshtoken();
-          const res: any = await AuthAPI.Reset(payload);
-          return res.success;
-        } catch (error: any) {
-          console.log(error);
-          if (error.response.status === 402) {
-            throw error.response.data.message;
-          }
-        }
-      }
-      if (error.response.status === 402) {
-        throw error.response.data.message;
-      } else {
-        console.log(error);
-      }
-      //throw error
-    }
-  }
-);
+
 interface StudentState {
-  user: false | true;
+  user: object | any;
   isloading: false | true;
+  checklogin: false | true;
   error: any;
 }
 const initialState = {
-  user: false,
+  user: {},
   isloading: false,
+  checklogin: false,
   error: null,
 } as StudentState;
 const slice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
-  extraReducers: (builerUser) => {
-    builerUser.addCase(LoginUser.fulfilled, (state, action) => {
-      state.isloading = true;
-      (state.user = action.payload), (state.error = null);
-    }),
-      builerUser.addCase(LoginUser.rejected, (state, action) => {
-        (state.user = false),
-          (state.isloading = false),
-          (state.error = action.error);
-      });
-    builerUser.addCase(Resetpass.fulfilled, (state, action) => {
-      state.isloading = action.payload;
-      state.error = null;
-    }),
-      builerUser.addCase(Resetpass.rejected, (state, action) => {
-        (state.isloading = false), (state.error = action.error);
-      });
+  reducers: {
+    CheckLogin: (state, action) => {
+      state.checklogin = action.payload;
+    },
   },
+  extraReducers: (builerUser) => {},
 });
+export const { CheckLogin } = slice.actions;
 export default slice.reducer;
 
 // Actions

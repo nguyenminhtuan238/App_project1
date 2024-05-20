@@ -1,10 +1,9 @@
-import { TouchableHighlight, TextInput, Text, View, Image } from 'react-native';
+import { TouchableHighlight, Text, View, Image } from 'react-native';
 import { useFonts } from 'expo-font';
 
-import { Link, router } from 'expo-router';
+import { Link } from 'expo-router';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from '../../../commons/store';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { CheckBox } from '@rneui/themed';
 import { useState } from 'react';
 export default function Confirm() {

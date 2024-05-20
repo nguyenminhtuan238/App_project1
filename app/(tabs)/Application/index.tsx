@@ -1,25 +1,38 @@
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
-import { Dialog } from '@rneui/themed';
-
+import { View, Text, ScrollView, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
-
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { envUser } from '../../../commons/themes/global';
+import userFireBase from '../../../commons/services/User.services';
+import pointFireBase from '../../../commons/services/point.services';
 export default function Application() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
+  const [Status, setStatus]: any = useState([]);
+  useEffect(() => {
+    const Check = async () => {
+      try {
+        if ((await AsyncStorage.getItem(envUser)) != null) {
+          const GetUser: any = await AsyncStorage.getItem(envUser);
+          const status: any = await pointFireBase.getbyidpoint(
+            JSON.parse(GetUser)?.id
+          );
+          if (status.success == false) {
+            setStatus([]);
+          } else {
+            setStatus(status.Pointid);
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    Check();
+  }, [user.checklogin]);
   const [fontsLoaded] = useFonts({
     'Pretendard-Black': require('../../../assets/fonts/Pretendard-Black.otf'),
     'Pretendard-Bold': require('../../../assets/fonts/Pretendard-Bold.otf'),
@@ -39,87 +52,80 @@ export default function Application() {
 
   return (
     <ScrollView className=" bg-[#000]">
-      <View className=" flex-row justify-center  border rounded-[15px]  ">
+      <View className=" w-[300px] h-[48px] mx-auto  flex-row justify-center items-center rounded-full bg-[#1f242a]">
         <Pressable
           onPress={() => router.push('/(tabs)/WithDrawal/')}
-          className="   bg-[#44434377]  p-4 w-[100px] rounded-full  "
+          className=" bg-[#1f242a] w-[150px] h-[48px] mx-auto flex justify-center items-center rounded-full "
         >
           <Text
-            className="text-[#a3a2a2] text-[10px] text-center"
+            className="text-[#5F6265] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
-            탈퇴 신청
+            출금 신청
           </Text>
         </Pressable>
         <Pressable
           onPress={() => setSearch(1)}
-          className=" bg-[#606163] p-4 rounded-full"
+          className="w-[150px] h-[48px] ml-auto flex justify-center items-center rounded-full  bg-[#606163]"
         >
           <Text
-            className=" text-[#fff]  text-[10px]"
+            className="text-[#fff] text-[16px]"
             style={{ fontFamily: 'Pretendard-Bold' }}
           >
-            신청 내용
+            신청 내역
           </Text>
         </Pressable>
       </View>
       <View>
-        <View className="border-b border-[#494949] p-3 flex">
-          <Text
-            className="text-white my-3 text-[20px] "
-            style={{ fontFamily: 'Pretendard-Bold' }}
-          >
-            -8.000P
-          </Text>
-          <View className="flex flex-row ">
-            <Text
-              className="text-[#f85353]  text-[10px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              인도한글 철회
-            </Text>
-            <Text
-              className="mx-1 text-[#575757]   text-[10px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              |
-            </Text>
-            <Text
-              className="text-[#575757]  text-[10px] "
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              2023.03.12 15.30.02
-            </Text>
+        {Status.length != 0 && (
+          <View>
+            {Status.map((item: any, index: number) => {
+              return (
+                <View
+                  className="border-b border-[#494949] p-3 flex"
+                  key={index}
+                >
+                  <Text
+                    className="text-white my-3 text-[20px] "
+                    style={{ fontFamily: 'Pretendard-Bold' }}
+                  >
+                    {item.exchange === 'add'
+                      ? '+'
+                      : item.exchange === 'minus'
+                        ? '-'
+                        : ''}
+                    {item.Point}P
+                  </Text>
+                  <View className="flex flex-row ">
+                    <Text
+                      className={` ${item.exchange === 'add' ? 'text-[#41e966]' : item.exchange === 'minus' ? 'text-[#f85353]' : 'text-[#e9c837]'}  text-[10px]`}
+                      style={{ fontFamily: 'Pretendard-Bold' }}
+                    >
+                      {item.StatusPoint}
+                    </Text>
+                    <Text
+                      className="mx-1 text-[#575757]   text-[10px]"
+                      style={{ fontFamily: 'Pretendard-Bold' }}
+                    >
+                      |
+                    </Text>
+                    <Text
+                      className="text-[#575757]  text-[10px] "
+                      style={{ fontFamily: 'Pretendard-Bold' }}
+                    >
+                      {new Date(item.Createdate.toDate()).getFullYear()}.
+                      {new Date(item.Createdate.toDate()).getMonth() + 1}.
+                      {new Date(item.Createdate.toDate()).getDay()}{' '}
+                      {new Date(item.Createdate.toDate()).getHours()}.
+                      {new Date(item.Createdate.toDate()).getMinutes()}.
+                      {new Date(item.Createdate.toDate()).getSeconds()}
+                    </Text>
+                  </View>
+                </View>
+              );
+            })}
           </View>
-        </View>
-        <View className="border-b border-[#494949] p-3 flex">
-          <Text
-            className="text-white my-3 text-[20px] "
-            style={{ fontFamily: 'Pretendard-Bold' }}
-          >
-            +20.000P
-          </Text>
-          <View className="flex flex-row ">
-            <Text
-              className="text-[#41e966]  text-[10px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              BAD BLUE 후원 완료
-            </Text>
-            <Text
-              className="mx-1 text-[#575757]   text-[10px]"
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              |
-            </Text>
-            <Text
-              className="text-[#575757]  text-[10px] "
-              style={{ fontFamily: 'Pretendard-Bold' }}
-            >
-              2023.03.06 15.30.02
-            </Text>
-          </View>
-        </View>
+        )}
       </View>
     </ScrollView>
   );

@@ -1,28 +1,24 @@
-import { Link, router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  ScrollView,
   Pressable,
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-
-import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
-
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
+import CarRegistrationFireBase from '../../../commons/services/CarRegistration.services';
 export default function City() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [Search, setSearch] = useState(1);
+  const { id }: any = useLocalSearchParams();
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
-  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedCity, setSelectedCity] = useState('서울');
 
   useEffect(() => {
     async function loadFonts() {
@@ -124,7 +120,20 @@ export default function City() {
       </TouchableOpacity>
     </View>
   );
-
+  const Handleupdatecity = async () => {
+    try {
+      await CarRegistrationFireBase.updateCarRegistration(
+        { City: selectedCity },
+        id
+      );
+      router.push({
+        pathname: '/(tabs)/RegisterCarInformation/district',
+        params: { id },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <View className="bg-[#000] h-full">
       <View className="border-yellow-500 border-t-4 w-2/3" />
@@ -157,19 +166,21 @@ export default function City() {
         className="ml-auto"
       />
 
-      <View className="my-2 border-t-4 border-[#1f232c]">
-        <Pressable
-          className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-          onPress={() => router.push('/(tabs)/RegisterCarInformation/district')}
-        >
-          <Text
-            className="text-[20px]"
-            style={{ fontFamily: 'Pretendard-Bold' }}
+      {selectedCity && (
+        <View className="my-2 border-t-4 border-[#1f232c]">
+          <Pressable
+            className="ml-auto mr-auto my-5 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
+            onPress={Handleupdatecity}
           >
-            계속하다
-          </Text>
-        </Pressable>
-      </View>
+            <Text
+              className="text-[20px]"
+              style={{ fontFamily: 'Pretendard-Bold' }}
+            >
+              계속하다
+            </Text>
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 }

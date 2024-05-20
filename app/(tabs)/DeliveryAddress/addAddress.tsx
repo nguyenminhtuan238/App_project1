@@ -1,4 +1,4 @@
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   View,
@@ -8,37 +8,56 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-
-import { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
-
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { envUser } from '../../../commons/themes/global';
+import { CheckLogin } from '../../../commons/store/user';
+import DeliveryAddressFireBase from '../../../commons/services/DeliveryAddress.service';
+import { GetDeliveryAddressid } from '../../../commons/store/DeliveryAddress';
+import { getHidden } from '../../../commons/store/hidden';
+import userFireBase from '../../../commons/services/User.services';
 export default function AddAddressDeliveryAddress() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
+  const hidden = useSelector((state: RootState) => state.hidden);
+
   const dispatch: AppDispatch = useDispatch();
-  const [Search, setSearch] = useState(1);
+  const [Deliveryaddress, setDeliveryaddress]: any = useState([]);
+  const [selectedindex, setselectedindex] = useState('');
+  useEffect(() => {
+    const Check = async () => {
+      try {
+        const GetUser: any = await AsyncStorage.getItem(envUser);
+        if (GetUser != null) {
+          const DeliveryAddress: any =
+            await DeliveryAddressFireBase.getallCarDeliveryAddressn(
+              JSON.parse(GetUser)?.id
+            );
+          if (DeliveryAddress.success == false) {
+            setDeliveryaddress([]);
+          } else {
+            setDeliveryaddress(DeliveryAddress.DeliveryAddressid);
+          }
+          dispatch(CheckLogin(true));
+          dispatch(getHidden());
+        }
+      } catch (error) {}
+    };
+    Check();
+  }, [hidden.hidden]);
 
-  // Chọn địa chỉ
-  const [selectedTitle, setSelectedTitle] = useState('');
-  const [selectedName, setSelectedName] = useState('');
-  const [selectedPhone, setSelectedPhone] = useState('');
-  const [selectedAddress, setSelectedAddress] = useState('');
-
-  const handleAddressSelection = (
-    title: string,
-    name: string,
-    phone: string,
-    address: string
-  ) => {
-    setSelectedTitle(title);
-    setSelectedName(name);
-    setSelectedPhone(phone);
-    setSelectedAddress(address);
+  const handleAddressSelection = (Index: string) => {
+    setselectedindex(Index);
   };
-
+  useEffect(() => {
+    const handeGetidDeliveryAddressr = () => {
+      if (selectedindex) {
+        dispatch(GetDeliveryAddressid(selectedindex));
+      }
+    };
+    handeGetidDeliveryAddressr();
+  }, [selectedindex]);
   // đổi font chữ
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
@@ -64,47 +83,35 @@ export default function AddAddressDeliveryAddress() {
   if (!fontsLoaded) {
     return null; // or other temporary content
   }
-
-  const data = [
-    {
-      key: '1',
-      title: '본가',
-      name: '송길동',
-      phone: '010-1231-1592',
-      address: '대구 달서구 호산동로 34길 21-4, 행복일 203 [42708]',
-    },
-    {
-      key: '2',
-      title: '회사',
-      name: '박서준',
-      phone: '010-1231-1592',
-      address: '대구 달서구 호산동로 34길 21-4, 행복일 203 [42708]',
-    },
-  ];
-
+  const HandleUpdateDelivery = async () => {
+    try {
+      if (selectedindex != '') {
+        const GetUser: any = await AsyncStorage.getItem(envUser);
+        const data = {
+          ID_delivery_address: selectedindex,
+          update_at: new Date(Date.now()),
+        };
+        await userFireBase.updateuser(data, JSON.parse(GetUser)?.id);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <SafeAreaView className="bg-black h-screen border-t-2 border-[#2c2c2c]">
       <View className="flex flex-col">
-        <View className="mt-5 min-h-[450px]">
+        <View className="mt-5 min-h-[350px]">
           <FlatList
-            data={data}
+            data={Deliveryaddress}
             renderItem={({ item }) => (
               <TouchableOpacity
                 //className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 border-white rounded-2xl"
-                onPress={() =>
-                  handleAddressSelection(
-                    selectedTitle === item.title ? '' : item.title,
-                    selectedName === item.name ? '' : item.name,
-                    selectedPhone === item.phone ? '' : item.phone,
-                    selectedAddress === item.address ? '' : item.address
-                  )
-                }
+                onPress={() => handleAddressSelection(item.id)}
               >
                 <View
                   className="my-2 ml-auto mr-auto flex flex-row items-center w-[350px] h-[150px] border-2 rounded-2xl"
                   style={{
-                    borderColor:
-                      selectedTitle === item.title ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
+                    borderColor: selectedindex === item.id ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
                   }}
                 >
                   <View className="basis-1/5 flex items-center justify-center">
@@ -112,14 +119,12 @@ export default function AddAddressDeliveryAddress() {
                       className="w-[30px] h-[30px] border-2 rounded-full flex items-center justify-center"
                       style={{
                         backgroundColor:
-                          selectedTitle === item.title
-                            ? 'black'
-                            : 'transparent',
+                          selectedindex === item.id ? 'black' : 'transparent',
                         borderColor:
-                          selectedTitle === item.title ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
+                          selectedindex === item.id ? 'yellow' : 'white', // Thêm thuộc tính borderColor với giá trị 'white' để đặt màu viền là màu trắng
                       }}
                     >
-                      {selectedTitle === item.title && (
+                      {selectedindex === item.id && (
                         <Pressable className="border-white rounded-full w-[15px] h-[15px] bg-yellow-500" />
                       )}
                     </View>
@@ -130,21 +135,21 @@ export default function AddAddressDeliveryAddress() {
                         className="my-1 text-[20px] text-[#fff]"
                         style={{ fontFamily: 'Pretendard-Bold' }}
                       >
-                        {item.title}
+                        {item.Receiver}
                       </Text>
                       <View
                         className="ml-auto mr-5 w-[100px] h-[35px] border-2 border-white flex items-center justify-center rounded-lg"
                         style={{
                           borderColor:
-                            selectedTitle === item.title ? 'yellow' : 'black',
+                            selectedindex === item.id ? 'yellow' : 'black',
                         }}
                       >
                         <Text
-                          className="text-[15px] text-white"
+                          className="text-[12px] text-white"
                           style={{
                             fontFamily: 'Pretendard-Bold',
                             color:
-                              selectedTitle === item.title ? 'yellow' : 'black',
+                              selectedindex === item.id ? 'yellow' : 'black',
                           }}
                         >
                           기본배송지
@@ -152,32 +157,32 @@ export default function AddAddressDeliveryAddress() {
                       </View>
                     </View>
                     <Text
-                      className="my-1 text-[15px] text-[#a3a2a2]"
-                      style={{ fontFamily: 'Pretendard-Bold' }}
+                      className="my-1 text-[12px] text-[#AAAAAA]"
+                      style={{ fontFamily: 'Pretendard-Medium' }}
                     >
-                      {item.name} | {item.phone}
+                      {item.Receiver} | {item.Phone}
                     </Text>
                     <Text
-                      className="my-1 text-[15px] text-[#fff]"
+                      className="my-1 text-[14px] text-[#fff]"
                       style={{ fontFamily: 'Pretendard-Bold' }}
                     >
-                      {item.address}
+                      {item.Deliveryaddress}
                     </Text>
                   </View>
                 </View>
               </TouchableOpacity>
             )}
-            keyExtractor={(item) => item.key}
+            keyExtractor={(item) => item.id}
           />
         </View>
 
         <View className="mt-auto">
           <Pressable
-            className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center border-2 border-yellow-500 rounded-full"
+            className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center border-2 border-yellow-500 rounded-[30px]"
             onPress={() => router.push('/(tabs)/DeliveryAddress/')}
           >
             <Text
-              className="text-[20px] text-yellow-500"
+              className="text-[16px] text-yellow-500"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               + 새 주소 추가하기
@@ -185,11 +190,11 @@ export default function AddAddressDeliveryAddress() {
           </Pressable>
 
           <Pressable
-            className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500 rounded-full"
-            //onPress={() => router.push('/(tabs)/ApplyForSponsorship/detail')}
+            className="ml-auto mr-auto my-2 w-[350px] h-[70px] flex justify-center items-center bg-yellow-500  rounded-[30px]"
+            onPress={HandleUpdateDelivery}
           >
             <Text
-              className="text-[20px]"
+              className="text-[16px]"
               style={{ fontFamily: 'Pretendard-Bold' }}
             >
               저장하기

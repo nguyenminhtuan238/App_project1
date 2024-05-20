@@ -1,27 +1,13 @@
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
-
+import { router } from 'expo-router';
+import { useState } from 'react';
+import { View, Text, ScrollView, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
-
 import LayoutScreen from '../../../components/user/Homelayout/layout';
-import { Logout } from '../../../commons/store/user';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../commons/store';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
-import AccessConfirm from '../../../components/dialog/AccessConfirm';
-import AllowAccess from '../../../components/dialog/AllowAccess';
-import { toggleNavigationbar } from '../../../commons/store/Navigationbar';
+import { AntDesign } from '@expo/vector-icons';
 export default function FAQ() {
-  const Point = useSelector((state: RootState) => state.point);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
   const [Accordion, GetAccordion] = useState(false);
   enum SetAccordion {
@@ -65,7 +51,7 @@ export default function FAQ() {
                   className="text-[#fff]  text-[15px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  광고 등록 후 무엇을 해야 하나요?
+                  광고 신청 후에는 어떻게 하나요?
                 </Text>
 
                 <Text
@@ -87,13 +73,13 @@ export default function FAQ() {
                     className="text-[#fff]  text-[15px]"
                     style={{ fontFamily: 'Pretendard-Bold' }}
                   >
-                    붙여넣기 신청 후 등록이 완료되기까지
+                    스티커 신청 후, 얼마 만에 등록을
                   </Text>
                   <Text
                     className="text-[#fff]  text-[15px]"
                     style={{ fontFamily: 'Pretendard-Bold' }}
                   >
-                    얼마나 걸리는지 궁금합니다.
+                    완료해야 하는지 궁금합니다.
                   </Text>
                 </View>
                 <Text
@@ -110,9 +96,12 @@ export default function FAQ() {
             </Pressable>
             {Accordion && (
               <View className="bg-[#4d4c4c] p-3">
-                <Text className="text-[#e7d745]">
-                  출금을 요청하시면 2~3일 이내에 입금이 처리됩니다. 출금 등록을
-                  하신 후 잠시 기다려 주시면 감사하겠습니다.
+                <Text
+                  className="text-[#e7d745]"
+                  style={{ fontFamily: 'Pretendard-Bold' }}
+                >
+                  출금 신청을 하시면, 통상 2~3일 내에 입금 처리 됩니다. 출금
+                  신청을 하시고, 조금만 기다려주시면 감사드리겠습니다.
                 </Text>
               </View>
             )}
@@ -142,7 +131,7 @@ export default function FAQ() {
                   className="text-[#fff]  text-[15px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  다른 광고로 대체하고 싶어요
+                  다른 광고로 교체하고 싶어요.
                 </Text>
 
                 <Text
@@ -159,7 +148,7 @@ export default function FAQ() {
                   className="text-[#fff]  text-[15px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  스티커는 언제 붙이나요?
+                  스티커 부착은 언제하나요?
                 </Text>
 
                 <Text
@@ -176,7 +165,7 @@ export default function FAQ() {
                   className="text-[#fff]  text-[15px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  출금을 요청하면 입금은 언제 받을 수 있나요?
+                  출금 신청하면 언제 입금되나요?
                 </Text>
 
                 <Text
@@ -196,7 +185,7 @@ export default function FAQ() {
                   className="text-[#fff]   text-[15px]"
                   style={{ fontFamily: 'Pretendard-Bold' }}
                 >
-                  멤버십을 취소하려면 어떻게 해야 하나요?
+                  회원탈퇴는 어떻게 하나요?
                 </Text>
 
                 <Text
@@ -215,7 +204,7 @@ export default function FAQ() {
                 className="text-[#575757]  text-center "
                 style={{ fontFamily: 'Pretendard-Bold' }}
               >
-                1:1문의하기
+                1:1 문의하기
               </Text>
             </Pressable>
           </ScrollView>
